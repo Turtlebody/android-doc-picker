@@ -4,8 +4,8 @@ import android.content.Context
 import android.database.Cursor
 import android.net.Uri
 import androidx.core.content.FileProvider.getUriForFile
-import com.greentoad.turtlebody.docpicker.ui.DocFolder
-import com.greentoad.turtlebody.docpicker.ui.DocModel
+import com.greentoad.turtlebody.docpicker.ui.components.folder.DocFolder
+import com.greentoad.turtlebody.docpicker.ui.components.file.DocModel
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
 import java.io.File
@@ -14,16 +14,16 @@ import java.util.*
 
 object FileManager : AnkoLogger {
     /**
-     * For audio
+     * For Doc
      */
-    fun fetchAudioFolderList(context: Context): ArrayList<DocFolder> {
+    fun fetchAudioFolderList(context: Context,args: Array<String>): ArrayList<DocFolder> {
         val folders = ArrayList<DocFolder>()
         val folderFileCountMap = HashMap<String, Int>()
 
         val projection = Constants.Projection.DOC_FOLDER
 
         // Create the cursor pointing to the SDCard
-        val cursor = CursorHelper.getDocFolderCursor(context)
+        val cursor = CursorHelper.getDocFolderCursor(context,args)
 
         cursor?.let {
             info { "doc folder query size: "+ cursor.count }
@@ -40,8 +40,10 @@ object FileManager : AnkoLogger {
                 if (folderFileCountMap.containsKey(folderId)) {
                     folderFileCountMap[folderId] = folderFileCountMap[folderId]!! + audioCounts
                 } else {
-                    val folder = DocFolder(folderId, File(it.getString(columnIndexFilePath)).parentFile.name,
-                            File(it.getString(columnIndexFilePath)).parentFile.path, 0)
+                    val folder = DocFolder(
+                        folderId, File(it.getString(columnIndexFilePath)).parentFile.name,
+                        File(it.getString(columnIndexFilePath)).parentFile.path, 0
+                    )
                     folders.add(folder)
                     folderFileCountMap[folderId] = audioCounts
                 }
@@ -56,12 +58,12 @@ object FileManager : AnkoLogger {
 
 
 
-    fun getDocFilesInFolder(context: Context): ArrayList<DocModel> {
+    fun getDocFilesInFolder(context: Context,folderPath: String): ArrayList<DocModel> {
         val fileItems = ArrayList<DocModel>()
         val projection = Constants.Projection.DOC_FILE
 
         // Create the cursor pointing to the SDCard
-        val cursor: Cursor? = CursorHelper.getDocFilesInFolderCursor(context)
+        val cursor: Cursor? = CursorHelper.getDocFilesInFolderCursor(context,folderPath)
 
         cursor?.let {
             info { "doc query size: "+ cursor.count }
@@ -75,19 +77,24 @@ object FileManager : AnkoLogger {
 
             while (it.moveToNext()) {
                 var name = it.getString(columnIndexDocName)
+
+                info { "title: ${it.getString(columnIndexDocTitle)}" }
+                info { "name: ${it.getString(columnIndexDocName)}" }
                 if(name==null){
                    name =  it.getString(columnIndexDocTitle)
                 }
                 if(name==null){
                  name = ""
                 }
-                val fileItem = DocModel(it.getString(columnIndexDocId),
-                        name,
-                        it.getInt(columnIndexDocSize),
-                        it.getString(columnIndexDocPath),
-                        //it.getString(columnIndexAudioArtist),
-                        it.getString(columnIndexDocMimeType),
-                        false)
+                val fileItem = DocModel(
+                    it.getString(columnIndexDocId),
+                    name,
+                    it.getInt(columnIndexDocSize),
+                    it.getString(columnIndexDocPath),
+                    //it.getString(columnIndexAudioArtist),
+                    it.getString(columnIndexDocMimeType),
+                    false
+                )
                 fileItems.add(fileItem)
 
             }

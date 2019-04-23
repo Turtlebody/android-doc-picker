@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:background="@color/md_white_1000"
+    android:baselineAligned="false">
+
+    <TextView
+        android:id="@+id/tb_doc_picker_item_doc_filter_file_ext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:padding="@dimen/offset_6"
+        android:layout_margin="@dimen/offset_16"
+        tools:text="pdf"
+        android:textSize="@dimen/font_12"
+        android:textColor="@color/md_white_1000"
+        android:gravity="center"
+        android:background="@drawable/dr_rect_round_red_doc_background"
+        app:srcCompat="@drawable/ic_iconfinder_folder39_216484" />
+
+
+    <LinearLayout
+        android:layout_gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:minHeight="@dimen/length_48"
+            android:layout_marginTop="@dimen/offset_8"
+            android:layout_marginBottom="@dimen/offset_8"
+            android:layout_gravity="center_vertical"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:id="@+id/tb_doc_picker_doc_filter_doc_type"
+            style="@style/TextTitle"
+            android:gravity="center_vertical"
+            tools:hint="Doc Name" />
+
+
+        <com.greentoad.turtlebody.docpicker.widget.ImageViewCheckable
+            android:id="@+id/tb_doc_picker_item_doc_filter_ivc"
+            android:layout_width="@dimen/length_32"
+            android:layout_height="@dimen/length_32"
+            android:layout_gravity="center_vertical"
+            android:layout_margin="@dimen/offset_4"
+            android:scaleType="centerInside"
+            android:src="@drawable/tb_doc_picker_sc_check_file" />
+    </LinearLayout>
+
+</LinearLayout>

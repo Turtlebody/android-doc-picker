@@ -3,7 +3,18 @@
     package="com.greentoad.turtlebody.docpicker">
 
     <application>
-        <activity android:name=".ui.ActivityLibMain"></activity>
+        <activity android:name=".ui.components.ActivityLibMain"
+            android:theme="@style/TbMediaPickerTheme"/>
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.greentoad.turtlebody.docprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/paths" />
+        </provider>
     </application>
 
 </manifest>

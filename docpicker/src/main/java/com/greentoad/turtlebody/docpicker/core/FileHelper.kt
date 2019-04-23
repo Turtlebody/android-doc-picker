@@ -23,7 +23,6 @@ object FileHelper : AnkoLogger{
             return false
         }
         //return  true
-
         return try {
             var inputStream = context.contentResolver.openInputStream(uri)
             true

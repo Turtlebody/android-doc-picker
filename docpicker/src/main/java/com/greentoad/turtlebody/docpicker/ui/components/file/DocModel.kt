@@ -1,4 +1,4 @@
-package com.greentoad.turtlebody.docpicker.ui
+package com.greentoad.turtlebody.docpicker.ui.components.file
 
 import java.io.Serializable
 

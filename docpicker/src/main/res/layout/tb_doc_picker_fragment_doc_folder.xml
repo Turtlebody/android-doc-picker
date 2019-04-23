@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/tb_doc_picker_folder_fragment_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:listitem="@layout/tb_doc_picker_item_folder"/>
+
+    <LinearLayout
+        android:id="@+id/ll_bottom_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="bottom">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/md_black_1000_15"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/length_56"
+            android:focusable="true"
+            android:clickable="true"
+            android:background="@color/tb_doc_picker_primary"
+            android:padding="@dimen/offset_6">
+
+            <ImageView
+                android:id="@+id/tb_doc_picker_doc_filter"
+                android:layout_width="@dimen/length_40"
+                android:layout_height="@dimen/length_40"
+                android:layout_gravity="start"
+                android:padding="@dimen/offset_8"
+                app:srcCompat="@drawable/ic_tb_doc_picker_filter"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"/>
+        </RelativeLayout>
+    </LinearLayout>
+
+    <include layout="@layout/tb_doc_picker_frame_progress"/>
+</FrameLayout>

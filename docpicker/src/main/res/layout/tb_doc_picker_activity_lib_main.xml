@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/md_white_1000"
+    android:id="@+id/tb_media_picker_activity_main_ll">
+
+    <androidx.appcompat.widget.Toolbar
+        app:title="@string/app_name"
+        android:id="@+id/tb_doc_picker_activity_toolbar"
+        app:layout_collapseMode="pin"
+        app:titleTextAppearance="@style/App.TextAppearance.h4.Title"
+        app:popupTheme="@style/AppTheme.PopupOverlay"
+        app:titleTextColor="@color/tb_doc_picker_toolbar_text"
+        android:layout_width="match_parent"
+        android:layout_height="?android:attr/actionBarSize"
+        android:background="@color/tb_doc_picker_primary"
+        android:theme="@style/ThemeOverlay.AppCompat.Light">
+
+        <TextView
+            android:id="@+id/tb_doc_picker_toolbar_txt_count"
+            android:layout_width="@dimen/length_36"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|center_vertical"
+            android:gravity="center"
+            android:layout_marginEnd="@dimen/offset_8"
+            android:layout_marginRight="8dp"
+            android:textColor="@color/tb_doc_picker_toolbar_counter_text"
+            android:background="@drawable/tb_doc_picker_dr_rect_round_light_grey"
+            android:padding="@dimen/offset_4"
+            android:text="0"
+            android:textSize="@dimen/font_16"/>
+    </androidx.appcompat.widget.Toolbar>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/md_black_1000_15"/>
+
+    <FrameLayout
+        android:id="@+id/frame_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+</LinearLayout>

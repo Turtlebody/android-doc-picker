@@ -6,6 +6,9 @@ import android.provider.MediaStore
 import android.webkit.MimeTypeMap
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
+import java.nio.file.Files.size
+
+
 
 
 /**
@@ -17,22 +20,22 @@ object CursorHelper: AnkoLogger {
     /**
      * cursor for doc
      */
-    fun getDocFolderCursor(context: Context): Cursor? {
+    fun getDocFolderCursor55(context: Context): Cursor? {
         return context.contentResolver.query(Constants.Queries.docQueryUri, Constants.Projection.DOC_FOLDER,
-            MediaStore.Files.FileColumns.DATA+" LIKE ?"+" AND "+
-                    MediaStore.Files.FileColumns.DATA+" NOT LIKE ?"+ ") GROUP BY (" + MediaStore.Files.FileColumns.PARENT,
-            arrayOf("%.docx","%/.cache/%"), null)
+            MediaStore.Files.FileColumns.DATA+" LIKE ?"+ ") GROUP BY (" + MediaStore.Files.FileColumns.PARENT,
+            arrayOf("%.docx"), null)
     }
 
 
-    fun getDocFolderCursor4(context: Context): Cursor? {
-        val args = arrayOf("%.docx")
+    fun getDocFolderCursor(context: Context,args: Array<String>): Cursor? {
+        //val args: Array<String> = arrayOf("%.docx")
         val where = FileHelper.createOrQueryFromArray("", args, MediaStore.Files.FileColumns.DATA, " LIKE ?")
-        return context.contentResolver.query(Constants.Queries.docQueryUri, Constants.Projection.DOC_FOLDER, where, args, null)
+        return context.contentResolver.query(Constants.Queries.docQueryUri, Constants.Projection.DOC_FOLDER, where,
+            args, null)
     }
 
     //folderPath: String
-    fun getDocFilesInFolderCursor(context: Context ): Cursor?{
+    fun getDocFilesInFolderCursordd(context: Context ): Cursor?{
     val mimeType = MimeTypeMap.getSingleton().getMimeTypeFromExtension("%.docx")
     info { "mimeType: $mimeType" }
         //val path = "$folderPath/"
@@ -47,11 +50,19 @@ object CursorHelper: AnkoLogger {
     }
 
 
-    fun getDocFilesInFolderCursor2(context: Context,folderPath: String ): Cursor?{
+    fun getDocFilesInFolderCursorasas(context: Context,folderPath: String ): Cursor?{
         val path = "$folderPath/"
         return context.contentResolver.query(
             Constants.Queries.docQueryUri, Constants.Projection.DOC_FILE,
-            MediaStore.Audio.Media.DATA + " LIKE ? AND " + MediaStore.Audio.Media.DATA + " NOT LIKE ? " +" AND "+ MediaStore.Audio.Media.MIME_TYPE +" LIKE ?",
-            arrayOf("$path%", "$path%/%", "audio%"), MediaStore.Files.FileColumns.TITLE+" ASC")
+            MediaStore.Audio.Media.DATA + " LIKE ? AND " + MediaStore.Audio.Media.DATA + " NOT LIKE ? " +" AND "+ MediaStore.Audio.Media.DATA +" LIKE ?",
+            arrayOf("$path%", "$path%/%", "%.docx"), MediaStore.Files.FileColumns.TITLE+" ASC")
+    }
+
+    fun getDocFilesInFolderCursor(context: Context,folderPath: String ): Cursor?{
+        val path = "$folderPath/"
+        return context.contentResolver.query(
+            Constants.Queries.docQueryUri, Constants.Projection.DOC_FILE,
+            MediaStore.Audio.Media.DATA + " LIKE ? AND " + MediaStore.Audio.Media.DATA + " NOT LIKE ? ",
+            arrayOf("$path%", "$path%/%"), MediaStore.Files.FileColumns.TITLE+" ASC")
     }
 }

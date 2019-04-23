@@ -44,11 +44,19 @@ object Constants {
     }
 
     object Fragment{
-        const val IMAGE_VIDEO_FOLDER = 101
-        const val AUDIO_FOLDER = 102
+        const val DOC_FOLDER = 101
+        const val DOC_LIST = 102
 
-        const val IMAGE_LIST = 103
-        const val VIDEO_LIST = 104
-        const val AUDIO_LIST = 105
+        const val DOC_FILTER = 103
+    }
+
+    object ExtensionsArgs{
+        const val PDF = "%.pdf" //pdf
+        const val DOC = "%.doc" //doc
+        const val DOCX = "%.docx"
+        const val XLS = "%.xls" //excel
+        const val XLSX = "%.xlsx"
+        const val PPT = "%.ppt" //ppt
+        const val PPTX = "%.pptx"
     }
 }

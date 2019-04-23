@@ -10,8 +10,8 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import com.greentoad.turtlebody.docpicker.core.Constants
-import com.greentoad.turtlebody.docpicker.core.PickerConfig
-import com.greentoad.turtlebody.docpicker.ui.ActivityLibMain
+import com.greentoad.turtlebody.docpicker.core.DocPickerConfig
+import com.greentoad.turtlebody.docpicker.ui.components.ActivityLibMain
 import com.karumi.dexter.Dexter
 import com.karumi.dexter.PermissionToken
 import com.karumi.dexter.listener.PermissionDeniedResponse
@@ -34,15 +34,15 @@ class DocPicker {
 
     companion object {
         @JvmStatic
-        fun with(activity: FragmentActivity, fileType: Int): MediaPickerImpl {
-            return MediaPickerImpl(activity, fileType)
+        fun with(activity: FragmentActivity): DocPickerImpl {
+            return DocPickerImpl(activity)
         }
     }
 
-    class MediaPickerImpl(activity: FragmentActivity, private var mFileType: Int) : PickerFragment.OnPickerListener, AnkoLogger {
+    class DocPickerImpl(activity: FragmentActivity) : PickerFragment.OnPickerListener, AnkoLogger {
         private lateinit var mEmitter: ObservableEmitter<ArrayList<Uri>>
         private var mActivity: WeakReference<FragmentActivity> = WeakReference(activity)
-        private var mConfig: PickerConfig = PickerConfig()
+        private var mConfigDoc: DocPickerConfig = DocPickerConfig()
         private var mOnMediaListener: OnMediaListener? = null
 
 
@@ -67,10 +67,10 @@ class DocPicker {
 
         /**
          * set configuration
-         * @param config pass PickerConfig
+         * @param configDoc pass DocPickerConfig
          */
-        fun setConfig(config: PickerConfig): MediaPickerImpl{
-            mConfig = config
+        fun setConfig(configDoc: DocPickerConfig): DocPickerImpl{
+            mConfigDoc = configDoc
             return this
         }
 
@@ -78,7 +78,7 @@ class DocPicker {
          * Register a callback to be invoked when missing files are filtered out.
          * @param listener The callback that will run
          */
-        fun setFileMissingListener(listener: OnMediaListener): MediaPickerImpl{
+        fun setFileMissingListener(listener: OnMediaListener): DocPickerImpl{
             mOnMediaListener = listener
             return this
         }
@@ -89,11 +89,7 @@ class DocPicker {
         fun onResult(): Observable<ArrayList<Uri>> {
             return Observable.create<ArrayList<Uri>> { emitter: ObservableEmitter<ArrayList<Uri>> ->
                 this.mEmitter = emitter
-
-                if(mFileType== Constants.FileTypes.MEDIA_TYPE_AUDIO ||mFileType== Constants.FileTypes.MEDIA_TYPE_VIDEO ||mFileType== Constants.FileTypes.MEDIA_TYPE_IMAGE)
-                    getPermission()
-                else
-                    emitter.onError(Throwable("File type invalid."))
+                getPermission()
             }.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
         }
 
@@ -127,12 +123,10 @@ class DocPicker {
 
         private fun startFragment() {
             val bundle = Bundle()
-            bundle.putSerializable(PickerConfig.ARG_BUNDLE, mConfig)
-            bundle.putSerializable(ActivityLibMain.B_ARG_FILE_TYPE, mFileType)
+            bundle.putSerializable(DocPickerConfig.ARG_BUNDLE, mConfigDoc)
 
             val fragment = PickerFragment()
             fragment.arguments = bundle
-            info { "imagePicker mFileType: $mFileType" }
             fragment.setListener(this)
             mActivity.get()?.supportFragmentManager?.beginTransaction()?.add(fragment, PickerFragment::class.java.simpleName)?.commit()
         }
@@ -150,12 +144,10 @@ class DocPicker {
         override fun onActivityCreated(savedInstanceState: Bundle?) {
             super.onActivityCreated(savedInstanceState)
 
-            val config = arguments?.getSerializable(PickerConfig.ARG_BUNDLE)
-            val fileType = arguments?.getInt(ActivityLibMain.B_ARG_FILE_TYPE)
+            val config = arguments?.getSerializable(DocPickerConfig.ARG_BUNDLE)
 
             val intent = Intent(context, ActivityLibMain::class.java)
-            intent.putExtra(PickerConfig.ARG_BUNDLE, config)
-            intent.putExtra(ActivityLibMain.B_ARG_FILE_TYPE, fileType)
+            intent.putExtra(DocPickerConfig.ARG_BUNDLE, config)
             startActivityForResult(intent, Constants.Intent.ACTIVITY_LIB_MAIN)
         }
 
@@ -170,9 +162,8 @@ class DocPicker {
                         }
                     }
                 }
-                else {
+                else
                     mListener?.onCancel("Cancelled")
-                }
             } else
                 super.onActivityResult(requestCode, resultCode, data)
         }
