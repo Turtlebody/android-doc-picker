@@ -13,6 +13,7 @@
         android:id="@+id/tb_doc_picker_fragment_doc_list_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginBottom="@dimen/length_56"
         tools:listitem="@layout/tb_doc_picker_item_doc"/>
 
     <LinearLayout

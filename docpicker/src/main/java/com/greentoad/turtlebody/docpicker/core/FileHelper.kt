@@ -37,14 +37,14 @@ object FileHelper : AnkoLogger{
     }
 
 
-    fun createOrQueryFromArray(pWhere: String, args: Array<String>, column: String, operator:String = "=?"): String {
+    fun createOrQueryFromArray(pWhere: String, args: Array<String?>, column: String, operator:String = "=?"): String {
         //where
         if(args.isEmpty())return pWhere
         info { "where 1 size: "+args.size}
 
         var where = "$column$operator"
         if(args.size>1){
-            for(indices in 0..(args.size)){
+            for(indices in 1 until args.size){
                 info { "where index: $indices" }
                 where= "$where OR $column$operator"
             }

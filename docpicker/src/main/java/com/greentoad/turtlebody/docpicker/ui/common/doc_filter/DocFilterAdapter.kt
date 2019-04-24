@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.greentoad.turtlebody.docpicker.R
+import com.greentoad.turtlebody.docpicker.core.DocConstants
 import kotlinx.android.synthetic.main.tb_doc_picker_item_doc_filter.view.*
 import org.jetbrains.anko.AnkoLogger
 
@@ -17,8 +18,8 @@ import org.jetbrains.anko.AnkoLogger
  * Created by WANGSUN on 26-Mar-19.
  */
 class DocFilterAdapter: RecyclerView.Adapter<DocFilterAdapter.DocVewHolder>(), AnkoLogger {
-    private var mData: MutableList<DocTypeModel> = arrayListOf()
-    private var mOnDocClickListener: OnDocClickListener? = null
+    private var mData: MutableList<DocFilterModel> = arrayListOf()
+    private var mOnDocFilterClickListener: OnDocFilterClickListener? = null
     private lateinit var mContext: Context
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DocVewHolder {
@@ -37,16 +38,16 @@ class DocFilterAdapter: RecyclerView.Adapter<DocFilterAdapter.DocVewHolder>(), A
     }
 
 
-    fun setListener(listener : OnDocClickListener){
-        mOnDocClickListener = listener
+    fun setListener(listenerFilter : OnDocFilterClickListener){
+        mOnDocFilterClickListener = listenerFilter
     }
 
-    fun setData(pData: MutableList<DocTypeModel>){
+    fun setData(pData: MutableList<DocFilterModel>){
         mData = pData
         notifyDataSetChanged()
     }
 
-    fun updateIsSelected(pData: DocTypeModel){
+    fun updateIsSelected(pData: DocFilterModel){
         val pos = mData.indexOf(pData)
         if(pos>=0){
             mData[pos] = pData
@@ -55,7 +56,7 @@ class DocFilterAdapter: RecyclerView.Adapter<DocFilterAdapter.DocVewHolder>(), A
     }
 
     inner class DocVewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
-        fun bind(pData: DocTypeModel){
+        fun bind(pData: DocFilterModel){
 
             setDrawableForMime(itemView, pData.docType)
 
@@ -64,7 +65,7 @@ class DocFilterAdapter: RecyclerView.Adapter<DocFilterAdapter.DocVewHolder>(), A
             itemView.tb_doc_picker_doc_filter_doc_type.text = pData.docType
 
             itemView.setOnClickListener {
-                mOnDocClickListener?.onDocCheck(pData)
+                mOnDocFilterClickListener?.onDocCheck(pData)
             }
         }
 
@@ -73,19 +74,23 @@ class DocFilterAdapter: RecyclerView.Adapter<DocFilterAdapter.DocVewHolder>(), A
             val mDrawable = ContextCompat.getDrawable(mContext, R.drawable.dr_rect_round_red_doc_background)
 
             when(fileType.toLowerCase()){
-                "pdf"-> {
+                DocConstants.DocTypes.PDF-> {
                     mDrawable?.colorFilter = PorterDuffColorFilter(ContextCompat.getColor(mContext,R.color.tb_doc_picker_color_red), PorterDuff.Mode.SRC)
                     itemView.tb_doc_picker_item_doc_filter_file_ext.text = "pdf"
                 }
-                "word"->{
+                DocConstants.DocTypes.MS_WORD->{
                     mDrawable?.colorFilter = PorterDuffColorFilter(ContextCompat.getColor(mContext,R.color.tb_doc_picker_color_dark_blue), PorterDuff.Mode.SRC)
                     itemView.tb_doc_picker_item_doc_filter_file_ext.text = "doc"
                 }
-                "ppt" ->{
+                DocConstants.DocTypes.MS_POWERPOINT ->{
                     mDrawable?.colorFilter = PorterDuffColorFilter(ContextCompat.getColor(mContext,R.color.tb_doc_picker_color_teal), PorterDuff.Mode.SRC)
                     itemView.tb_doc_picker_item_doc_filter_file_ext.text = "ppt"
                 }
-                "text"->{
+                DocConstants.DocTypes.MS_EXCEL ->{
+                    mDrawable?.colorFilter = PorterDuffColorFilter(ContextCompat.getColor(mContext,R.color.tb_doc_picker_color_orange), PorterDuff.Mode.SRC)
+                    itemView.tb_doc_picker_item_doc_filter_file_ext.text = "xls"
+                }
+                DocConstants.DocTypes.TEXT->{
                     mDrawable?.colorFilter = PorterDuffColorFilter(ContextCompat.getColor(mContext,R.color.tb_doc_picker_color_grey), PorterDuff.Mode.SRC)
                     itemView.tb_doc_picker_item_doc_filter_file_ext.text = "txt"
                 }
@@ -99,7 +104,7 @@ class DocFilterAdapter: RecyclerView.Adapter<DocFilterAdapter.DocVewHolder>(), A
     }
 
 
-    interface OnDocClickListener {
-        fun onDocCheck(pData: DocTypeModel)
+    interface OnDocFilterClickListener {
+        fun onDocCheck(pData: DocFilterModel)
     }
 }

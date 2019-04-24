@@ -51,10 +51,10 @@
 
         <ImageView
             android:layout_width="@dimen/length_20"
-            android:layout_height="@dimen/length_20"
+            android:layout_height="12dp"
             android:layout_gravity="center"
-            android:scaleType="centerInside"
             android:layout_margin="@dimen/offset_12"
+            android:scaleType="centerInside"
             app:srcCompat="@drawable/ic_iconfinder_icon_arrow_down_b_211614" />
 
     </LinearLayout>

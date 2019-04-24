@@ -12,8 +12,7 @@ import kotlinx.android.synthetic.main.tb_doc_picker_item_doc.view.*
 import org.jetbrains.anko.AnkoLogger
 import android.graphics.PorterDuff
 import android.graphics.PorterDuffColorFilter
-
-
+import com.greentoad.turtlebody.docpicker.core.DocConstants
 
 
 /**
@@ -94,33 +93,74 @@ class DocAdapter: RecyclerView.Adapter<DocAdapter.DocVewHolder>(), AnkoLogger {
 
             val mDrawable = ContextCompat.getDrawable(mContext, R.drawable.dr_rect_round_red_doc_background)
 
-            when(extType){
-                "pdf"-> {
+            when {
+                DocConstants.getExt(DocConstants.DocTypes.PDF).contains(extType!!) -> {
                     mDrawable?.colorFilter = PorterDuffColorFilter(ContextCompat.getColor(mContext,R.color.tb_doc_picker_color_red), PorterDuff.Mode.SRC)
                     itemView.tb_doc_picker_item_doc_file_ext.text = "pdf"
                 }
-                "doc"->{
+                DocConstants.getExt(DocConstants.DocTypes.MS_WORD).contains(extType) -> {
                     mDrawable?.colorFilter = PorterDuffColorFilter(ContextCompat.getColor(mContext,R.color.tb_doc_picker_color_dark_blue), PorterDuff.Mode.SRC)
                     itemView.tb_doc_picker_item_doc_file_ext.text = "doc"
                 }
-                "docx"->{
-                    mDrawable?.colorFilter = PorterDuffColorFilter(ContextCompat.getColor(mContext,R.color.tb_doc_picker_color_dark_blue), PorterDuff.Mode.SRC)
-                    itemView.tb_doc_picker_item_doc_file_ext.text = "doc"
-                }
-                "ppt" ->{
+                DocConstants.getExt(DocConstants.DocTypes.MS_POWERPOINT).contains(extType) -> {
                     mDrawable?.colorFilter = PorterDuffColorFilter(ContextCompat.getColor(mContext,R.color.tb_doc_picker_color_teal), PorterDuff.Mode.SRC)
                     itemView.tb_doc_picker_item_doc_file_ext.text = "ppt"
                 }
-                "pptx" ->{
+                DocConstants.getExt(DocConstants.DocTypes.MS_EXCEL).contains(extType) -> {
+                    mDrawable?.colorFilter = PorterDuffColorFilter(ContextCompat.getColor(mContext,R.color.tb_doc_picker_color_orange), PorterDuff.Mode.SRC)
+                    itemView.tb_doc_picker_item_doc_file_ext.text = "xls"
+                }
+                DocConstants.getExt(DocConstants.DocTypes.TEXT).contains(extType) -> {
+                    mDrawable?.colorFilter = PorterDuffColorFilter(ContextCompat.getColor(mContext,R.color.tb_doc_picker_color_grey), PorterDuff.Mode.SRC)
+                    itemView.tb_doc_picker_item_doc_file_ext.text = "txt"
+
+                }
+                DocConstants.getExt(DocConstants.DocTypes.IMAGE).contains(extType) -> {
                     mDrawable?.colorFilter = PorterDuffColorFilter(ContextCompat.getColor(mContext,R.color.tb_doc_picker_color_teal), PorterDuff.Mode.SRC)
-                    itemView.tb_doc_picker_item_doc_file_ext.text = "ppt"
+                    itemView.tb_doc_picker_item_doc_file_ext.text = "jpg"
+                }
+                DocConstants.getExt(DocConstants.DocTypes.VIDEO).contains(extType) -> {
+                    mDrawable?.colorFilter = PorterDuffColorFilter(ContextCompat.getColor(mContext,R.color.tb_doc_picker_color_teal), PorterDuff.Mode.SRC)
+                    itemView.tb_doc_picker_item_doc_file_ext.text = "mp4"
+                }
+                DocConstants.getExt(DocConstants.DocTypes.AUDIO).contains(extType) -> {
+                    mDrawable?.colorFilter = PorterDuffColorFilter(ContextCompat.getColor(mContext,R.color.tb_doc_picker_color_teal), PorterDuff.Mode.SRC)
+                    itemView.tb_doc_picker_item_doc_file_ext.text = "mp3"
                 }
                 else ->{
                     mDrawable?.colorFilter = PorterDuffColorFilter(ContextCompat.getColor(mContext,R.color.tb_doc_picker_color_red), PorterDuff.Mode.SRC)
-                    itemView.tb_doc_picker_item_doc_file_ext.text = "other"
+                    itemView.tb_doc_picker_item_doc_file_ext.text = "Other"
                 }
             }
             itemView.tb_doc_picker_item_doc_file_ext.background = mDrawable
+
+//            when(extType){
+//                "pdf"-> {
+//                    mDrawable?.colorFilter = PorterDuffColorFilter(ContextCompat.getColor(mContext,R.color.tb_doc_picker_color_red), PorterDuff.Mode.SRC)
+//                    itemView.tb_doc_picker_item_doc_file_ext.text = "pdf"
+//                }
+//                "doc"->{
+//                    mDrawable?.colorFilter = PorterDuffColorFilter(ContextCompat.getColor(mContext,R.color.tb_doc_picker_color_dark_blue), PorterDuff.Mode.SRC)
+//                    itemView.tb_doc_picker_item_doc_file_ext.text = "doc"
+//                }
+//                "docx"->{
+//                    mDrawable?.colorFilter = PorterDuffColorFilter(ContextCompat.getColor(mContext,R.color.tb_doc_picker_color_dark_blue), PorterDuff.Mode.SRC)
+//                    itemView.tb_doc_picker_item_doc_file_ext.text = "doc"
+//                }
+//                "ppt" ->{
+//                    mDrawable?.colorFilter = PorterDuffColorFilter(ContextCompat.getColor(mContext,R.color.tb_doc_picker_color_teal), PorterDuff.Mode.SRC)
+//                    itemView.tb_doc_picker_item_doc_file_ext.text = "ppt"
+//                }
+//                "pptx" ->{
+//                    mDrawable?.colorFilter = PorterDuffColorFilter(ContextCompat.getColor(mContext,R.color.tb_doc_picker_color_teal), PorterDuff.Mode.SRC)
+//                    itemView.tb_doc_picker_item_doc_file_ext.text = "ppt"
+//                }
+//                else ->{
+//                    mDrawable?.colorFilter = PorterDuffColorFilter(ContextCompat.getColor(mContext,R.color.tb_doc_picker_color_red), PorterDuff.Mode.SRC)
+//                    itemView.tb_doc_picker_item_doc_file_ext.text = "other"
+//                }
+//            }
+//            itemView.tb_doc_picker_item_doc_file_ext.background = mDrawable
         }
     }
 

@@ -7,11 +7,13 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.greentoad.turtlebody.docpicker.R
 import com.greentoad.turtlebody.docpicker.core.Constants
 import com.greentoad.turtlebody.docpicker.core.DocPickerConfig
 import com.greentoad.turtlebody.docpicker.core.FileManager
 import com.greentoad.turtlebody.docpicker.ui.base.ActivityBase
+import com.greentoad.turtlebody.docpicker.ui.common.doc_filter.DocFilterFragment
 import com.greentoad.turtlebody.docpicker.ui.components.file.DocFragment
 import com.greentoad.turtlebody.docpicker.ui.components.folder.DocFolderFragment
 import io.reactivex.Single
@@ -35,6 +37,8 @@ class ActivityLibMain : ActivityBase(){
 
     private lateinit var mMenuItem: MenuItem
     private lateinit var mPickerConfig: DocPickerConfig
+
+    private var mDocFilterFragment: BottomSheetDialogFragment? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -80,6 +84,12 @@ class ActivityLibMain : ActivityBase(){
                 tb_doc_picker_toolbar_txt_count.visibility = View.GONE
                 mMenuItem.isVisible = true
                 updateCounter(0)
+
+                val fragment2 = supportFragmentManager.findFragmentById(R.id.frame_content)
+                if(fragment2 is DocFolderFragment){
+                    fragment2.onRefresh()
+                }
+
             }
             else -> super.onBackPressed()
         }
@@ -122,13 +132,13 @@ class ActivityLibMain : ActivityBase(){
     }
 
 
-    fun startDocFragment(folderPath: String) {
+    fun startDocFragment(folderPath: String,pickerConfig: DocPickerConfig) {
         toolbarTitle = "Choose Doc"
         tb_doc_picker_toolbar_txt_count.visibility = View.VISIBLE
         mMenuItem.isVisible = false
 
         val bundle = Bundle()
-        bundle.putSerializable(DocPickerConfig.ARG_BUNDLE, mPickerConfig)
+        bundle.putSerializable(DocPickerConfig.ARG_BUNDLE, pickerConfig)
         bundle.putString(DocFragment.B_ARG_FOLDER_PATH, folderPath)
 
         val fragment = DocFragment.newInstance(Constants.Fragment.DOC_LIST, bundle)
@@ -136,6 +146,32 @@ class ActivityLibMain : ActivityBase(){
         ft.add(R.id.frame_content, fragment, DocFragment::class.java.simpleName)
             .addToBackStack(null)
             .commit()
+    }
+
+
+    fun startFragmentCreate() {
+        val bundle = Bundle()
+        bundle.putSerializable(DocPickerConfig.ARG_BUNDLE, mPickerConfig)
+
+        info { "fragment: create" }
+        mDocFilterFragment = DocFilterFragment.newInstance(Constants.Fragment.DOC_FILTER, bundle)
+        (mDocFilterFragment as DocFilterFragment).setListener(object : DocFilterFragment.OnFilterDoneListener{
+            override fun onFilterDone(list: ArrayList<String>) {
+                val fragment = supportFragmentManager.findFragmentById(R.id.frame_content)
+                when (fragment) {
+                    is DocFolderFragment -> {
+                        info { "folder fragment" }
+                        fragment.onFilterDone(list)
+                    }
+                    is DocFragment -> {
+                        info { "doc fragment" }
+                        fragment.onFilterDone(list)
+                    }
+                }
+                mDocFilterFragment?.dismiss()
+            }
+        })
+        mDocFilterFragment?.show(supportFragmentManager, DocFilterFragment::class.java.simpleName)
     }
 
 }

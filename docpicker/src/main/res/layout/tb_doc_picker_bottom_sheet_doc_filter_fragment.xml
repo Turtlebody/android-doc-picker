@@ -10,7 +10,30 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_marginBottom="@dimen/length_56">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <TextView
+                style="@style/TextNormal"
+                android:text="Filters"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:padding="@dimen/offset_12"/>
+            <ImageView
+                android:id="@+id/tb_doc_picker_bottom_sheet_fragment_btn_cancel"
+                android:layout_width="@dimen/length_40"
+                android:layout_height="@dimen/length_40"
+                android:layout_gravity="end|center_vertical"
+                android:padding="@dimen/offset_8"
+                android:scaleType="centerInside"
+                app:srcCompat="@drawable/ic_iconfinder_cancel_2639904" />
+
+        </FrameLayout>
 
         <TextView
             style="@style/TextNormal"
@@ -24,45 +47,41 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             tools:listitem="@layout/tb_doc_picker_item_doc" />
-
-        <LinearLayout
-            android:id="@+id/ll_bottom_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:orientation="vertical">
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/md_black_1000_15" />
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/length_56"
-                android:background="@color/tb_doc_picker_primary"
-                android:clickable="true"
-                android:focusable="true"
-                android:padding="@dimen/offset_6">
-
-                <Button
-                    android:id="@+id/tb_doc_picker_btn_done"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:background="@drawable/dr_rect_round_accent"
-                    android:enabled="false"
-                    android:text="Update"
-                    android:textAppearance="@style/App.TextAppearance.h4.Title"
-                    android:textColor="@color/md_white_1000"
-                    android:textSize="@dimen/font_16" />
-            </RelativeLayout>
-        </LinearLayout>
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_gravity="bottom"
+        android:id="@+id/ll_bottom_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-    <include layout="@layout/tb_doc_picker_frame_progress" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/md_black_1000_15" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/length_56"
+            android:background="@color/tb_doc_picker_primary"
+            android:clickable="true"
+            android:focusable="true"
+            android:padding="@dimen/offset_6">
+
+            <Button
+                android:id="@+id/tb_doc_picker_btn_done"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/dr_rect_round_accent"
+                android:text="Update"
+                android:textAppearance="@style/App.TextAppearance.h4.Title"
+                android:textColor="@color/md_white_1000"
+                android:textSize="@dimen/font_16" />
+        </RelativeLayout>
+    </LinearLayout>
 
 </FrameLayout>

@@ -16,7 +16,7 @@ object FileManager : AnkoLogger {
     /**
      * For Doc
      */
-    fun fetchAudioFolderList(context: Context,args: Array<String>): ArrayList<DocFolder> {
+    fun fetchAudioFolderList(context: Context,args: Array<String?>): ArrayList<DocFolder> {
         val folders = ArrayList<DocFolder>()
         val folderFileCountMap = HashMap<String, Int>()
 

@@ -6,14 +6,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 
 import com.greentoad.turtlebody.docpicker.R
-import com.greentoad.turtlebody.docpicker.core.Constants
 import com.greentoad.turtlebody.docpicker.core.DocPickerConfig
 import com.greentoad.turtlebody.docpicker.core.FileManager
 import com.greentoad.turtlebody.docpicker.ui.base.FragmentBase
-import com.greentoad.turtlebody.docpicker.ui.common.doc_filter.DocFilterFragment
 import com.greentoad.turtlebody.docpicker.ui.components.ActivityLibMain
 import io.reactivex.Single
 import io.reactivex.SingleObserver
@@ -27,6 +26,7 @@ import org.jetbrains.anko.info
 
 class DocFolderFragment : FragmentBase() {
 
+
     companion object {
         @JvmStatic
         fun newInstance(key: Int, b: Bundle?): Fragment {
@@ -36,11 +36,14 @@ class DocFolderFragment : FragmentBase() {
             fragment.arguments = bf
             return fragment
         }
+
+        var mSelectedDocTypes:ArrayList<String> = arrayListOf()
     }
 
     private var mDocFolderAdapter: DocFolderAdapter = DocFolderAdapter()
     private var mDocFolderList: MutableList<DocFolder> = arrayListOf()
     private var mPickerConfig: DocPickerConfig = DocPickerConfig()
+    private var mDocTypeArgs: Array<String?> = arrayOf()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
@@ -59,43 +62,63 @@ class DocFolderFragment : FragmentBase() {
 
     private fun initButton() {
         tb_doc_picker_doc_filter.setOnClickListener {
-            startFragmentCreate()
+            (activity as ActivityLibMain).startFragmentCreate()
         }
+    }
+
+    fun onRefresh(){
+        info { "content: $mSelectedDocTypes" }
+        info { "content2: ${mPickerConfig.mUserSelectedDocTypes}" }
+        if(!mSelectedDocTypes.containsAll(mPickerConfig.mUserSelectedDocTypes) || !mPickerConfig.mUserSelectedDocTypes.containsAll(mSelectedDocTypes)){
+            mDocTypeArgs = mPickerConfig.getCustomExtArgs(mPickerConfig.mUserSelectedDocTypes)
+            fetchDocFolders(mDocTypeArgs)
+        }
+    }
+
+    fun onFilterDone(list: ArrayList<String>) {
+        info { "list: $list" }
+        mDocTypeArgs = mPickerConfig.getCustomExtArgs(list)
+        fetchDocFolders(mDocTypeArgs)
     }
 
     private fun initAdapter() {
         mDocFolderAdapter.setListener(object : DocFolderAdapter.OnDocFolderClickListener {
             override fun onFolderClick(pData: DocFolder) {
                 info { "folderPath: ${pData.path}" }
-                (activity as ActivityLibMain).startDocFragment(pData.path)
+                (activity as ActivityLibMain).startDocFragment(pData.path,mPickerConfig)
             }
         })
 
         tb_doc_picker_folder_fragment_recycler_view.layoutManager = LinearLayoutManager(context)
         tb_doc_picker_folder_fragment_recycler_view.adapter = mDocFolderAdapter
-        fetchDocFolders()
+
+        mDocTypeArgs = mPickerConfig.mExtArgs
+        fetchDocFolders(mDocTypeArgs)
     }
 
 
-    private fun fetchDocFolders() {
+    private fun fetchDocFolders(args: Array<String?>) {
+        info { "list2: ${args.toList()}" }
         val bucketFetch = Single.fromCallable<ArrayList<DocFolder>> {
-            FileManager.fetchAudioFolderList(context!!,mPickerConfig.mExtArgs)
+            FileManager.fetchAudioFolderList(context!!,args)
         }
         bucketFetch
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(object : SingleObserver<ArrayList<DocFolder>> {
                 override fun onSubscribe(@NonNull d: Disposable) {
-                    progress_view.visibility = View.VISIBLE
+                    frame_progress.visibility = View.VISIBLE
                 }
                 override fun onSuccess(@NonNull audioFolders: ArrayList<DocFolder>) {
                     mDocFolderList = audioFolders
                     info { "folders: $audioFolders" }
                     mDocFolderAdapter.setData(mDocFolderList)
-                    progress_view.visibility = View.GONE
+                    frame_progress.visibility = View.GONE
+
+                    mSelectedDocTypes = mPickerConfig.mUserSelectedDocTypes
                 }
                 override fun onError(@NonNull e: Throwable) {
-                    progress_view.visibility = View.GONE
+                    frame_progress.visibility = View.GONE
                     e.printStackTrace()
                     info { "error: ${e.message}" }
                 }
@@ -103,14 +126,7 @@ class DocFolderFragment : FragmentBase() {
     }
 
 
-    private fun startFragmentCreate() {
-        info { "fragment: create" }
-        val mPlaylistCreateFragment = DocFilterFragment.newInstance(Constants.Fragment.DOC_FILTER, Bundle())
-        //(mPlaylistCreateFragment as DocFilterFragment).setListener(this)
-        activity?.supportFragmentManager?.let {
-            mPlaylistCreateFragment.show(it, DocFilterFragment::class.java.simpleName)
-        }
-    }
+
 
 
 }

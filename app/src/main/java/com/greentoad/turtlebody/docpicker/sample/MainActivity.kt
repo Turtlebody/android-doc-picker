@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.greentoad.turtlebody.docpicker.DocPicker
 import com.greentoad.turtlebody.docpicker.core.Constants
+import com.greentoad.turtlebody.docpicker.core.DocConstants
 import com.greentoad.turtlebody.docpicker.core.DocPickerConfig
 import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.AnkoLogger
@@ -28,10 +29,11 @@ class MainActivity : AppCompatActivity(),AnkoLogger {
         DocPicker.with(this)
             .setConfig(DocPickerConfig()
                 .setAllowMultiImages(true)
-                .setExtArgs(arrayOf(
-                    Constants.ExtensionsArgs.DOCX,
-                    Constants.ExtensionsArgs.PDF,
-                    Constants.ExtensionsArgs.PPTX
+                .setExtArgs(arrayListOf<String>(
+                    DocConstants.DocTypes.PDF,
+                    DocConstants.DocTypes.MS_WORD,
+                    DocConstants.DocTypes.MS_POWERPOINT,
+                    DocConstants.DocTypes.MS_EXCEL
                 ))
             )
             .onResult()

@@ -5,13 +5,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/md_white_1000">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/tb_doc_picker_folder_fragment_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:listitem="@layout/tb_doc_picker_item_folder"/>
+        tools:listitem="@layout/tb_doc_picker_item_folder"
+        android:layout_marginBottom="@dimen/offset_56"/>
 
     <LinearLayout
         android:id="@+id/ll_bottom_layout"

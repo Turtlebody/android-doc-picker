@@ -27,8 +27,7 @@
                 android:layout_width="@dimen/length_32"
                 android:layout_height="@dimen/length_32"
                 android:layout_gravity="center"
-                android:layout_margin="@dimen/offset_8"
-                android:theme="@style/TbMediaPicker.Progress.Light" />
+                android:layout_margin="@dimen/offset_8"/>
 
         </FrameLayout>
     </androidx.cardview.widget.CardView>
