@@ -147,7 +147,91 @@
 
     <color name="red">#FFD9C7</color>
 
+<!-- docs colors -->
+
+    <color name="tb_doc_ai">#F58C21</color>
+    <color name="tb_doc_ae">#DE19DE</color>
+    <color name="tb_doc_apk">#50CF6A</color>
+    <color name="tb_doc_doc">#1313EC</color>
+    <color name="tb_doc_jpg">#1190E5</color>
+
+    <color name="tb_doc_mp3">#FF8751</color>
+    <color name="tb_doc_mp4">#9E19F5</color>
+    <color name="tb_doc_pdf">#FF243A</color>
+    <color name="tb_doc_png">#13E2AA</color>
+    <color name="tb_doc_ppt">#FF6B2A</color>
+
+    <color name="tb_doc_psd">#19A8DE</color>
+    <color name="tb_doc_rar">#C48C4C</color>
+    <color name="tb_doc_txt">#8A8A8A</color>
+    <color name="tb_doc_xd">#F52192</color>
+    <color name="tb_doc_xls">#3BD802</color>
+
+    <color name="tb_doc_zip">#C48C4C</color>
+
+    <array name="tb_docs">
+        <item>@color/tb_doc_ai</item>
+        <item>@color/tb_doc_ae</item>
+        <item>@color/tb_doc_apk</item>
+        <item>@color/tb_doc_doc</item>
+        <item>@color/tb_doc_jpg</item>
+
+        <item>@color/tb_doc_mp3</item>
+        <item>@color/tb_doc_mp4</item>
+        <item>@color/tb_doc_pdf</item>
+        <item>@color/tb_doc_png</item>
+        <item>@color/tb_doc_ppt</item>
+
+        <item>@color/tb_doc_psd</item>
+        <item>@color/tb_doc_rar</item>
+        <item>@color/tb_doc_txt</item>
+        <item>@color/tb_doc_xd</item>
+        <item>@color/tb_doc_xls</item>
+
+        <item>@color/tb_doc_zip</item>
+    </array>
 
 
+    <color name="tb_doc_light_ai">#FEFAF2</color>
+    <color name="tb_doc_light_ae">#FDF1FD</color>
+    <color name="tb_doc_light_apk">#F5FCF6</color>
+    <color name="tb_doc_light_doc">#F1F7FC</color>
+    <color name="tb_doc_light_jpg">#F1F8FD</color>
+
+    <color name="tb_doc_light_mp3">#FFF9F5</color>
+    <color name="tb_doc_light_mp4">#FEF1FE</color>
+    <color name="tb_doc_light_pdf">#FFF2F3</color>
+    <color name="tb_doc_light_png">#F1FDFA</color>
+    <color name="tb_doc_light_ppt">#FFF5EC</color>
+
+    <color name="tb_doc_light_psd">#F1FAFD</color>
+    <color name="tb_doc_light_rar">#FCF7F1</color>
+    <color name="tb_doc_light_txt">#F8F8F8</color>
+    <color name="tb_doc_light_xd">#FEF2F9</color>
+    <color name="tb_doc_light_xls">#F4FDF1</color>
+
+    <color name="tb_doc_light_zip">#FCF7F1</color>
+
+    <array name="tb_docs_light">
+        <item>@color/tb_doc_light_ai</item>
+        <item>@color/tb_doc_light_ae</item>
+        <item>@color/tb_doc_light_apk</item>
+        <item>@color/tb_doc_light_doc</item>
+        <item>@color/tb_doc_light_jpg</item>
+
+        <item>@color/tb_doc_light_mp3</item>
+        <item>@color/tb_doc_light_mp4</item>
+        <item>@color/tb_doc_light_pdf</item>
+        <item>@color/tb_doc_light_png</item>
+        <item>@color/tb_doc_light_ppt</item>
+
+        <item>@color/tb_doc_light_psd</item>
+        <item>@color/tb_doc_light_rar</item>
+        <item>@color/tb_doc_light_txt</item>
+        <item>@color/tb_doc_light_xd</item>
+        <item>@color/tb_doc_light_xls</item>
+
+        <item>@color/tb_doc_light_zip</item>
+    </array>
 
 </resources>
