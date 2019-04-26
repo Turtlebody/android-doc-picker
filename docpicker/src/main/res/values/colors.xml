@@ -12,10 +12,17 @@
 
     <!--Docs backgrounds-->
     <color name="tb_doc_picker_color_red">#f44336</color>
-    <color name="tb_doc_picker_color_dark_blue">#0d47a1</color>
+    <color name="tb_doc_picker_color_blue">#0d47a1</color>
     <color name="tb_doc_picker_color_grey">#9e9e9e</color>
     <color name="tb_doc_picker_color_teal">#00796b</color>
     <color name="tb_doc_picker_color_orange">#ef6c00</color>
+
+    <!--Docs light backgrounds-->
+    <color name="tb_doc_picker_color_light_red">#ffcdd2</color>
+    <color name="tb_doc_picker_color_light_blue">#bbdefb</color>
+    <color name="tb_doc_picker_color_light_grey">#f5f5f5</color>
+    <color name="tb_doc_picker_color_light_teal">#b2dfdb</color>
+    <color name="tb_doc_picker_color_light_orange">#ffccbc</color>
 
 
 

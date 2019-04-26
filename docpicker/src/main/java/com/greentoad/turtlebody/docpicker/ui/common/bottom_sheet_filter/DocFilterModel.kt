@@ -1,4 +1,4 @@
-package com.greentoad.turtlebody.docpicker.ui.common.doc_filter
+package com.greentoad.turtlebody.docpicker.ui.common.bottom_sheet_filter
 
 /**
  * Created by WANGSUN on 23-Apr-19.

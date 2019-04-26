@@ -10,10 +10,9 @@
 
     <TextView
         android:id="@+id/tb_doc_picker_item_doc_filter_file_ext"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/length_28"
+        android:layout_height="@dimen/length_28"
         android:layout_gravity="center"
-        android:padding="@dimen/offset_6"
         android:layout_margin="@dimen/offset_16"
         tools:text="pdf"
         android:textSize="@dimen/font_12"
@@ -30,9 +29,8 @@
         android:orientation="horizontal">
 
         <TextView
-            android:minHeight="@dimen/length_48"
-            android:layout_marginTop="@dimen/offset_8"
-            android:layout_marginBottom="@dimen/offset_8"
+            android:layout_marginTop="@dimen/offset_6"
+            android:layout_marginBottom="@dimen/offset_6"
             android:layout_gravity="center_vertical"
             android:layout_width="0dp"
             android:layout_weight="1"

@@ -23,9 +23,10 @@
                 android:text="Filters"
                 android:gravity="center"
                 android:textStyle="bold"
-                android:padding="@dimen/offset_12"/>
+                android:padding="@dimen/offset_12"
+                android:textColor="@color/md_black_1000"/>
             <ImageView
-                android:id="@+id/tb_doc_picker_bottom_sheet_fragment_btn_cancel"
+                android:id="@+id/tb_doc_picker_doc_filter_fragment_btn_cancel"
                 android:layout_width="@dimen/length_40"
                 android:layout_height="@dimen/length_40"
                 android:layout_gravity="end|center_vertical"
@@ -37,13 +38,35 @@
 
         <TextView
             style="@style/TextNormal"
+            android:text="Selected"
+            android:padding="@dimen/offset_12"
+            android:textSize="@dimen/font_14"
+            android:textColor="@color/md_black_1000"
+            android:textStyle="bold"/>
+
+        <LinearLayout
+            android:id="@+id/tb_doc_picker_doc_filter_fragment_ll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingStart="@dimen/offset_12"
+            android:paddingLeft="@dimen/offset_12"
+            android:paddingEnd="@dimen/offset_12"
+            android:paddingRight="@dimen/offset_12"
+            android:layout_marginBottom="@dimen/offset_8">
+        </LinearLayout>
+
+        <TextView
+            style="@style/TextNormal"
             android:background="@drawable/dr_layer_2_grey_b1_dp"
             android:text="Available Document Types"
             android:textStyle="bold"
-            android:padding="@dimen/offset_12"/>
+            android:textColor="@color/md_black_1000"
+            android:padding="@dimen/offset_12"
+            android:textSize="@dimen/font_14"/>
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/tb_doc_picker_bottom_sheet_fragment_recycler_view"
+            android:id="@+id/tb_doc_picker_doc_filter_fragment_recycler_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             tools:listitem="@layout/tb_doc_picker_item_doc" />
@@ -68,9 +91,8 @@
             android:clickable="true"
             android:focusable="true"
             android:padding="@dimen/offset_6">
-
             <Button
-                android:id="@+id/tb_doc_picker_btn_done"
+                android:id="@+id/tb_doc_picker_doc_filter_fragment_btn_done"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
@@ -80,7 +102,8 @@
                 android:text="Update"
                 android:textAppearance="@style/App.TextAppearance.h4.Title"
                 android:textColor="@color/md_white_1000"
-                android:textSize="@dimen/font_16" />
+                android:textSize="@dimen/font_14"
+                android:layout_marginBottom="@dimen/offset_4"/>
         </RelativeLayout>
     </LinearLayout>
 

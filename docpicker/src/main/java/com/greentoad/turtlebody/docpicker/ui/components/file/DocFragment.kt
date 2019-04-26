@@ -1,21 +1,23 @@
 package com.greentoad.turtlebody.docpicker.ui.components.file
 
 
+import android.annotation.SuppressLint
 import android.net.Uri
 import android.os.Bundle
-import android.util.TypedValue
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.FrameLayout
 import androidx.appcompat.app.AlertDialog
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 
 import com.greentoad.turtlebody.docpicker.R
 import com.greentoad.turtlebody.docpicker.core.DocPickerConfig
 import com.greentoad.turtlebody.docpicker.core.FileManager
 import com.greentoad.turtlebody.docpicker.ui.base.FragmentBase
+import com.greentoad.turtlebody.docpicker.ui.common.bottom_sheet_filter.SelectedDocsLayout
 import com.greentoad.turtlebody.docpicker.ui.components.ActivityLibMain
 import io.reactivex.Single
 import io.reactivex.SingleObserver
@@ -23,7 +25,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.annotations.NonNull
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
-import kotlinx.android.synthetic.main.tb_doc_picker_fragment_doc_list.*
+import kotlinx.android.synthetic.main.tb_doc_picker_fragment_doc.*
 import kotlinx.android.synthetic.main.tb_doc_picker_frame_progress.*
 import org.jetbrains.anko.info
 import java.io.File
@@ -47,13 +49,15 @@ class DocFragment : FragmentBase(), DocAdapter.OnDocClickListener {
     private var mFolderPath: String = ""
 
     private var mDocAdapter: DocAdapter = DocAdapter()
-    private var mDocModelList: MutableList<DocModel> = arrayListOf()
+    private var mDocModelList: ArrayList<DocModel> = arrayListOf()
     var mPickerConfig: DocPickerConfig = DocPickerConfig()
     var mUriList: ArrayList<Uri> = arrayListOf()
 
+    private var mLiveData: MutableLiveData<ArrayList<DocModel>> = MutableLiveData()
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.tb_doc_picker_fragment_doc_list, container, false)
+        return inflater.inflate(R.layout.tb_doc_picker_fragment_doc, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -64,6 +68,15 @@ class DocFragment : FragmentBase(), DocAdapter.OnDocClickListener {
             mPickerConfig = it.getSerializable(DocPickerConfig.ARG_BUNDLE) as DocPickerConfig
             info { "folderPath: $mFolderPath" }
         }
+
+        ////live data : While loading recyclerView if user back-press then the app will not crash
+        mLiveData.observe(this, Observer {
+            mDocAdapter.setData(mDocModelList)
+            SelectedDocsLayout(tb_doc_picker_doc_fragment_ll, mPickerConfig.mUserSelectedDocTypes)
+                .updateSelectedViews()
+            tb_doc_picker_frame_progress.visibility = View.GONE
+        })
+
         initButton()
         initAdapter()
 
@@ -73,11 +86,15 @@ class DocFragment : FragmentBase(), DocAdapter.OnDocClickListener {
         if (!mPickerConfig.mAllowMultiImages) {
             ll_bottom_layout.visibility = View.GONE
         }
-        tb_doc_picker_btn_done.setOnClickListener {
+        tb_doc_picker_doc_fragment_btn_done.setOnClickListener {
             getAllUris()
         }
 
-        tb_doc_picker_doc_filter.setOnClickListener {
+        tb_doc_picker_doc_fragment_filter.setOnClickListener {
+            (activity as ActivityLibMain).startFragmentCreate()
+        }
+
+        tb_doc_picker_doc_fragment_ll.setOnClickListener {
             (activity as ActivityLibMain).startFragmentCreate()
         }
     }
@@ -99,9 +116,9 @@ class DocFragment : FragmentBase(), DocAdapter.OnDocClickListener {
         mDocAdapter.setListener(this)
         mDocAdapter.mShowCheckBox = mPickerConfig.mAllowMultiImages
 
-        tb_doc_picker_fragment_doc_list_recycler_view.layoutManager = LinearLayoutManager(context)
-        tb_doc_picker_fragment_doc_list_recycler_view.adapter = mDocAdapter
-        fetchDocFolders(mPickerConfig.getCustomExtArgs(mPickerConfig.mUserSelectedDocTypes))
+        tb_doc_picker_doc_fragment_recycler_view.layoutManager = LinearLayoutManager(context)
+        tb_doc_picker_doc_fragment_recycler_view.adapter = mDocAdapter
+        fetchDocFolders()
     }
 
     override fun onDocCheck(pData: DocModel) {
@@ -122,7 +139,6 @@ class DocFragment : FragmentBase(), DocAdapter.OnDocClickListener {
         }
         else{
             val selectedIndex = mDocModelList.indexOf(pData)
-
             if(selectedIndex >= 0){
                 //toggle
                 mDocModelList[selectedIndex].isSelected = !(mDocModelList[selectedIndex].isSelected)
@@ -137,35 +153,32 @@ class DocFragment : FragmentBase(), DocAdapter.OnDocClickListener {
                 }
             }
             (activity as ActivityLibMain).updateCounter(size)
-            tb_doc_picker_btn_done.isEnabled = size>0
+            tb_doc_picker_doc_fragment_btn_done.isEnabled = size>0
         }
     }
 
-    fun onFilterDone(list: ArrayList<String>) {
-        info { "list: $list" }
-        fetchDocFolders(mPickerConfig.getCustomExtArgs(list))
+    fun onFilterDone() {
+        (activity as ActivityLibMain).updateCounter(0)
+        tb_doc_picker_doc_fragment_btn_done.isEnabled = false
+        fetchDocFolders()
     }
 
-    private fun fetchDocFolders(list: Array<String?>) {
+    @SuppressLint("CheckResult")
+    private fun fetchDocFolders() {
         val fileItems = Single.fromCallable<Boolean> {
             mDocModelList.clear()
             val tempArray = FileManager.getDocFilesInFolder(context!!,mFolderPath)
+            info { "files size: ${tempArray.size}" }
             for(i in tempArray){
-                if(File(i.filePath).length()>0){
-                    for(j in list){
-                        if(File(i.filePath).extension == (j!!.substring(2))){
+                for (j in mPickerConfig.getCustomExtArgs(mPickerConfig.mUserSelectedDocTypes)) {
+                    if (File(i.filePath).extension == (j!!.substring(2))) {
+                        if(i.size>0)
                             mDocModelList.add(i)
-                            info { "added" }
-                            info { "j: $j\ni: $i" }
-                        }
                     }
-
-
                 }
             }
-
+            info { "list size: ${mDocModelList.size}" }
             info { "added all: ${mDocModelList}" }
-
             true
         }
 
@@ -173,16 +186,14 @@ class DocFragment : FragmentBase(), DocAdapter.OnDocClickListener {
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(object : SingleObserver<Boolean> {
                 override fun onSubscribe(@NonNull d: Disposable) {
-                    frame_progress.visibility = View.VISIBLE
+                    tb_doc_picker_frame_progress.visibility = View.VISIBLE
                 }
-
                 override fun onSuccess(t: Boolean) {
-                    mDocAdapter.setData(mDocModelList)
-                    frame_progress.visibility = View.GONE
-                }
+                    mLiveData.value = mDocModelList
 
+                }
                 override fun onError(@NonNull e: Throwable) {
-                    frame_progress.visibility = View.GONE
+                    tb_doc_picker_frame_progress.visibility = View.GONE
                     info { "error: ${e.message}" }
                 }
             })

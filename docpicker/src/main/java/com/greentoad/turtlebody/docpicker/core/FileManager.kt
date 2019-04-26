@@ -100,6 +100,7 @@ object FileManager : AnkoLogger {
             }
             cursor.close()
         }
+        info { "docFiles size: ${fileItems.size}" }
         info { "docFiles: $fileItems" }
         return fileItems
     }

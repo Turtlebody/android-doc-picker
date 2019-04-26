@@ -33,12 +33,13 @@ class MainActivity : AppCompatActivity(),AnkoLogger {
                     DocConstants.DocTypes.PDF,
                     DocConstants.DocTypes.MS_WORD,
                     DocConstants.DocTypes.MS_POWERPOINT,
-                    DocConstants.DocTypes.MS_EXCEL
+                    DocConstants.DocTypes.MS_EXCEL,
+                    DocConstants.DocTypes.TEXT
                 ))
             )
             .onResult()
             .subscribe({
-                info { "here is the list" }
+                info { "here is the list: $it" }
             },{
                 info { "error: ${it.printStackTrace()}" }
             })

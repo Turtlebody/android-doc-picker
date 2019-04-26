@@ -6,13 +6,15 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 
 import com.greentoad.turtlebody.docpicker.R
 import com.greentoad.turtlebody.docpicker.core.DocPickerConfig
 import com.greentoad.turtlebody.docpicker.core.FileManager
 import com.greentoad.turtlebody.docpicker.ui.base.FragmentBase
+import com.greentoad.turtlebody.docpicker.ui.common.bottom_sheet_filter.SelectedDocsLayout
 import com.greentoad.turtlebody.docpicker.ui.components.ActivityLibMain
 import io.reactivex.Single
 import io.reactivex.SingleObserver
@@ -37,13 +39,13 @@ class DocFolderFragment : FragmentBase() {
             return fragment
         }
 
-        var mSelectedDocTypes:ArrayList<String> = arrayListOf()
+        var mSelectedDocTypes: ArrayList<String> = arrayListOf()
     }
 
     private var mDocFolderAdapter: DocFolderAdapter = DocFolderAdapter()
-    private var mDocFolderList: MutableList<DocFolder> = arrayListOf()
+    private var mDocFolderList: MutableLiveData<ArrayList<DocFolder>> = MutableLiveData()
+
     private var mPickerConfig: DocPickerConfig = DocPickerConfig()
-    private var mDocTypeArgs: Array<String?> = arrayOf()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
@@ -53,80 +55,85 @@ class DocFolderFragment : FragmentBase() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        if(arguments!=null){
+        if (arguments != null) {
             mPickerConfig = arguments?.getSerializable(DocPickerConfig.ARG_BUNDLE) as DocPickerConfig
         }
+
+        //live data : While loading if user back-press then the app will not crash
+        mDocFolderList.observe(this, Observer {
+            mDocFolderAdapter.setData(it)
+            mSelectedDocTypes = mPickerConfig.mUserSelectedDocTypes
+            SelectedDocsLayout(tb_doc_picker_doc_folder_fragment_ll, mSelectedDocTypes)
+                .updateSelectedViews()
+            tb_doc_picker_frame_progress.visibility = View.GONE
+        })
+
         initButton()
         initAdapter()
     }
 
     private fun initButton() {
-        tb_doc_picker_doc_filter.setOnClickListener {
+        tb_doc_picker_doc_folder_fragment_ll_filter.setOnClickListener {
             (activity as ActivityLibMain).startFragmentCreate()
         }
     }
 
-    fun onRefresh(){
+    fun onRefresh() {
         info { "content: $mSelectedDocTypes" }
         info { "content2: ${mPickerConfig.mUserSelectedDocTypes}" }
-        if(!mSelectedDocTypes.containsAll(mPickerConfig.mUserSelectedDocTypes) || !mPickerConfig.mUserSelectedDocTypes.containsAll(mSelectedDocTypes)){
-            mDocTypeArgs = mPickerConfig.getCustomExtArgs(mPickerConfig.mUserSelectedDocTypes)
-            fetchDocFolders(mDocTypeArgs)
+        if (!mSelectedDocTypes.containsAll(mPickerConfig.mUserSelectedDocTypes) || !mPickerConfig.mUserSelectedDocTypes.containsAll(
+                mSelectedDocTypes
+            )
+        ) {
+            fetchDocFolders()
         }
     }
 
-    fun onFilterDone(list: ArrayList<String>) {
-        info { "list: $list" }
-        mDocTypeArgs = mPickerConfig.getCustomExtArgs(list)
-        fetchDocFolders(mDocTypeArgs)
+    fun onFilterDone() {
+        fetchDocFolders()
     }
 
     private fun initAdapter() {
         mDocFolderAdapter.setListener(object : DocFolderAdapter.OnDocFolderClickListener {
             override fun onFolderClick(pData: DocFolder) {
                 info { "folderPath: ${pData.path}" }
-                (activity as ActivityLibMain).startDocFragment(pData.path,mPickerConfig)
+                (activity as ActivityLibMain).startDocFragment(pData.path, mPickerConfig)
             }
         })
 
-        tb_doc_picker_folder_fragment_recycler_view.layoutManager = LinearLayoutManager(context)
-        tb_doc_picker_folder_fragment_recycler_view.adapter = mDocFolderAdapter
-
-        mDocTypeArgs = mPickerConfig.mExtArgs
-        fetchDocFolders(mDocTypeArgs)
+        tb_doc_picker_doc_folder_fragment_recycler_view.layoutManager = LinearLayoutManager(context)
+        tb_doc_picker_doc_folder_fragment_recycler_view.adapter = mDocFolderAdapter
+        fetchDocFolders()
     }
 
 
-    private fun fetchDocFolders(args: Array<String?>) {
-        info { "list2: ${args.toList()}" }
+    private fun fetchDocFolders() {
+        //info { "list2: ${args.toList()}" }
         val bucketFetch = Single.fromCallable<ArrayList<DocFolder>> {
-            FileManager.fetchAudioFolderList(context!!,args)
+            FileManager.fetchAudioFolderList(
+                context!!,
+                mPickerConfig.getCustomExtArgs(mPickerConfig.mUserSelectedDocTypes)
+            )
         }
         bucketFetch
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(object : SingleObserver<ArrayList<DocFolder>> {
                 override fun onSubscribe(@NonNull d: Disposable) {
-                    frame_progress.visibility = View.VISIBLE
+                    tb_doc_picker_frame_progress.visibility = View.VISIBLE
                 }
-                override fun onSuccess(@NonNull audioFolders: ArrayList<DocFolder>) {
-                    mDocFolderList = audioFolders
-                    info { "folders: $audioFolders" }
-                    mDocFolderAdapter.setData(mDocFolderList)
-                    frame_progress.visibility = View.GONE
 
-                    mSelectedDocTypes = mPickerConfig.mUserSelectedDocTypes
+                override fun onSuccess(@NonNull docFolders: ArrayList<DocFolder>) {
+                    mDocFolderList.value = docFolders
                 }
+
                 override fun onError(@NonNull e: Throwable) {
-                    frame_progress.visibility = View.GONE
+                    tb_doc_picker_frame_progress.visibility = View.GONE
                     e.printStackTrace()
                     info { "error: ${e.message}" }
                 }
             })
     }
-
-
-
 
 
 }

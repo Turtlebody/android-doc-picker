@@ -1,4 +1,4 @@
-package com.greentoad.turtlebody.docpicker.ui.common.doc_filter
+package com.greentoad.turtlebody.docpicker.ui.common.bottom_sheet_filter
 
 import android.content.Context
 import android.graphics.PorterDuff
@@ -65,7 +65,7 @@ class DocFilterAdapter: RecyclerView.Adapter<DocFilterAdapter.DocVewHolder>(), A
             itemView.tb_doc_picker_doc_filter_doc_type.text = pData.docType
 
             itemView.setOnClickListener {
-                mOnDocFilterClickListener?.onDocCheck(pData)
+                mOnDocFilterClickListener?.onDocClick(pData)
             }
         }
 
@@ -73,30 +73,30 @@ class DocFilterAdapter: RecyclerView.Adapter<DocFilterAdapter.DocVewHolder>(), A
 
             val mDrawable = ContextCompat.getDrawable(mContext, R.drawable.dr_rect_round_red_doc_background)
 
-            when(fileType.toLowerCase()){
+            when(fileType){
                 DocConstants.DocTypes.PDF-> {
                     mDrawable?.colorFilter = PorterDuffColorFilter(ContextCompat.getColor(mContext,R.color.tb_doc_picker_color_red), PorterDuff.Mode.SRC)
-                    itemView.tb_doc_picker_item_doc_filter_file_ext.text = "pdf"
+                    itemView.tb_doc_picker_item_doc_filter_file_ext.text = DocConstants.docTypeMaps()[DocConstants.DocTypes.PDF]
                 }
                 DocConstants.DocTypes.MS_WORD->{
-                    mDrawable?.colorFilter = PorterDuffColorFilter(ContextCompat.getColor(mContext,R.color.tb_doc_picker_color_dark_blue), PorterDuff.Mode.SRC)
-                    itemView.tb_doc_picker_item_doc_filter_file_ext.text = "doc"
+                    mDrawable?.colorFilter = PorterDuffColorFilter(ContextCompat.getColor(mContext,R.color.tb_doc_picker_color_blue), PorterDuff.Mode.SRC)
+                    itemView.tb_doc_picker_item_doc_filter_file_ext.text = DocConstants.docTypeMaps()[DocConstants.DocTypes.MS_WORD]
                 }
                 DocConstants.DocTypes.MS_POWERPOINT ->{
                     mDrawable?.colorFilter = PorterDuffColorFilter(ContextCompat.getColor(mContext,R.color.tb_doc_picker_color_teal), PorterDuff.Mode.SRC)
-                    itemView.tb_doc_picker_item_doc_filter_file_ext.text = "ppt"
+                    itemView.tb_doc_picker_item_doc_filter_file_ext.text = DocConstants.docTypeMaps()[DocConstants.DocTypes.MS_POWERPOINT]
                 }
                 DocConstants.DocTypes.MS_EXCEL ->{
                     mDrawable?.colorFilter = PorterDuffColorFilter(ContextCompat.getColor(mContext,R.color.tb_doc_picker_color_orange), PorterDuff.Mode.SRC)
-                    itemView.tb_doc_picker_item_doc_filter_file_ext.text = "xls"
+                    itemView.tb_doc_picker_item_doc_filter_file_ext.text = DocConstants.docTypeMaps()[DocConstants.DocTypes.MS_EXCEL]
                 }
                 DocConstants.DocTypes.TEXT->{
                     mDrawable?.colorFilter = PorterDuffColorFilter(ContextCompat.getColor(mContext,R.color.tb_doc_picker_color_grey), PorterDuff.Mode.SRC)
-                    itemView.tb_doc_picker_item_doc_filter_file_ext.text = "txt"
+                    itemView.tb_doc_picker_item_doc_filter_file_ext.text = DocConstants.docTypeMaps()[DocConstants.DocTypes.TEXT]
                 }
                 else ->{
                     mDrawable?.colorFilter = PorterDuffColorFilter(ContextCompat.getColor(mContext,R.color.tb_doc_picker_color_red), PorterDuff.Mode.SRC)
-                    itemView.tb_doc_picker_item_doc_filter_file_ext.text = "other"
+                    itemView.tb_doc_picker_item_doc_filter_file_ext.text = DocConstants.docTypeMaps()[DocConstants.DocTypes.PDF]
                 }
             }
             itemView.tb_doc_picker_item_doc_filter_file_ext.background = mDrawable
@@ -105,6 +105,6 @@ class DocFilterAdapter: RecyclerView.Adapter<DocFilterAdapter.DocVewHolder>(), A
 
 
     interface OnDocFilterClickListener {
-        fun onDocCheck(pData: DocFilterModel)
+        fun onDocClick(pData: DocFilterModel)
     }
 }

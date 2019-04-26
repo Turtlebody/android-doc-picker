@@ -11,17 +11,10 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.greentoad.turtlebody.docpicker.R
 import com.greentoad.turtlebody.docpicker.core.Constants
 import com.greentoad.turtlebody.docpicker.core.DocPickerConfig
-import com.greentoad.turtlebody.docpicker.core.FileManager
 import com.greentoad.turtlebody.docpicker.ui.base.ActivityBase
-import com.greentoad.turtlebody.docpicker.ui.common.doc_filter.DocFilterFragment
+import com.greentoad.turtlebody.docpicker.ui.common.bottom_sheet_filter.DocFilterFragment
 import com.greentoad.turtlebody.docpicker.ui.components.file.DocFragment
 import com.greentoad.turtlebody.docpicker.ui.components.folder.DocFolderFragment
-import io.reactivex.Single
-import io.reactivex.SingleObserver
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.annotations.NonNull
-import io.reactivex.disposables.Disposable
-import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.tb_doc_picker_activity_lib_main.*
 import org.jetbrains.anko.info
 import java.io.Serializable
@@ -156,16 +149,16 @@ class ActivityLibMain : ActivityBase(){
         info { "fragment: create" }
         mDocFilterFragment = DocFilterFragment.newInstance(Constants.Fragment.DOC_FILTER, bundle)
         (mDocFilterFragment as DocFilterFragment).setListener(object : DocFilterFragment.OnFilterDoneListener{
-            override fun onFilterDone(list: ArrayList<String>) {
+            override fun onFilterDone() {
                 val fragment = supportFragmentManager.findFragmentById(R.id.frame_content)
                 when (fragment) {
                     is DocFolderFragment -> {
                         info { "folder fragment" }
-                        fragment.onFilterDone(list)
+                        fragment.onFilterDone()
                     }
                     is DocFragment -> {
                         info { "doc fragment" }
-                        fragment.onFilterDone(list)
+                        fragment.onFilterDone()
                     }
                 }
                 mDocFilterFragment?.dismiss()

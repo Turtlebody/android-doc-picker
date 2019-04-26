@@ -5,7 +5,7 @@ import android.provider.MediaStore
 /**
  * Created by WANGSUN on 27-Mar-19.
  */
-object Constants {
+class Constants {
 
     object FileTypes{
         const val MEDIA_TYPE_IMAGE = 501
@@ -59,4 +59,6 @@ object Constants {
         const val PPT = "%.ppt" //ppt
         const val PPTX = "%.pptx"
     }
+
+
 }

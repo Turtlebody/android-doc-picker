@@ -18,6 +18,20 @@ object DocConstants {
     }
 
 
+    fun docTypeMaps(): HashMap<String,String>{
+        val map = HashMap<String,String>()
+        map[DocTypes.PDF] = "pdf"
+        map[DocTypes.MS_WORD] = "doc"
+        map[DocTypes.MS_EXCEL] = "xls"
+        map[DocTypes.MS_POWERPOINT] = "ppt"
+        map[DocTypes.TEXT] = "txt"
+        map[DocTypes.IMAGE] = "jpg"
+        map[DocTypes.AUDIO] = "mp3"
+        map[DocTypes.VIDEO] = "mp4"
+        return map
+    }
+
+
     fun getExt(docType: String): ArrayList<String>{
         when(docType){
             DocTypes.PDF ->{

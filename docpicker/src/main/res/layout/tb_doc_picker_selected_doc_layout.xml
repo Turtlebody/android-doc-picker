@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:paddingStart="@dimen/offset_12"
+    android:paddingLeft="@dimen/offset_12"
+    android:paddingEnd="@dimen/offset_12"
+    android:paddingRight="@dimen/offset_12"
+    android:layout_marginBottom="@dimen/offset_8">
+
+    <TextView
+        android:id="@+id/tb_doc_picker_selected_doc_layout_txt_0"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="pdf"
+        android:textSize="@dimen/font_12"
+        android:background="@drawable/dr_rect_round_red_doc_background"
+        android:padding="@dimen/offset_4"
+        android:layout_margin="@dimen/offset_4"/>
+
+    <TextView
+        android:id="@+id/tb_doc_picker_selected_doc_layout_txt_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="pdf"
+        android:textSize="@dimen/font_12"
+        android:background="@drawable/dr_rect_round_red_doc_background"
+        android:padding="@dimen/offset_4"
+        android:layout_margin="@dimen/offset_4"/>
+
+    <TextView
+        android:id="@+id/tb_doc_picker_selected_doc_layout_txt_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="pdf"
+        android:textSize="@dimen/font_12"
+        android:background="@drawable/dr_rect_round_red_doc_background"
+        android:padding="@dimen/offset_4"
+        android:layout_margin="@dimen/offset_4"/>
+</LinearLayout>

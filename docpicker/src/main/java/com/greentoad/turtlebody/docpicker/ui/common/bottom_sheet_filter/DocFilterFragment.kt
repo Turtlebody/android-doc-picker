@@ -1,4 +1,4 @@
-package com.greentoad.turtlebody.docpicker.ui.common.doc_filter
+package com.greentoad.turtlebody.docpicker.ui.common.bottom_sheet_filter
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.greentoad.turtlebody.docpicker.R
 import com.greentoad.turtlebody.docpicker.core.DocPickerConfig
-import kotlinx.android.synthetic.main.tb_doc_picker_bottom_sheet_doc_filter_fragment.*
+import kotlinx.android.synthetic.main.tb_doc_picker_fragment_doc_filter.*
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
 
@@ -37,7 +37,7 @@ class DocFilterFragment : BottomSheetDialogFragment(), AnkoLogger, DocFilterAdap
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.tb_doc_picker_bottom_sheet_doc_filter_fragment, container, false)
+        return inflater.inflate(R.layout.tb_doc_picker_fragment_doc_filter, container, false)
     }
 
 
@@ -56,7 +56,7 @@ class DocFilterFragment : BottomSheetDialogFragment(), AnkoLogger, DocFilterAdap
     }
 
     private fun initButton() {
-        tb_doc_picker_btn_done.setOnClickListener {
+        tb_doc_picker_doc_filter_fragment_btn_done.setOnClickListener {
             info { "clicked" }
 
             val docTypes = arrayListOf<String>()
@@ -67,43 +67,68 @@ class DocFilterFragment : BottomSheetDialogFragment(), AnkoLogger, DocFilterAdap
             }
             if(docTypes.isNotEmpty()){
                 mPickerConfig.mUserSelectedDocTypes = docTypes
-                mOnFilterDoneListener?.onFilterDone(docTypes)
+                mOnFilterDoneListener?.onFilterDone()
             }
             else
                 Toast.makeText(context,"Please select at least one doc type.",Toast.LENGTH_LONG).show()
+        }
 
-            tb_doc_picker_bottom_sheet_fragment_btn_cancel.setOnClickListener {
-                this.dismiss()
-            }
+        tb_doc_picker_doc_filter_fragment_btn_cancel.setOnClickListener {
+            this.dismiss()
         }
     }
 
-    override fun onDocCheck(pData: DocFilterModel) {
+    override fun onDocClick(pData: DocFilterModel) {
         val selectedIndex = mDocFilterList.indexOf(pData)
 
         if(selectedIndex >= 0){
             //toggle
             mDocFilterList[selectedIndex].isSelected = !(mDocFilterList[selectedIndex].isSelected)
+
+            //selected filter should not be null
+            val selectedList = arrayListOf<String>()
+            for(i in mDocFilterList){
+                if(i.isSelected){
+                    selectedList.add(i.docType)
+                }
+            }
+            //if null then toggle the item again to get previous state
+            if(selectedList.isEmpty()){
+                mDocFilterList[selectedIndex].isSelected = !(mDocFilterList[selectedIndex].isSelected)
+                Toast.makeText(context,"Filter can't be empty.",Toast.LENGTH_LONG).show()
+                return
+            }
+
             //update ui
             mAdapter.updateIsSelected(mDocFilterList[selectedIndex])
+            SelectedDocsLayout(tb_doc_picker_doc_filter_fragment_ll,selectedList)
+                .updateSelectedViews()
         }
+    }
+
+    override fun getTheme(): Int {
+        return R.style.App_Dialog_BottomSheet
     }
 
     private fun initAdapter() {
         mAdapter.setListener(this)
-        tb_doc_picker_bottom_sheet_fragment_recycler_view.layoutManager = LinearLayoutManager(context)
-        tb_doc_picker_bottom_sheet_fragment_recycler_view.adapter = mAdapter
+        tb_doc_picker_doc_filter_fragment_recycler_view.layoutManager = LinearLayoutManager(context)
+        tb_doc_picker_doc_filter_fragment_recycler_view.adapter = mAdapter
 
         for(i in mDocFilterList){
             i.isSelected = mPickerConfig.mUserSelectedDocTypes.contains(i.docType)
         }
 
         mAdapter.setData(mDocFilterList)
-    }
-
-
-    override fun getTheme(): Int {
-        return R.style.App_Dialog_BottomSheet
+        val selectedList = arrayListOf<String>()
+        for(i in mDocFilterList){
+            if(i.isSelected){
+                selectedList.add(i.docType)
+            }
+        }
+        if(selectedList.isNotEmpty())
+            SelectedDocsLayout(tb_doc_picker_doc_filter_fragment_ll,selectedList)
+                .updateSelectedViews()
     }
 
     fun setListener(pListener: OnFilterDoneListener?) {
@@ -112,6 +137,6 @@ class DocFilterFragment : BottomSheetDialogFragment(), AnkoLogger, DocFilterAdap
 
 
     interface OnFilterDoneListener {
-        fun onFilterDone(list: ArrayList<String>)
+        fun onFilterDone()
     }
 }

@@ -29,7 +29,7 @@ class DocFolderAdapter: RecyclerView.Adapter<DocFolderAdapter.FolderVewHolder>()
 
 
     /**
-     * Register a callback to be invoked when folder view is clicked.
+     * Register a callback to be invoked when folder mParentView is clicked.
      * @param listener The callback that will run
      */
     fun setListener(listenerAudio : OnDocFolderClickListener){
