@@ -17,7 +17,7 @@
     <color name="tb_doc_picker_color_teal">#00796b</color>
     <color name="tb_doc_picker_color_orange">#ef6c00</color>
 
-    <!--Docs light backgrounds-->
+    <!--Docs corresponding light backgrounds-->
     <color name="tb_doc_picker_color_light_red">#ffcdd2</color>
     <color name="tb_doc_picker_color_light_blue">#bbdefb</color>
     <color name="tb_doc_picker_color_light_grey">#f5f5f5</color>
