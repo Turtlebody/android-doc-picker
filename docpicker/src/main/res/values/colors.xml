@@ -11,18 +11,24 @@
     <color name="tb_doc_picker_toolbar_counter_background">#eeeeee</color>
 
     <!--Docs backgrounds-->
-    <color name="tb_doc_picker_color_red">#f44336</color>
-    <color name="tb_doc_picker_color_blue">#0d47a1</color>
-    <color name="tb_doc_picker_color_grey">#9e9e9e</color>
-    <color name="tb_doc_picker_color_teal">#00796b</color>
-    <color name="tb_doc_picker_color_orange">#ef6c00</color>
+    <color name="tb_doc_picker_pdf">#f44336</color>
+    <color name="tb_doc_picker_doc">#0d47a1</color>
+    <color name="tb_doc_picker_txt">#9e9e9e</color>
+    <color name="tb_doc_picker_ppt">#00796b</color>
+    <color name="tb_doc_picker_xls">#ef6c00</color>
+    <color name="tb_doc_picker_audio">#1190E5</color>
+    <color name="tb_doc_picker_image">#FF8751</color>
+    <color name="tb_doc_picker_video">#9E19F5</color>
 
     <!--Docs corresponding light backgrounds-->
-    <color name="tb_doc_picker_color_light_red">#ffcdd2</color>
-    <color name="tb_doc_picker_color_light_blue">#bbdefb</color>
-    <color name="tb_doc_picker_color_light_grey">#f5f5f5</color>
-    <color name="tb_doc_picker_color_light_teal">#b2dfdb</color>
-    <color name="tb_doc_picker_color_light_orange">#ffccbc</color>
+    <color name="tb_doc_picker_light_pdf">#ffcdd2</color>
+    <color name="tb_doc_picker_light_doc">#bbdefb</color>
+    <color name="tb_doc_picker_light_txt">#f5f5f5</color>
+    <color name="tb_doc_picker_light_ppt">#b2dfdb</color>
+    <color name="tb_doc_picker_light_xls">#ffccbc</color>
+    <color name="tb_doc_picker_light_audio">#F1F8FD</color>
+    <color name="tb_doc_picker_light_image">#FFF9F5</color>
+    <color name="tb_doc_picker_light_video">#FEF1FE</color>
 
 
 

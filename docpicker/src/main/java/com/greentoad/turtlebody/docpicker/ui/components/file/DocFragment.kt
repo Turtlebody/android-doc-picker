@@ -167,18 +167,19 @@ class DocFragment : FragmentBase(), DocAdapter.OnDocClickListener {
     private fun fetchDocFolders() {
         val fileItems = Single.fromCallable<Boolean> {
             mDocModelList.clear()
-            val tempArray = FileManager.getDocFilesInFolder(context!!,mFolderPath)
-            info { "files size: ${tempArray.size}" }
-            for(i in tempArray){
-                for (j in mPickerConfig.getCustomExtArgs(mPickerConfig.mUserSelectedDocTypes)) {
-                    if (File(i.filePath).extension == (j!!.substring(2))) {
-                        if(i.size>0)
-                            mDocModelList.add(i)
-                    }
-                }
-            }
-            info { "list size: ${mDocModelList.size}" }
-            info { "added all: ${mDocModelList}" }
+            mDocModelList = FileManager.getDocFilesInFolder(context!!,mFolderPath)
+//            val tempArray = FileManager.getDocFilesInFolder(context!!,mFolderPath)
+//            info { "files size: ${tempArray.size}" }
+//            for(i in tempArray){
+//                for (j in mPickerConfig.getCustomExtArgs(mPickerConfig.mUserSelectedDocTypes)) {
+//                    if (File(i.filePath).extension == (j!!.substring(2))) {
+//                        if(i.size>0)
+//                            mDocModelList.add(i)
+//                    }
+//                }
+//            }
+//            info { "list size: ${mDocModelList.size}" }
+//            info { "added all: ${mDocModelList}" }
             true
         }
 

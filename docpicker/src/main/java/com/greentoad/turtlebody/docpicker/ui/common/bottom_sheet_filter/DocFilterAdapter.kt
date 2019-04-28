@@ -73,32 +73,36 @@ class DocFilterAdapter: RecyclerView.Adapter<DocFilterAdapter.DocVewHolder>(), A
 
             val mDrawable = ContextCompat.getDrawable(mContext, R.drawable.dr_rect_round_red_doc_background)
 
-            when(fileType){
-                DocConstants.DocTypes.PDF-> {
-                    mDrawable?.colorFilter = PorterDuffColorFilter(ContextCompat.getColor(mContext,R.color.tb_doc_picker_color_red), PorterDuff.Mode.SRC)
-                    itemView.tb_doc_picker_item_doc_filter_file_ext.text = DocConstants.docTypeMaps()[DocConstants.DocTypes.PDF]
-                }
-                DocConstants.DocTypes.MS_WORD->{
-                    mDrawable?.colorFilter = PorterDuffColorFilter(ContextCompat.getColor(mContext,R.color.tb_doc_picker_color_blue), PorterDuff.Mode.SRC)
-                    itemView.tb_doc_picker_item_doc_filter_file_ext.text = DocConstants.docTypeMaps()[DocConstants.DocTypes.MS_WORD]
-                }
-                DocConstants.DocTypes.MS_POWERPOINT ->{
-                    mDrawable?.colorFilter = PorterDuffColorFilter(ContextCompat.getColor(mContext,R.color.tb_doc_picker_color_teal), PorterDuff.Mode.SRC)
-                    itemView.tb_doc_picker_item_doc_filter_file_ext.text = DocConstants.docTypeMaps()[DocConstants.DocTypes.MS_POWERPOINT]
-                }
-                DocConstants.DocTypes.MS_EXCEL ->{
-                    mDrawable?.colorFilter = PorterDuffColorFilter(ContextCompat.getColor(mContext,R.color.tb_doc_picker_color_orange), PorterDuff.Mode.SRC)
-                    itemView.tb_doc_picker_item_doc_filter_file_ext.text = DocConstants.docTypeMaps()[DocConstants.DocTypes.MS_EXCEL]
-                }
-                DocConstants.DocTypes.TEXT->{
-                    mDrawable?.colorFilter = PorterDuffColorFilter(ContextCompat.getColor(mContext,R.color.tb_doc_picker_color_grey), PorterDuff.Mode.SRC)
-                    itemView.tb_doc_picker_item_doc_filter_file_ext.text = DocConstants.docTypeMaps()[DocConstants.DocTypes.TEXT]
-                }
-                else ->{
-                    mDrawable?.colorFilter = PorterDuffColorFilter(ContextCompat.getColor(mContext,R.color.tb_doc_picker_color_red), PorterDuff.Mode.SRC)
-                    itemView.tb_doc_picker_item_doc_filter_file_ext.text = DocConstants.docTypeMaps()[DocConstants.DocTypes.PDF]
-                }
-            }
+
+            mDrawable?.colorFilter = PorterDuffColorFilter(DocConstants.docTypeMapColor(mContext)[fileType]!!, PorterDuff.Mode.SRC)
+            itemView.tb_doc_picker_item_doc_filter_file_ext.text = DocConstants.docTypeMaps()[fileType]
+
+//            when(fileType){
+//                DocConstants.DocTypes.PDF-> {
+//                    mDrawable?.colorFilter = PorterDuffColorFilter(ContextCompat.getColor(mContext,R.color.tb_doc_picker_pdf), PorterDuff.Mode.SRC)
+//                    itemView.tb_doc_picker_item_doc_filter_file_ext.text = DocConstants.docTypeMaps()[DocConstants.DocTypes.PDF]
+//                }
+//                DocConstants.DocTypes.MS_WORD->{
+//                    mDrawable?.colorFilter = PorterDuffColorFilter(ContextCompat.getColor(mContext,R.color.tb_doc_picker_doc), PorterDuff.Mode.SRC)
+//                    itemView.tb_doc_picker_item_doc_filter_file_ext.text = DocConstants.docTypeMaps()[DocConstants.DocTypes.MS_WORD]
+//                }
+//                DocConstants.DocTypes.MS_POWERPOINT ->{
+//                    mDrawable?.colorFilter = PorterDuffColorFilter(ContextCompat.getColor(mContext,R.color.tb_doc_picker_ppt), PorterDuff.Mode.SRC)
+//                    itemView.tb_doc_picker_item_doc_filter_file_ext.text = DocConstants.docTypeMaps()[DocConstants.DocTypes.MS_POWERPOINT]
+//                }
+//                DocConstants.DocTypes.MS_EXCEL ->{
+//                    mDrawable?.colorFilter = PorterDuffColorFilter(ContextCompat.getColor(mContext,R.color.tb_doc_picker_xls), PorterDuff.Mode.SRC)
+//                    itemView.tb_doc_picker_item_doc_filter_file_ext.text = DocConstants.docTypeMaps()[DocConstants.DocTypes.MS_EXCEL]
+//                }
+//                DocConstants.DocTypes.TEXT->{
+//                    mDrawable?.colorFilter = PorterDuffColorFilter(ContextCompat.getColor(mContext,R.color.tb_doc_picker_txt), PorterDuff.Mode.SRC)
+//                    itemView.tb_doc_picker_item_doc_filter_file_ext.text = DocConstants.docTypeMaps()[DocConstants.DocTypes.TEXT]
+//                }
+//                else ->{
+//                    mDrawable?.colorFilter = PorterDuffColorFilter(ContextCompat.getColor(mContext,R.color.tb_doc_picker_pdf), PorterDuff.Mode.SRC)
+//                    itemView.tb_doc_picker_item_doc_filter_file_ext.text = DocConstants.docTypeMaps()[DocConstants.DocTypes.PDF]
+//                }
+//            }
             itemView.tb_doc_picker_item_doc_filter_file_ext.background = mDrawable
         }
     }

@@ -1,8 +1,6 @@
 package com.greentoad.turtlebody.docpicker.core
 
 import android.content.Context
-import android.content.res.Resources
-import android.graphics.Color
 import androidx.core.content.ContextCompat
 import com.greentoad.turtlebody.docpicker.R
 
@@ -37,6 +35,34 @@ object DocConstants {
         return map
     }
 
+    fun docTypeMapColor(context: Context): HashMap<String,Int>{
+        val map = HashMap<String,Int>()
+        map[DocTypes.PDF] = ContextCompat.getColor(context, R.color.tb_doc_picker_pdf)
+        map[DocTypes.MS_WORD] = ContextCompat.getColor(context, R.color.tb_doc_picker_doc)
+        map[DocTypes.MS_EXCEL] = ContextCompat.getColor(context, R.color.tb_doc_picker_xls)
+        map[DocTypes.MS_POWERPOINT] = ContextCompat.getColor(context, R.color.tb_doc_picker_ppt)
+        map[DocTypes.TEXT] = ContextCompat.getColor(context, R.color.tb_doc_picker_txt)
+        map[DocTypes.IMAGE] = ContextCompat.getColor(context, R.color.tb_doc_picker_image)
+        map[DocTypes.AUDIO] = ContextCompat.getColor(context, R.color.tb_doc_picker_audio)
+        map[DocTypes.VIDEO] = ContextCompat.getColor(context, R.color.tb_doc_picker_video)
+
+        return map
+    }
+
+    fun docTypeMapLightColor(context: Context): HashMap<String,Int>{
+        val map = HashMap<String,Int>()
+        map[DocTypes.PDF] = ContextCompat.getColor(context, R.color.tb_doc_picker_light_pdf)
+        map[DocTypes.MS_WORD] = ContextCompat.getColor(context, R.color.tb_doc_picker_light_doc)
+        map[DocTypes.MS_EXCEL] = ContextCompat.getColor(context, R.color.tb_doc_picker_light_xls)
+        map[DocTypes.MS_POWERPOINT] = ContextCompat.getColor(context, R.color.tb_doc_picker_light_ppt)
+        map[DocTypes.TEXT] = ContextCompat.getColor(context, R.color.tb_doc_picker_light_txt)
+        map[DocTypes.IMAGE] = ContextCompat.getColor(context, R.color.tb_doc_picker_light_image)
+        map[DocTypes.AUDIO] = ContextCompat.getColor(context, R.color.tb_doc_picker_light_audio)
+        map[DocTypes.VIDEO] = ContextCompat.getColor(context, R.color.tb_doc_picker_light_video)
+        return map
+    }
+
+
 
     fun getExt(docType: String): ArrayList<String>{
         when(docType){
@@ -69,7 +95,7 @@ object DocConstants {
     }
 
 
-    object DocTypes12{
+    object DocTypes2{
         const val PDF = "pdf"
         const val MS_WORD = "word"
         const val MS_EXCEL = "excel"
@@ -89,45 +115,45 @@ object DocConstants {
         const val RAR = "RAR"
     }
 
-    fun docTypeMapColor(context: Context): HashMap<String,Int>{
+    fun docTypeMapColor2(context: Context): HashMap<String,Int>{
         val map = HashMap<String,Int>()
-        map[DocTypes12.PDF] = ContextCompat.getColor(context, R.color.tb_doc_pdf)
-        map[DocTypes12.MS_WORD] = ContextCompat.getColor(context, R.color.tb_doc_doc)
-        map[DocTypes12.MS_EXCEL] = ContextCompat.getColor(context, R.color.tb_doc_xls)
-        map[DocTypes12.MS_POWERPOINT] = ContextCompat.getColor(context, R.color.tb_doc_ppt)
-        map[DocTypes12.AI] = ContextCompat.getColor(context, R.color.tb_doc_ai)
-        map[DocTypes12.AE] = ContextCompat.getColor(context, R.color.tb_doc_ae)
-        map[DocTypes12.APK] = ContextCompat.getColor(context, R.color.tb_doc_apk)
-        map[DocTypes12.MP3] = ContextCompat.getColor(context, R.color.tb_doc_mp3)
-        map[DocTypes12.JPG] = ContextCompat.getColor(context, R.color.tb_doc_jpg)
-        map[DocTypes12.TEXT] = ContextCompat.getColor(context, R.color.tb_doc_txt)
-        map[DocTypes12.MP4] = ContextCompat.getColor(context, R.color.tb_doc_mp4)
-        map[DocTypes12.PNG] = ContextCompat.getColor(context, R.color.tb_doc_png)
-        map[DocTypes12.PSD] = ContextCompat.getColor(context, R.color.tb_doc_psd)
-        map[DocTypes12.XD] = ContextCompat.getColor(context, R.color.tb_doc_xd)
-        map[DocTypes12.ZIP] = ContextCompat.getColor(context, R.color.tb_doc_zip)
-        map[DocTypes12.RAR] = ContextCompat.getColor(context, R.color.tb_doc_rar)
+        map[DocTypes2.PDF] = ContextCompat.getColor(context, R.color.tb_doc_pdf)
+        map[DocTypes2.MS_WORD] = ContextCompat.getColor(context, R.color.tb_doc_doc)
+        map[DocTypes2.MS_EXCEL] = ContextCompat.getColor(context, R.color.tb_doc_xls)
+        map[DocTypes2.MS_POWERPOINT] = ContextCompat.getColor(context, R.color.tb_doc_ppt)
+        map[DocTypes2.AI] = ContextCompat.getColor(context, R.color.tb_doc_ai)
+        map[DocTypes2.AE] = ContextCompat.getColor(context, R.color.tb_doc_ae)
+        map[DocTypes2.APK] = ContextCompat.getColor(context, R.color.tb_doc_apk)
+        map[DocTypes2.MP3] = ContextCompat.getColor(context, R.color.tb_doc_mp3)
+        map[DocTypes2.JPG] = ContextCompat.getColor(context, R.color.tb_doc_jpg)
+        map[DocTypes2.TEXT] = ContextCompat.getColor(context, R.color.tb_doc_txt)
+        map[DocTypes2.MP4] = ContextCompat.getColor(context, R.color.tb_doc_mp4)
+        map[DocTypes2.PNG] = ContextCompat.getColor(context, R.color.tb_doc_png)
+        map[DocTypes2.PSD] = ContextCompat.getColor(context, R.color.tb_doc_psd)
+        map[DocTypes2.XD] = ContextCompat.getColor(context, R.color.tb_doc_xd)
+        map[DocTypes2.ZIP] = ContextCompat.getColor(context, R.color.tb_doc_zip)
+        map[DocTypes2.RAR] = ContextCompat.getColor(context, R.color.tb_doc_rar)
         return map
     }
 
-    fun docTypeMapLightColor(context: Context): HashMap<String,Int>{
+    fun docTypeMapLightColor2(context: Context): HashMap<String,Int>{
         val map = HashMap<String,Int>()
-        map[DocTypes12.PDF] = ContextCompat.getColor(context, R.color.tb_doc_light_pdf)
-        map[DocTypes12.MS_WORD] = ContextCompat.getColor(context, R.color.tb_doc_light_doc)
-        map[DocTypes12.MS_EXCEL] = ContextCompat.getColor(context, R.color.tb_doc_light_xls)
-        map[DocTypes12.MS_POWERPOINT] = ContextCompat.getColor(context, R.color.tb_doc_light_ppt)
-        map[DocTypes12.AI] = ContextCompat.getColor(context, R.color.tb_doc_light_ai)
-        map[DocTypes12.AE] = ContextCompat.getColor(context, R.color.tb_doc_light_ae)
-        map[DocTypes12.APK] = ContextCompat.getColor(context, R.color.tb_doc_light_apk)
-        map[DocTypes12.MP3] = ContextCompat.getColor(context, R.color.tb_doc_light_mp3)
-        map[DocTypes12.JPG] = ContextCompat.getColor(context, R.color.tb_doc_light_jpg)
-        map[DocTypes12.TEXT] = ContextCompat.getColor(context, R.color.tb_doc_light_txt)
-        map[DocTypes12.MP4] = ContextCompat.getColor(context, R.color.tb_doc_light_mp4)
-        map[DocTypes12.PNG] = ContextCompat.getColor(context, R.color.tb_doc_light_png)
-        map[DocTypes12.PSD] = ContextCompat.getColor(context, R.color.tb_doc_light_psd)
-        map[DocTypes12.XD] = ContextCompat.getColor(context, R.color.tb_doc_light_xd)
-        map[DocTypes12.ZIP] = ContextCompat.getColor(context, R.color.tb_doc_light_zip)
-        map[DocTypes12.RAR] = ContextCompat.getColor(context, R.color.tb_doc_light_rar)
+        map[DocTypes2.PDF] = ContextCompat.getColor(context, R.color.tb_doc_light_pdf)
+        map[DocTypes2.MS_WORD] = ContextCompat.getColor(context, R.color.tb_doc_light_doc)
+        map[DocTypes2.MS_EXCEL] = ContextCompat.getColor(context, R.color.tb_doc_light_xls)
+        map[DocTypes2.MS_POWERPOINT] = ContextCompat.getColor(context, R.color.tb_doc_light_ppt)
+        map[DocTypes2.AI] = ContextCompat.getColor(context, R.color.tb_doc_light_ai)
+        map[DocTypes2.AE] = ContextCompat.getColor(context, R.color.tb_doc_light_ae)
+        map[DocTypes2.APK] = ContextCompat.getColor(context, R.color.tb_doc_light_apk)
+        map[DocTypes2.MP3] = ContextCompat.getColor(context, R.color.tb_doc_light_mp3)
+        map[DocTypes2.JPG] = ContextCompat.getColor(context, R.color.tb_doc_light_jpg)
+        map[DocTypes2.TEXT] = ContextCompat.getColor(context, R.color.tb_doc_light_txt)
+        map[DocTypes2.MP4] = ContextCompat.getColor(context, R.color.tb_doc_light_mp4)
+        map[DocTypes2.PNG] = ContextCompat.getColor(context, R.color.tb_doc_light_png)
+        map[DocTypes2.PSD] = ContextCompat.getColor(context, R.color.tb_doc_light_psd)
+        map[DocTypes2.XD] = ContextCompat.getColor(context, R.color.tb_doc_light_xd)
+        map[DocTypes2.ZIP] = ContextCompat.getColor(context, R.color.tb_doc_light_zip)
+        map[DocTypes2.RAR] = ContextCompat.getColor(context, R.color.tb_doc_light_rar)
         return map
     }
 
