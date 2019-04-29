@@ -112,7 +112,7 @@ class ActivityLibMain : ActivityBase(){
     private fun startDocFolderFragment() {
         toolbarTitle = "Select Folder"
         tb_doc_picker_toolbar_txt_count.visibility = View.GONE
-        mMenuItem.isVisible = true
+        mMenuItem.isVisible = false
 
         val bundle = Bundle()
         bundle.putSerializable(DocPickerConfig.ARG_BUNDLE, mPickerConfig)
