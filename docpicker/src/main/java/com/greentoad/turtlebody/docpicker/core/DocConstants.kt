@@ -95,6 +95,8 @@ object DocConstants {
     }
 
 
+
+
     object DocTypes2{
         const val PDF = "pdf"
         const val MS_WORD = "word"
@@ -115,7 +117,7 @@ object DocConstants {
         const val RAR = "RAR"
     }
 
-    fun docTypeMapColor2(context: Context): HashMap<String,Int>{
+    /*fun docTypeMapColor2(context: Context): HashMap<String,Int>{
         val map = HashMap<String,Int>()
         map[DocTypes2.PDF] = ContextCompat.getColor(context, R.color.tb_doc_pdf)
         map[DocTypes2.MS_WORD] = ContextCompat.getColor(context, R.color.tb_doc_doc)
@@ -155,6 +157,6 @@ object DocConstants {
         map[DocTypes2.ZIP] = ContextCompat.getColor(context, R.color.tb_doc_light_zip)
         map[DocTypes2.RAR] = ContextCompat.getColor(context, R.color.tb_doc_light_rar)
         return map
-    }
+    }*/
 
 }

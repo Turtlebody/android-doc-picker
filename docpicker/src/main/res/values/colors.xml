@@ -153,91 +153,182 @@
 
     <color name="red">#FFD9C7</color>
 
-<!-- docs colors -->
 
-    <color name="tb_doc_ai">#F58C21</color>
+    <!-- ||||||||||||||||||||||||||       docs colors        |||||||||||||||||||||||||||||||  -->
+
     <color name="tb_doc_ae">#DE19DE</color>
     <color name="tb_doc_apk">#50CF6A</color>
     <color name="tb_doc_doc">#1313EC</color>
-    <color name="tb_doc_jpg">#1190E5</color>
-
-    <color name="tb_doc_mp3">#FF8751</color>
-    <color name="tb_doc_mp4">#9E19F5</color>
     <color name="tb_doc_pdf">#FF243A</color>
-    <color name="tb_doc_png">#13E2AA</color>
     <color name="tb_doc_ppt">#FF6B2A</color>
 
-    <color name="tb_doc_psd">#19A8DE</color>
     <color name="tb_doc_rar">#C48C4C</color>
     <color name="tb_doc_txt">#8A8A8A</color>
     <color name="tb_doc_xd">#F52192</color>
     <color name="tb_doc_xls">#3BD802</color>
-
     <color name="tb_doc_zip">#C48C4C</color>
 
+
+    <!-- audio -->
+
+    <color name="tb_doc_audio_aac">#133AFF</color>
+    <color name="tb_doc_audio_m4a">#FF136B</color>
+    <color name="tb_doc_audio_mp3">#FF8751</color>
+    <color name="tb_doc_audio_wav">#C213FF</color>
+    <color name="tb_doc_audio">#FFB013</color>
+
+
+    <!-- image -->
+
+    <color name="tb_doc_image_ai">#F58C21</color>
+    <color name="tb_doc_image_gif">#F521E7</color>
+    <color name="tb_doc_image_jpg">#1190E5</color>
+    <color name="tb_doc_image_png">#13E2AA</color>
+    <color name="tb_doc_image_psd">#19A8DE</color>
+    <color name="tb_doc_image_svg">#F52192</color>
+    <color name="tb_doc_image">##21D1F5</color>
+
+
+    <!-- video -->
+
+    <color name="tb_doc_video_avi">#19B1F5</color>
+    <color name="tb_doc_video_3gp">#D8B422</color>
+    <color name="tb_doc_video_flv">#F519C2</color>
+    <color name="tb_doc_video_mpg">#FF136B</color>
+    <!--<color name="tb_doc_video_mp4">#9E19F5</color>-->
+    <color name="tb_doc_video">#1936F5</color>
+
+
+
     <array name="tb_docs">
-        <item>@color/tb_doc_ai</item>
         <item>@color/tb_doc_ae</item>
         <item>@color/tb_doc_apk</item>
         <item>@color/tb_doc_doc</item>
-        <item>@color/tb_doc_jpg</item>
-
-        <item>@color/tb_doc_mp3</item>
-        <item>@color/tb_doc_mp4</item>
         <item>@color/tb_doc_pdf</item>
-        <item>@color/tb_doc_png</item>
         <item>@color/tb_doc_ppt</item>
 
-        <item>@color/tb_doc_psd</item>
         <item>@color/tb_doc_rar</item>
         <item>@color/tb_doc_txt</item>
         <item>@color/tb_doc_xd</item>
         <item>@color/tb_doc_xls</item>
-
         <item>@color/tb_doc_zip</item>
+
+
+        <!-- audio -->
+
+        <item>@color/tb_doc_audio_aac</item>
+        <item>@color/tb_doc_audio_m4a</item>
+        <item>@color/tb_doc_audio_mp3</item>
+        <item>@color/tb_doc_audio_wav</item>
+        <item>@color/tb_doc_audio</item>
+
+        <!-- image -->
+
+        <item>@color/tb_doc_image_ai</item>
+        <item>@color/tb_doc_image_gif</item>
+        <item>@color/tb_doc_image_jpg</item>
+        <item>@color/tb_doc_image_png</item>
+        <item>@color/tb_doc_image_psd</item>
+        <item>@color/tb_doc_image_svg</item>
+        <item>@color/tb_doc_image</item>
+
+
+        <!-- video -->
+
+        <item>@color/tb_doc_video_avi</item>
+        <item>@color/tb_doc_video_3gp</item>
+        <item>@color/tb_doc_video_flv</item>
+        <item>@color/tb_doc_video_mpg</item>
+        <item>@color/tb_doc_video</item>
+
     </array>
 
 
-    <color name="tb_doc_light_ai">#FEFAF2</color>
+
     <color name="tb_doc_light_ae">#FDF1FD</color>
     <color name="tb_doc_light_apk">#F5FCF6</color>
     <color name="tb_doc_light_doc">#F1F7FC</color>
-    <color name="tb_doc_light_jpg">#F1F8FD</color>
-
-    <color name="tb_doc_light_mp3">#FFF9F5</color>
-    <color name="tb_doc_light_mp4">#FEF1FE</color>
     <color name="tb_doc_light_pdf">#FFF2F3</color>
-    <color name="tb_doc_light_png">#F1FDFA</color>
     <color name="tb_doc_light_ppt">#FFF5EC</color>
 
-    <color name="tb_doc_light_psd">#F1FAFD</color>
     <color name="tb_doc_light_rar">#FCF7F1</color>
     <color name="tb_doc_light_txt">#F8F8F8</color>
     <color name="tb_doc_light_xd">#FEF2F9</color>
     <color name="tb_doc_light_xls">#F4FDF1</color>
-
     <color name="tb_doc_light_zip">#FCF7F1</color>
 
+
+    <!--audio-->
+
+    <color name="tb_doc_light_audio_mp3">#FFF9F5</color>
+    <color name="tb_doc_light_audio_m4a">#FFF1F6</color>
+    <color name="tb_doc_light_audio_aac">#F1F3FF</color>
+    <color name="tb_doc_light_audio_wav">#FCF1FF</color>
+    <color name="tb_doc_light_audio">#FFFAF1</color>
+
+
+    <!--image -->
+
+    <color name="tb_doc_light_image_ai">#FEFAF2</color>
+    <color name="tb_doc_light_image_gif">#FEF2FE</color>
+    <color name="tb_doc_light_image_jpg">#F1F8FD</color>
+    <color name="tb_doc_light_image_png">#F1FDFA</color>
+    <color name="tb_doc_light_image_psd">#F1FAFD</color>
+    <color name="tb_doc_light_image_svg">#FEF2F9</color>
+    <color name="tb_doc_light_image">#F2FCFE</color>
+
+
+    <!--video-->
+
+    <color name="tb_doc_light_video_avi">#F1FAFE</color>
+    <color name="tb_doc_light_video_3gp">#FDFBF2</color>
+    <color name="tb_doc_light_video_flv">#FEF1FB</color>
+    <color name="tb_doc_light_video_mpg">#FFF1F6</color>
+    <color name="tb_doc_light_video_mp4">#FEF1FE</color>
+    <color name="tb_doc_light_video">#F1F3FE</color>
+
+
     <array name="tb_docs_light">
-        <item>@color/tb_doc_light_ai</item>
-        <item>@color/tb_doc_light_ae</item>
         <item>@color/tb_doc_light_apk</item>
         <item>@color/tb_doc_light_doc</item>
-        <item>@color/tb_doc_light_jpg</item>
-
-        <item>@color/tb_doc_light_mp3</item>
-        <item>@color/tb_doc_light_mp4</item>
         <item>@color/tb_doc_light_pdf</item>
-        <item>@color/tb_doc_light_png</item>
         <item>@color/tb_doc_light_ppt</item>
-
-        <item>@color/tb_doc_light_psd</item>
         <item>@color/tb_doc_light_rar</item>
+
         <item>@color/tb_doc_light_txt</item>
         <item>@color/tb_doc_light_xd</item>
         <item>@color/tb_doc_light_xls</item>
-
         <item>@color/tb_doc_light_zip</item>
+        <item>@color/tb_doc_light_ae</item>
+
+
+        <!-- audio -->
+
+        <item>@color/tb_doc_light_audio_aac</item>
+        <item>@color/tb_doc_light_audio_mp3</item>
+        <item>@color/tb_doc_light_audio_m4a</item>
+        <item>@color/tb_doc_light_audio_wav</item>
+
+
+        <!-- image -->
+
+        <item>@color/tb_doc_light_image_ai</item>
+        <item>@color/tb_doc_light_image_gif</item>
+        <item>@color/tb_doc_light_image_jpg</item>
+        <item>@color/tb_doc_light_image_png</item>
+        <item>@color/tb_doc_light_image_psd</item>
+        <item>@color/tb_doc_light_image_svg</item>
+        <item>@color/tb_doc_light_image</item>
+
+
+        <!-- video -->
+
+        <item>@color/tb_doc_light_video_avi</item>
+        <item>@color/tb_doc_light_video_3gp</item>
+        <item>@color/tb_doc_light_video_flv</item>
+        <item>@color/tb_doc_light_video_mpg</item>
+        <item>@color/tb_doc_light_video</item>
+
     </array>
 
 </resources>
