@@ -6,6 +6,8 @@
     android:layout_height="wrap_content"
     android:orientation="horizontal"
     android:background="@color/md_white_1000"
+    android:paddingStart="@dimen/offset_12"
+    android:paddingEnd="@dimen/offset_12"
     android:baselineAligned="false">
 
     <TextView
@@ -13,7 +15,7 @@
         android:layout_width="@dimen/length_28"
         android:layout_height="@dimen/length_28"
         android:layout_gravity="center"
-        android:layout_margin="@dimen/offset_16"
+        android:layout_margin="@dimen/offset_12"
         tools:text="pdf"
         android:textSize="@dimen/font_12"
         android:textColor="@color/md_white_1000"
@@ -43,12 +45,12 @@
 
         <com.greentoad.turtlebody.docpicker.widget.ImageViewCheckable
             android:id="@+id/tb_doc_picker_item_doc_filter_ivc"
-            android:layout_width="@dimen/length_32"
-            android:layout_height="@dimen/length_32"
+            android:layout_width="@dimen/length_24"
+            android:layout_height="@dimen/length_24"
             android:layout_gravity="center_vertical"
-            android:layout_margin="@dimen/offset_4"
+            android:layout_margin="@dimen/offset_8"
             android:scaleType="centerInside"
-            android:src="@drawable/tb_doc_picker_sc_check_file" />
+            android:src="@drawable/tb_doc_picker_sc_check_file_grey_800" />
     </LinearLayout>
 
 </LinearLayout>

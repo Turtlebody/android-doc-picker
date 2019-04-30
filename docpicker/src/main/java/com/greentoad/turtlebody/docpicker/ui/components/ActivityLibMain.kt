@@ -23,14 +23,11 @@ import java.io.Serializable
 class ActivityLibMain : ActivityBase(){
 
     companion object{
-        const val B_ARG_FILE_MISSING = "activity.lib.main.file.missing"
         const val B_ARG_URI_LIST = "activity.lib.main.uri.list"
     }
 
 
-    private lateinit var mMenuItem: MenuItem
     private lateinit var mPickerConfig: DocPickerConfig
-
     private var mDocFilterFragment: BottomSheetDialogFragment? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -43,15 +40,10 @@ class ActivityLibMain : ActivityBase(){
         if (intent.extras != null) {
             mPickerConfig = intent.getSerializableExtra(DocPickerConfig.ARG_BUNDLE) as DocPickerConfig
         }
-    }
 
-
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.tb_doc_picker_activity_main, menu)
-        mMenuItem = menu.getItem(0)
         startDocFolderFragment()
-        return true
     }
+
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         return when (item?.itemId) {
@@ -75,7 +67,6 @@ class ActivityLibMain : ActivityBase(){
                 super.onBackPressed()
                 toolbarTitle = "Select Folder"
                 tb_doc_picker_toolbar_txt_count.visibility = View.GONE
-                mMenuItem.isVisible = true
                 updateCounter(0)
 
                 val fragment2 = supportFragmentManager.findFragmentById(R.id.frame_content)
@@ -96,13 +87,10 @@ class ActivityLibMain : ActivityBase(){
         tb_doc_picker_toolbar_txt_count.text = "$counter"
     }
 
-    fun sendBackData(list: ArrayList<Uri>, isFileMissing: Boolean=false) {
+    fun sendBackData(list: ArrayList<Uri>) {
         if (list.isNotEmpty()) {
             val intent = Intent()
             intent.putExtra(B_ARG_URI_LIST, list as Serializable)
-
-            if(isFileMissing)
-                intent.putExtra(B_ARG_FILE_MISSING, true)
             setResult(Activity.RESULT_OK, intent)
         }
         finish()
@@ -112,7 +100,6 @@ class ActivityLibMain : ActivityBase(){
     private fun startDocFolderFragment() {
         toolbarTitle = "Select Folder"
         tb_doc_picker_toolbar_txt_count.visibility = View.GONE
-        mMenuItem.isVisible = false
 
         val bundle = Bundle()
         bundle.putSerializable(DocPickerConfig.ARG_BUNDLE, mPickerConfig)
@@ -128,7 +115,6 @@ class ActivityLibMain : ActivityBase(){
     fun startDocFragment(folderPath: String,pickerConfig: DocPickerConfig) {
         toolbarTitle = "Choose Doc"
         tb_doc_picker_toolbar_txt_count.visibility = View.VISIBLE
-        mMenuItem.isVisible = false
 
         val bundle = Bundle()
         bundle.putSerializable(DocPickerConfig.ARG_BUNDLE, pickerConfig)

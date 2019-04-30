@@ -133,27 +133,6 @@
 
 
 
-    <!--<color name="colorPrimary">@color/md_grey_600</color>-->
-    <!--<color name="colorPrimaryDark">@color/md_grey_800</color>-->
-    <!--<color name="colorPrimaryLight">@color/md_black_1000_25</color>-->
-    <!--<color name="colorAccent">@color/md_grey_700</color>-->
-    <!--<color name="colorAccentDark">@color/md_grey_800</color>-->
-    <!--<color name="colorAccentLight">@color/md_black_1000_25</color>-->
-
-
-
-    <!--Shimmer-->
-    <color name="placeholder_bg">#dddddd</color>
-    <color name="item_name">#0c0c0c</color>
-    <color name="description">#1a1a1a</color>
-    <color name="chef">#777</color>
-    <color name="timestamp">#777</color>
-
-    <color name="black_overlay">#66000000</color>
-
-    <color name="red">#FFD9C7</color>
-
-
     <!-- ||||||||||||||||||||||||||       docs colors        |||||||||||||||||||||||||||||||  -->
 
     <color name="tb_doc_ae">#DE19DE</color>
@@ -186,7 +165,7 @@
     <color name="tb_doc_image_png">#13E2AA</color>
     <color name="tb_doc_image_psd">#19A8DE</color>
     <color name="tb_doc_image_svg">#F52192</color>
-    <color name="tb_doc_image">##21D1F5</color>
+    <color name="tb_doc_image">#21D1F5</color>
 
 
     <!-- video -->

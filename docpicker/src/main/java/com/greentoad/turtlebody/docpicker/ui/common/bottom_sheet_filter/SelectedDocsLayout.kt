@@ -10,6 +10,7 @@ import com.greentoad.turtlebody.docpicker.R
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import com.greentoad.turtlebody.docpicker.core.DocConstants
+import com.greentoad.turtlebody.docpicker.core.DocPickerConfig
 import kotlinx.android.synthetic.main.tb_doc_picker_selected_doc_layout.view.*
 import org.jetbrains.anko.textColor
 
@@ -17,7 +18,7 @@ import org.jetbrains.anko.textColor
 /**
  * Created by WANGSUN on 26-Apr-19.
  */
-class SelectedDocsLayout(private val mParentView: LinearLayout, private val mSelectedFilters: ArrayList<String>) {
+class SelectedDocsLayout(private val mParentView: LinearLayout, private val mSelectedFilters: ArrayList<String>,private  var mPickerConfig: DocPickerConfig) {
 
     private val mContext: Context = mParentView.context
     private var mLayout: View = LayoutInflater.from(mContext).inflate(R.layout.tb_doc_picker_selected_doc_layout,  null)
@@ -58,53 +59,34 @@ class SelectedDocsLayout(private val mParentView: LinearLayout, private val mSel
             view.visibility = View.VISIBLE
             view.text = docType
         }
-        else{
-            mDrawable?.colorFilter = PorterDuffColorFilter(DocConstants.docTypeMapLightColor(mContext)[docType]!!, PorterDuff.Mode.SRC)
-            view.textColor = DocConstants.docTypeMapColor(mContext)[docType]!!
+        else if(docType == DocConstants.DocTypes.AUDIO){
+            mDrawable?.colorFilter = PorterDuffColorFilter(ContextCompat.getColor(mContext,R.color.tb_doc_light_audio), PorterDuff.Mode.SRC)
+            view.textColor = ContextCompat.getColor(mContext,R.color.tb_doc_audio)
             view.visibility = View.VISIBLE
-            view.text = DocConstants.docTypeMaps()[docType]
+            view.text = DocConstants.docTypeMapLabel()[docType]
+
+        }
+        else if(docType == DocConstants.DocTypes.IMAGE){
+            mDrawable?.colorFilter = PorterDuffColorFilter(ContextCompat.getColor(mContext,R.color.tb_doc_light_image), PorterDuff.Mode.SRC)
+            view.textColor = ContextCompat.getColor(mContext,R.color.tb_doc_image)
+            view.visibility = View.VISIBLE
+            view.text = DocConstants.docTypeMapLabel()[docType]
+
+        }
+        else if(docType == DocConstants.DocTypes.VIDEO){
+            mDrawable?.colorFilter = PorterDuffColorFilter(ContextCompat.getColor(mContext,R.color.tb_doc_light_video), PorterDuff.Mode.SRC)
+            view.textColor = ContextCompat.getColor(mContext,R.color.tb_doc_video)
+            view.visibility = View.VISIBLE
+            view.text = DocConstants.docTypeMapLabel()[docType]
+
+        }
+        else{
+            mDrawable?.colorFilter = PorterDuffColorFilter(ContextCompat.getColor(mContext,mPickerConfig.mDocLabelSet.getLabelForExt(DocConstants.docTypeMapLabel()[docType]!!).colorLightRes), PorterDuff.Mode.SRC)
+            view.textColor = ContextCompat.getColor(mContext,mPickerConfig.mDocLabelSet.getLabelForExt(DocConstants.docTypeMapLabel()[docType]!!).colorRes)
+            view.visibility = View.VISIBLE
+            view.text = DocConstants.docTypeMapLabel()[docType]
         }
 
-
-
-//        when(docType){
-//            DocConstants.DocTypes.PDF-> {
-//                mDrawable?.colorFilter = PorterDuffColorFilter(ContextCompat.getColor(mContext,R.color.tb_doc_picker_light_pdf), PorterDuff.Mode.SRC)
-//                view.textColor = ContextCompat.getColor(mContext,R.color.tb_doc_picker_pdf)
-//                view.text = DocConstants.docTypeMaps()[DocConstants.DocTypes.PDF]
-//                view.visibility = View.VISIBLE
-//            }
-//            DocConstants.DocTypes.MS_WORD->{
-//                mDrawable?.colorFilter = PorterDuffColorFilter(ContextCompat.getColor(mContext,R.color.tb_doc_picker_light_doc), PorterDuff.Mode.SRC)
-//                view.textColor = ContextCompat.getColor(mContext,R.color.tb_doc_picker_doc)
-//                view.text = DocConstants.docTypeMaps()[DocConstants.DocTypes.MS_WORD]
-//                view.visibility = View.VISIBLE
-//            }
-//            DocConstants.DocTypes.MS_POWERPOINT ->{
-//                mDrawable?.colorFilter = PorterDuffColorFilter(ContextCompat.getColor(mContext,R.color.tb_doc_picker_light_ppt), PorterDuff.Mode.SRC)
-//                view.textColor = ContextCompat.getColor(mContext,R.color.tb_doc_picker_ppt)
-//                view.text = DocConstants.docTypeMaps()[DocConstants.DocTypes.MS_POWERPOINT]
-//                view.visibility = View.VISIBLE
-//            }
-//            DocConstants.DocTypes.MS_EXCEL ->{
-//                mDrawable?.colorFilter = PorterDuffColorFilter(ContextCompat.getColor(mContext,R.color.tb_doc_picker_light_xls), PorterDuff.Mode.SRC)
-//                view.textColor = ContextCompat.getColor(mContext,R.color.tb_doc_picker_xls)
-//                view.text = DocConstants.docTypeMaps()[DocConstants.DocTypes.MS_EXCEL]
-//                view.visibility = View.VISIBLE
-//            }
-//            DocConstants.DocTypes.TEXT->{
-//                mDrawable?.colorFilter = PorterDuffColorFilter(ContextCompat.getColor(mContext,R.color.tb_doc_picker_light_txt), PorterDuff.Mode.SRC)
-//                view.textColor = ContextCompat.getColor(mContext,R.color.md_black_1000)
-//                view.text = DocConstants.docTypeMaps()[DocConstants.DocTypes.TEXT]
-//                view.visibility = View.VISIBLE
-//            }
-//            else ->{
-//                mDrawable?.colorFilter = PorterDuffColorFilter(ContextCompat.getColor(mContext,R.color.md_grey_300), PorterDuff.Mode.SRC)
-//                view.textColor = ContextCompat.getColor(mContext,R.color.md_black_1000)
-//                view.text = docType
-//                view.visibility = View.VISIBLE
-//            }
-//        }
         view.background=mDrawable
     }
 

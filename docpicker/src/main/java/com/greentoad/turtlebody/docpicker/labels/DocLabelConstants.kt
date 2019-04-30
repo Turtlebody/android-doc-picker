@@ -1,10 +1,7 @@
 package com.greentoad.turtlebody.docpicker.labels
 
-import android.content.Context
 import android.text.TextUtils
-import androidx.core.content.ContextCompat
 import com.greentoad.turtlebody.docpicker.R
-import com.greentoad.turtlebody.docpicker.core.DocConstants
 
 /**
  * Created by niraj on 29-04-2019.
@@ -103,12 +100,14 @@ object DocLabelConstants {
         const val AUDIO = 0xF0
 
         fun getId(ext: String): Int {
-            if (AAC_LIST.contains(ext)) return AAC
-            else if (M4A_LIST.contains(ext)) return M4A
-            else if (MP3_LIST.contains(ext)) return MP3
-            else if (WAV_LIST.contains(ext)) return WAV
-            else if (LIST.contains(ext)) return AUDIO
-            else return -1
+            return when {
+                AAC_LIST.contains(ext) -> AAC
+                M4A_LIST.contains(ext) -> M4A
+                MP3_LIST.contains(ext) -> MP3
+                WAV_LIST.contains(ext) -> WAV
+                LIST.contains(ext) -> AUDIO
+                else -> -1
+            }
         }
 
         fun getExtLabel(pGroupId: Int): String {
@@ -179,14 +178,16 @@ object DocLabelConstants {
         const val IMAGE = 0xF00
 
         fun getId(ext: String): Int {
-            if (AI_LIST.contains(ext)) return AI
-            else if (GIF_LIST.contains(ext)) return GIF
-            else if (JPG_LIST.contains(ext)) return JPG
-            else if (PNG_LIST.contains(ext)) return PNG
-            else if (PSD_LIST.contains(ext)) return PSD
-            else if (SVG_LIST.contains(ext)) return SVG
-            else if (LIST.contains(ext)) return IMAGE
-            else return -1
+            return when {
+                AI_LIST.contains(ext) -> AI
+                GIF_LIST.contains(ext) -> GIF
+                JPG_LIST.contains(ext) -> JPG
+                PNG_LIST.contains(ext) -> PNG
+                PSD_LIST.contains(ext) -> PSD
+                SVG_LIST.contains(ext) -> SVG
+                LIST.contains(ext) -> IMAGE
+                else -> -1
+            }
         }
 
         fun getExtLabel(pGroupId: Int): String {
@@ -251,13 +252,15 @@ object DocLabelConstants {
 
 
         fun getId(ext: String): Int {
-            if (AVI_LIST.contains(ext)) return AVI
-            else if (FLV_LIST.contains(ext)) return FLV
-            else if (GP3_LIST.contains(ext)) return GP3
-            else if (MPG_LIST.contains(ext)) return MPG
-            // else if (MKV_LIST.contains(ext)) return MKV
-            else if (LIST.contains(ext)) return VIDEO
-            else return -1
+            return when {
+                AVI_LIST.contains(ext) -> AVI
+                FLV_LIST.contains(ext) -> FLV
+                GP3_LIST.contains(ext) -> GP3
+                MPG_LIST.contains(ext) -> MPG
+                // else if (MKV_LIST.contains(ext)) return MKV
+                LIST.contains(ext) -> VIDEO
+                else -> -1
+            }
         }
 
         fun getExtLabel(pGroupId: Int): String {
@@ -314,10 +317,6 @@ object DocLabelConstants {
         if (id != -1) {
             return id
         }
-
-
-
-
         return -1
 
     }
@@ -325,8 +324,6 @@ object DocLabelConstants {
     fun getExtLabel(groupId: Int, pExt: String): String {
         var ext = ""
         if (groupId != -1) {
-
-
             when {
                 (groupId and Docs.MASK) > 0 -> Docs.getExtLabel(groupId)
                 (groupId and Audios.MASK) > 0 -> Audios.getExtLabel(groupId)
@@ -347,13 +344,12 @@ object DocLabelConstants {
 
     fun getColorRes(groupId: Int): Int {
         if (groupId != -1) {
-
-
-            when {
+            return when {
                 (groupId and Docs.MASK) > 0 -> Docs.getColorRes(groupId)
                 (groupId and Audios.MASK) > 0 -> Audios.getColorRes(groupId)
                 (groupId and Images.MASK) > 0 -> Images.getColorRes(groupId)
                 (groupId and Videos.MASK) > 0 -> Videos.getColorRes(groupId)
+                else -> R.color.md_grey_600
             }
         }
         return R.color.md_grey_600
@@ -361,16 +357,15 @@ object DocLabelConstants {
 
     fun getColorLightRes(groupId: Int): Int {
         if (groupId != -1) {
-
-
-            when {
+            return when {
                 (groupId and Docs.MASK) > 0 -> Docs.getColorLightRes(groupId)
                 (groupId and Audios.MASK) > 0 -> Audios.getColorLightRes(groupId)
                 (groupId and Images.MASK) > 0 -> Images.getColorLightRes(groupId)
                 (groupId and Videos.MASK) > 0 -> Videos.getColorLightRes(groupId)
+                else ->  R.color.md_grey_50
             }
         }
-        return R.color.md_grey_600
+        return R.color.md_grey_50
     }
 
 

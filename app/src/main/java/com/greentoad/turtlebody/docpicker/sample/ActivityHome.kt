@@ -1,8 +1,10 @@
 package com.greentoad.turtlebody.docpicker.sample
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+import android.net.Uri
 import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
@@ -12,9 +14,12 @@ import com.afollestad.materialdialogs.customview.getCustomView
 import com.greentoad.turtlebody.docpicker.DocPicker
 import com.greentoad.turtlebody.docpicker.core.DocConstants
 import com.greentoad.turtlebody.docpicker.core.DocPickerConfig
+import com.greentoad.turtlebody.docpicker.sample.picker_result.ActivityResults
+import com.greentoad.turtlebody.docpicker.ui.components.ActivityLibMain
 import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
+import java.io.Serializable
 
 class ActivityHome : AppCompatActivity(),AnkoLogger {
 
@@ -63,20 +68,23 @@ class ActivityHome : AppCompatActivity(),AnkoLogger {
 
     @SuppressLint("CheckResult")
     private fun startOnlyDocPicker(isMultiple: Boolean) {
+        val config = DocPickerConfig()
+            .setShowConfirmationDialog(true)
+            .setAllowMultiImages(isMultiple)
+            .setExtArgs(arrayListOf<String>(
+                DocConstants.DocTypes.PDF,
+                DocConstants.DocTypes.MS_WORD,
+                DocConstants.DocTypes.MS_POWERPOINT,
+                DocConstants.DocTypes.MS_EXCEL,
+                DocConstants.DocTypes.TEXT
+            ))
+
         DocPicker.with(this)
-            .setConfig(DocPickerConfig()
-                .setAllowMultiImages(isMultiple)
-                .setExtArgs(arrayListOf<String>(
-                    DocConstants.DocTypes.PDF,
-                    DocConstants.DocTypes.MS_WORD,
-                    DocConstants.DocTypes.MS_POWERPOINT,
-                    DocConstants.DocTypes.MS_EXCEL,
-                    DocConstants.DocTypes.TEXT
-                ))
-            )
+            .setConfig(config)
             .onResult()
             .subscribe({
                 info { "here is the list: $it" }
+                startActivityShowResult(it,config)
             },{
                 info { "error: ${it.printStackTrace()}" }
             })
@@ -84,25 +92,34 @@ class ActivityHome : AppCompatActivity(),AnkoLogger {
 
     @SuppressLint("CheckResult")
     private fun startAllPicker(isMultiple: Boolean) {
+        val config = DocPickerConfig()
+            .setShowConfirmationDialog(true)
+            .setAllowMultiImages(isMultiple)
+            .setExtArgs(arrayListOf<String>(
+                DocConstants.DocTypes.PDF,
+                DocConstants.DocTypes.MS_WORD,
+                DocConstants.DocTypes.MS_POWERPOINT,
+                DocConstants.DocTypes.MS_EXCEL,
+                DocConstants.DocTypes.TEXT,
+                DocConstants.DocTypes.AUDIO,
+                DocConstants.DocTypes.IMAGE,
+                DocConstants.DocTypes.VIDEO
+            ))
         DocPicker.with(this)
-            .setConfig(DocPickerConfig()
-                .setAllowMultiImages(isMultiple)
-                .setExtArgs(arrayListOf<String>(
-                    DocConstants.DocTypes.PDF,
-                    DocConstants.DocTypes.MS_WORD,
-                    DocConstants.DocTypes.MS_POWERPOINT,
-                    DocConstants.DocTypes.MS_EXCEL,
-                    DocConstants.DocTypes.TEXT,
-                    DocConstants.DocTypes.AUDIO,
-                    DocConstants.DocTypes.IMAGE,
-                    DocConstants.DocTypes.VIDEO
-                ))
-            )
+            .setConfig(config)
             .onResult()
             .subscribe({
                 info { "here is the list: $it" }
+                startActivityShowResult(it,config)
             },{
                 info { "error: ${it.printStackTrace()}" }
             })
+    }
+
+    private fun startActivityShowResult(it: ArrayList<Uri>?, config: DocPickerConfig) {
+        val intent = Intent(this, ActivityResults::class.java)
+        intent.putExtra(DocPickerConfig.ARG_BUNDLE, config)
+        intent.putExtra(ActivityLibMain.B_ARG_URI_LIST,it as Serializable)
+        startActivity(intent)
     }
 }

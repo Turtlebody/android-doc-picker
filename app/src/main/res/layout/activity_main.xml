@@ -30,17 +30,17 @@
 
                 <TextView
                     style="@style/TextNormal"
+                    android:layout_marginTop="@dimen/offset_8"
                     android:text="Doc Picker"
-                    android:textSize="@dimen/font_24"
                     android:textColor="@color/md_black_1000"
-                    android:layout_marginTop="@dimen/offset_8"/>
+                    android:textSize="@dimen/font_24" />
 
                 <LinearLayout
-                    android:layout_marginTop="@dimen/offset_30"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center_vertical">
+                    android:layout_marginTop="@dimen/offset_30"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
 
                     <FrameLayout
                         android:layout_width="@dimen/offset_16"
@@ -51,7 +51,7 @@
                             android:layout_width="@dimen/length_4"
                             android:layout_height="@dimen/length_4"
                             android:layout_gravity="center"
-                            android:background="@drawable/dr_circle_black"/>
+                            android:background="@drawable/dr_circle_black" />
 
                     </FrameLayout>
 
@@ -59,20 +59,20 @@
                         style="@style/TextNormal"
                         android:layout_width="0dp"
                         android:layout_weight="1"
+                        android:padding="@dimen/offset_8"
                         android:text="Only Documents"
-                        android:textColor="@color/md_grey_500"
-                        android:padding="@dimen/offset_8"/>
+                        android:textColor="@color/md_grey_500" />
 
                 </LinearLayout>
 
                 <com.google.android.flexbox.FlexboxLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/offset_16"
                     android:layout_marginStart="@dimen/offset_16"
-                    app:flexWrap="wrap"
+                    android:layout_marginLeft="@dimen/offset_16"
+                    app:alignContent="stretch"
                     app:alignItems="stretch"
-                    app:alignContent="stretch" >
+                    app:flexWrap="wrap">
 
                     <TextView
                         style="@style/FlexText"
@@ -95,26 +95,26 @@
                         android:text="Text" />
                 </com.google.android.flexbox.FlexboxLayout>
 
-
-                <Button
+                <TextView
                     android:id="@+id/activity_main_doc_picker"
-                    android:layout_marginTop="@dimen/offset_16"
-                    android:layout_marginLeft="@dimen/offset_24"
-                    android:layout_marginStart="@dimen/offset_24"
                     style="@style/ButtonNormal"
-                    android:text="Choose"
+                    android:layout_marginStart="@dimen/offset_24"
+                    android:layout_marginLeft="@dimen/offset_24"
+                    android:layout_marginTop="@dimen/offset_16"
                     android:background="@drawable/dr_rect_round_accent"
-                    android:textColor="@color/md_white_1000"
                     android:paddingStart="@dimen/offset_48"
                     android:paddingEnd="@dimen/offset_48"
-                    android:textAppearance="@style/App.TextAppearance.h4.Title"/>
+                    android:paddingTop="@dimen/offset_10"
+                    android:paddingBottom="@dimen/offset_10"
+                    android:text="Choose"
+                    android:textColor="@color/md_white_1000" />
 
                 <LinearLayout
-                    android:layout_marginTop="@dimen/offset_30"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center_vertical">
+                    android:layout_marginTop="@dimen/offset_30"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
 
                     <FrameLayout
                         android:layout_width="@dimen/offset_16"
@@ -125,7 +125,7 @@
                             android:layout_width="@dimen/length_4"
                             android:layout_height="@dimen/length_4"
                             android:layout_gravity="center"
-                            android:background="@drawable/dr_circle_black"/>
+                            android:background="@drawable/dr_circle_black" />
 
                     </FrameLayout>
 
@@ -133,20 +133,20 @@
                         style="@style/TextNormal"
                         android:layout_width="0dp"
                         android:layout_weight="1"
+                        android:padding="@dimen/offset_8"
                         android:text="Including Media"
-                        android:textColor="@color/md_grey_500"
-                        android:padding="@dimen/offset_8"/>
+                        android:textColor="@color/md_grey_500" />
 
                 </LinearLayout>
 
                 <com.google.android.flexbox.FlexboxLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/offset_16"
                     android:layout_marginStart="@dimen/offset_16"
-                    app:flexWrap="wrap"
+                    android:layout_marginLeft="@dimen/offset_16"
+                    app:alignContent="stretch"
                     app:alignItems="stretch"
-                    app:alignContent="stretch" >
+                    app:flexWrap="wrap">
 
                     <TextView
                         style="@style/FlexText"
@@ -166,18 +166,19 @@
                 </com.google.android.flexbox.FlexboxLayout>
 
 
-                <Button
+                <TextView
                     android:id="@+id/activity_main_all_picker"
-                    android:layout_marginTop="@dimen/offset_16"
-                    android:layout_marginLeft="@dimen/offset_24"
-                    android:layout_marginStart="@dimen/offset_24"
                     style="@style/ButtonNormal"
-                    android:text="Choose"
+                    android:layout_marginStart="@dimen/offset_24"
+                    android:layout_marginLeft="@dimen/offset_24"
+                    android:layout_marginTop="@dimen/offset_16"
                     android:background="@drawable/dr_rect_round_accent"
-                    android:textColor="@color/md_white_1000"
                     android:paddingStart="@dimen/offset_48"
                     android:paddingEnd="@dimen/offset_48"
-                    android:textAppearance="@style/App.TextAppearance.h4.Title"/>
+                    android:paddingTop="@dimen/offset_10"
+                    android:paddingBottom="@dimen/offset_10"
+                    android:text="Choose"
+                    android:textColor="@color/md_white_1000"/>
             </LinearLayout>
 
         </androidx.core.widget.NestedScrollView>

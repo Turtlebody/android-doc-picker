@@ -72,7 +72,7 @@ class DocFragment : FragmentBase(), DocAdapter.OnDocClickListener {
         ////live data : While loading recyclerView if user back-press then the app will not crash
         mLiveData.observe(this, Observer {
             mDocAdapter.setData(mDocModelList)
-            SelectedDocsLayout(tb_doc_picker_doc_fragment_ll, mPickerConfig.mUserSelectedDocTypes)
+            SelectedDocsLayout(tb_doc_picker_doc_fragment_ll, mPickerConfig.mUserSelectedDocTypes,mPickerConfig)
                 .updateSelectedViews()
             tb_doc_picker_frame_progress.visibility = View.GONE
         })
@@ -84,7 +84,7 @@ class DocFragment : FragmentBase(), DocAdapter.OnDocClickListener {
 
     private fun initButton() {
         if (!mPickerConfig.mAllowMultiImages) {
-            ll_bottom_layout.visibility = View.GONE
+            tb_doc_picker_doc_fragment_btn_done.visibility = View.GONE
         }
         tb_doc_picker_doc_fragment_btn_done.setOnClickListener {
             getAllUris()
@@ -114,7 +114,7 @@ class DocFragment : FragmentBase(), DocAdapter.OnDocClickListener {
 
     private fun initAdapter() {
         mDocAdapter.setListener(this)
-        mDocAdapter.mShowCheckBox = mPickerConfig.mAllowMultiImages
+        mDocAdapter.setPickerConfig(mPickerConfig)
 
         tb_doc_picker_doc_fragment_recycler_view.layoutManager = LinearLayoutManager(context)
         tb_doc_picker_doc_fragment_recycler_view.adapter = mDocAdapter
@@ -191,7 +191,6 @@ class DocFragment : FragmentBase(), DocAdapter.OnDocClickListener {
                 }
                 override fun onSuccess(t: Boolean) {
                     mLiveData.value = mDocModelList
-
                 }
                 override fun onError(@NonNull e: Throwable) {
                     tb_doc_picker_frame_progress.visibility = View.GONE

@@ -43,7 +43,6 @@ class DocPicker {
         private lateinit var mEmitter: ObservableEmitter<ArrayList<Uri>>
         private var mActivity: WeakReference<FragmentActivity> = WeakReference(activity)
         private var mConfigDoc: DocPickerConfig = DocPickerConfig()
-        private var mOnMediaListener: OnMediaListener? = null
 
 
         override fun onData(data: ArrayList<Uri>) {
@@ -56,14 +55,6 @@ class DocPicker {
             mEmitter.onComplete()
         }
 
-        override fun onMissingWarning() {
-            mActivity.get()?.let {
-                it.runOnUiThread {
-                    mOnMediaListener?.onMissingFileWarning()
-                }
-            }
-        }
-
 
         /**
          * set configuration
@@ -71,15 +62,6 @@ class DocPicker {
          */
         fun setConfig(configDoc: DocPickerConfig): DocPickerImpl{
             mConfigDoc = configDoc
-            return this
-        }
-
-        /**
-         * Register a callback to be invoked when missing files are filtered out.
-         * @param listener The callback that will run
-         */
-        fun setFileMissingListener(listener: OnMediaListener): DocPickerImpl{
-            mOnMediaListener = listener
             return this
         }
 
@@ -130,10 +112,6 @@ class DocPicker {
             fragment.setListener(this)
             mActivity.get()?.supportFragmentManager?.beginTransaction()?.add(fragment, PickerFragment::class.java.simpleName)?.commit()
         }
-
-        interface OnMediaListener {
-            fun onMissingFileWarning()
-        }
     }
 
 
@@ -156,11 +134,6 @@ class DocPicker {
                 if (resultCode == Activity.RESULT_OK) {
                     val list = data?.extras?.getSerializable(ActivityLibMain.B_ARG_URI_LIST) as ArrayList<Uri>
                     mListener?.onData(list)
-                    data.extras?.getBoolean(ActivityLibMain.B_ARG_FILE_MISSING,false)?.let {
-                        if(it){
-                            mListener?.onMissingWarning()
-                        }
-                    }
                 }
                 else
                     mListener?.onCancel("Cancelled")
@@ -177,7 +150,6 @@ class DocPicker {
         interface OnPickerListener {
             fun onData(data: ArrayList<Uri>)
             fun onCancel(message: String)
-            fun onMissingWarning()
         }
     }
 }

@@ -39,7 +39,7 @@ class DocFolderFragment : FragmentBase() {
             return fragment
         }
 
-        var mSelectedDocTypes: ArrayList<String> = arrayListOf()
+        var sSelectedDocTypes: ArrayList<String> = arrayListOf()
     }
 
     private var mDocFolderAdapter: DocFolderAdapter = DocFolderAdapter()
@@ -62,9 +62,8 @@ class DocFolderFragment : FragmentBase() {
         //live data : While loading if user back-press then the app will not crash
         mDocFolderList.observe(this, Observer {
             mDocFolderAdapter.setData(it)
-            mSelectedDocTypes = mPickerConfig.mUserSelectedDocTypes
-            SelectedDocsLayout(tb_doc_picker_doc_folder_fragment_ll, mSelectedDocTypes)
-                .updateSelectedViews()
+            sSelectedDocTypes = mPickerConfig.mUserSelectedDocTypes
+            SelectedDocsLayout(tb_doc_picker_doc_folder_fragment_ll, sSelectedDocTypes,mPickerConfig).updateSelectedViews()
             tb_doc_picker_frame_progress.visibility = View.GONE
         })
 
@@ -79,10 +78,10 @@ class DocFolderFragment : FragmentBase() {
     }
 
     fun onRefresh() {
-        info { "content: $mSelectedDocTypes" }
+        info { "content: $sSelectedDocTypes" }
         info { "content2: ${mPickerConfig.mUserSelectedDocTypes}" }
-        if (!mSelectedDocTypes.containsAll(mPickerConfig.mUserSelectedDocTypes) || !mPickerConfig.mUserSelectedDocTypes.containsAll(
-                mSelectedDocTypes
+        if (!sSelectedDocTypes.containsAll(mPickerConfig.mUserSelectedDocTypes) || !mPickerConfig.mUserSelectedDocTypes.containsAll(
+                sSelectedDocTypes
             )
         ) {
             fetchDocFolders()

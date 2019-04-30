@@ -13,13 +13,15 @@ import kotlinx.android.synthetic.main.tb_doc_picker_fragment_doc_filter.*
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
 
+
+
 class DocFilterFragment : BottomSheetDialogFragment(), AnkoLogger, DocFilterAdapter.OnDocFilterClickListener {
 
     companion object {
         @JvmStatic
         fun newInstance(key: Int, b: Bundle?): BottomSheetDialogFragment {
-            var bf: Bundle = b ?: Bundle()
-            bf.putInt("fragment.key", key);
+            val bf: Bundle = b ?: Bundle()
+            bf.putInt("fragment.key", key)
             val fragment = DocFilterFragment()
             fragment.arguments = bf
             return fragment
@@ -101,7 +103,7 @@ class DocFilterFragment : BottomSheetDialogFragment(), AnkoLogger, DocFilterAdap
 
             //update ui
             mAdapter.updateIsSelected(mDocFilterList[selectedIndex])
-            SelectedDocsLayout(tb_doc_picker_doc_filter_fragment_ll,selectedList)
+            SelectedDocsLayout(tb_doc_picker_doc_filter_fragment_ll,selectedList,mPickerConfig)
                 .updateSelectedViews()
         }
     }
@@ -112,6 +114,7 @@ class DocFilterFragment : BottomSheetDialogFragment(), AnkoLogger, DocFilterAdap
 
     private fun initAdapter() {
         mAdapter.setListener(this)
+        mAdapter.setPickerConfig(mPickerConfig)
         tb_doc_picker_doc_filter_fragment_recycler_view.layoutManager = LinearLayoutManager(context)
         tb_doc_picker_doc_filter_fragment_recycler_view.adapter = mAdapter
 
@@ -127,7 +130,7 @@ class DocFilterFragment : BottomSheetDialogFragment(), AnkoLogger, DocFilterAdap
             }
         }
         if(selectedList.isNotEmpty())
-            SelectedDocsLayout(tb_doc_picker_doc_filter_fragment_ll,selectedList)
+            SelectedDocsLayout(tb_doc_picker_doc_filter_fragment_ll,selectedList,mPickerConfig)
                 .updateSelectedViews()
     }
 

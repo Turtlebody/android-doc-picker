@@ -1,5 +1,6 @@
 package com.greentoad.turtlebody.docpicker.core
 
+import com.greentoad.turtlebody.docpicker.labels.DocLabelSet
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
 import java.io.Serializable
@@ -11,6 +12,7 @@ class DocPickerConfig: AnkoLogger, Serializable {
     var mShowConfirmationDialog: Boolean = false
     var mAllowMultiImages: Boolean = false
     var mExtArgs: Array<String?> = arrayOf()
+    var mDocLabelSet = DocLabelSet()
 
     var mDocTypes: ArrayList<String> = arrayListOf()
     var mUserSelectedDocTypes: ArrayList<String> = arrayListOf()
@@ -80,6 +82,7 @@ class DocPickerConfig: AnkoLogger, Serializable {
         mDocTypes = value
         mUserSelectedDocTypes = value
 
+
         var size = 0
         for(i in 0 until value.size){
             size += DocConstants.getExt(value[i]).size
@@ -92,6 +95,7 @@ class DocPickerConfig: AnkoLogger, Serializable {
         for(i in value){
             for(j in DocConstants.getExt(i)){
                 mExtArgs[k] = "%.$j"
+                mDocLabelSet.attachExtensions(j)
                 info { "args: ${mExtArgs[k]}" }
                 k++
             }

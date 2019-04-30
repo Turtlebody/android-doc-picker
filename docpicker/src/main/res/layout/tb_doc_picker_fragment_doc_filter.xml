@@ -10,8 +10,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:layout_marginBottom="@dimen/length_56">
+        android:orientation="vertical">
 
         <FrameLayout
             android:layout_width="match_parent"
@@ -56,55 +55,46 @@
             android:layout_marginBottom="@dimen/offset_8">
         </LinearLayout>
 
-        <TextView
-            style="@style/TextNormal"
-            android:background="@drawable/dr_layer_2_grey_b1_dp"
-            android:text="Available Document Types"
-            android:textStyle="bold"
-            android:textColor="@color/md_black_1000"
-            android:padding="@dimen/offset_12"
-            android:textSize="@dimen/font_14"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:background="@drawable/dr_layer_2_grey_b1_dp">
+
+            <TextView
+                style="@style/TextNormal"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text="Available Document Types"
+                android:textStyle="bold"
+                android:textColor="@color/md_black_1000"
+                android:padding="@dimen/offset_12"
+                android:textSize="@dimen/font_14"/>
+
+            <TextView
+                android:id="@+id/tb_doc_picker_doc_filter_fragment_btn_done"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/dr_rect_round_accent"
+                android:text="Update"
+                android:paddingTop="@dimen/offset_6"
+                android:paddingBottom="@dimen/offset_6"
+                android:paddingStart="@dimen/offset_10"
+                android:paddingEnd="@dimen/offset_10"
+                android:layout_margin="@dimen/offset_8"
+                android:textAppearance="@style/App.TextAppearance.h4.Title"
+                android:textColor="@color/md_white_1000"
+                android:textSize="@dimen/font_14"/>
+        </LinearLayout>
+
+
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/tb_doc_picker_doc_filter_fragment_recycler_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             tools:listitem="@layout/tb_doc_picker_item_doc" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_gravity="bottom"
-        android:id="@+id/ll_bottom_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/md_black_1000_15" />
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/length_56"
-            android:background="@color/tb_doc_picker_primary"
-            android:clickable="true"
-            android:focusable="true"
-            android:padding="@dimen/offset_6">
-            <Button
-                android:id="@+id/tb_doc_picker_doc_filter_fragment_btn_done"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:background="@drawable/dr_rect_round_accent"
-                android:text="Update"
-                android:textAppearance="@style/App.TextAppearance.h4.Title"
-                android:textColor="@color/md_white_1000"
-                android:textSize="@dimen/font_14"
-                android:layout_marginBottom="@dimen/offset_4"/>
-        </RelativeLayout>
     </LinearLayout>
 
 </FrameLayout>
