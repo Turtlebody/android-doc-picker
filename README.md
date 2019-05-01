@@ -1,4 +1,5 @@
 
+![API](https://img.shields.io/badge/API-16%2B-34bf49.svg)
 [ ![Download](https://api.bintray.com/packages/greentoad/android-doc-picker/com.greentoad.turtlebody.docpicker/images/download.svg?version=1.0.0) ](https://bintray.com/greentoad/android-doc-picker/com.greentoad.turtlebody.docpicker/1.0.0/link)
 
 
