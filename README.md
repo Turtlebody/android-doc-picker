@@ -1,5 +1,6 @@
 
 ![API](https://img.shields.io/badge/API-16%2B-34bf49.svg)
+[ ![Download](https://api.bintray.com/packages/greentoad/android-doc-picker/com.greentoad.turtlebody.docpicker/images/download.svg?version=1.0.0) ](https://bintray.com/greentoad/android-doc-picker/com.greentoad.turtlebody.docpicker/1.0.0/link)
 
 
 ### Demo:
@@ -21,7 +22,7 @@ Step 1: Add the dependency
 dependencies {
     ...
     /*Doc picker */
-    implementation 'com.greentoad.turtlebody:doc-picker:1.0.0'
+    implementation 'com.greentoad.turtlebody.docpicker:doc-picker:1.0.0'
 
     /*for rxjava support*/
     implementation 'io.reactivex.rxjava2:rxjava:2.2.5'
