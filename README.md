@@ -1,6 +1,6 @@
 
 ![API](https://img.shields.io/badge/API-16%2B-34bf49.svg)
-[ ![Download](https://api.bintray.com/packages/greentoad/android-doc-picker/com.greentoad.turtlebody.docpicker/images/download.svg?version=1.0.0) ](https://bintray.com/greentoad/android-doc-picker/com.greentoad.turtlebody.docpicker/1.0.0/link)
+[ ![Download](https://api.bintray.com/packages/greentoad/android-doc-picker/com.greentoad.turtlebody.docpicker/images/download.svg?version=1.0.1) ](https://bintray.com/greentoad/android-doc-picker/com.greentoad.turtlebody.docpicker/1.0.1/link)
 
 
 ### Demo:
@@ -22,7 +22,7 @@ Step 1: Add the dependency
 dependencies {
     ...
     /*Doc picker */
-    implementation 'com.greentoad.turtlebody:doc-picker:1.0.0'
+    implementation 'com.greentoad.turtlebody:doc-picker:1.0.1'
 
     /*for rxjava support*/
     implementation 'io.reactivex.rxjava2:rxjava:2.2.5'
@@ -36,10 +36,10 @@ Step 1: Declare and Initialize MediaPicker.
 #### Java
 ```java
 ArrayList<String> docs = new ArrayList<>();
-docs.add(DocConstants.DocTypes.PDF);
-docs.add(DocConstants.DocTypes.MS_POWERPOINT);
-docs.add(DocConstants.DocTypes.MS_EXCEL);
-docs.add(DocConstants.DocTypes.TEXT);
+docs.add(DocPicker.DocTypes.PDF);
+docs.add(DocPicker.DocTypes.MS_POWERPOINT);
+docs.add(DocPicker.DocTypes.MS_EXCEL);
+docs.add(DocPicker.DocTypes.TEXT);
 
 
 DocPickerConfig pickerConfig = new DocPickerConfig()
@@ -70,11 +70,11 @@ DocPicker.with(this)
 #### Kotlin
 ```kotlin
 val docs = arrayListOf<String>(
-    DocConstants.DocTypes.PDF,
-    DocConstants.DocTypes.MS_WORD,
-    DocConstants.DocTypes.MS_POWERPOINT,
-    DocConstants.DocTypes.MS_EXCEL,
-    DocConstants.DocTypes.TEXT)
+    DocPicker.DocTypes.PDF,
+    DocPicker.DocTypes.MS_WORD,
+    DocPicker.DocTypes.MS_POWERPOINT,
+    DocPicker.DocTypes.MS_EXCEL,
+    DocPicker.DocTypes.TEXT)
 
 val pickerConfig = DocPickerConfig()
     .setShowConfirmationDialog(true)
@@ -103,10 +103,10 @@ eg.
 ```java
 //Pick single file with confirmation dialog and set extentions arguments
 ArrayList<String> docs = new ArrayList<String>();
-docs.add(DocConstants.DocTypes.PDF);
-docs.add(DocConstants.DocTypes.MS_POWERPOINT);
-docs.add(DocConstants.DocTypes.MS_EXCEL);
-docs.add(DocConstants.DocTypes.TEXT);
+docs.add(DocPicker.DocTypes.PDF);
+docs.add(DocPicker.DocTypes.MS_POWERPOINT);
+docs.add(DocPicker.DocTypes.MS_EXCEL);
+docs.add(DocPicker.DocTypes.TEXT);
 
 
 DocPickerConfig pickerConfig = new DocPickerConfig()
@@ -155,8 +155,8 @@ Glide.with(context)
 
 ### Developers
 
-*  [API Documentation]()
-*  [Developer Setup & Usage]()
+*  [API Documentation](https://github.com/Turtlebody/android-doc-picker/wiki/API-Documentation)
+*  [Developer Setup & Usage](https://github.com/Turtlebody/android-doc-picker/wiki/Developer-Setup)
 
 ---
 

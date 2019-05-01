@@ -1,6 +1,8 @@
 package com.greentoad.turtlebody.docpicker.ui.components.file
 
 import android.content.Context
+import android.graphics.PorterDuff
+import android.graphics.PorterDuffColorFilter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,12 +10,10 @@ import android.webkit.MimeTypeMap
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.greentoad.turtlebody.docpicker.R
-import kotlinx.android.synthetic.main.tb_doc_picker_item_doc.view.*
-import org.jetbrains.anko.AnkoLogger
-import android.graphics.PorterDuff
-import android.graphics.PorterDuffColorFilter
 import com.greentoad.turtlebody.docpicker.core.DocPickerConfig
 import com.greentoad.turtlebody.docpicker.labels.DocLabelSet
+import kotlinx.android.synthetic.main.tb_doc_picker_item_doc.view.*
+import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
 
 

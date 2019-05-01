@@ -9,7 +9,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
-import com.greentoad.turtlebody.docpicker.core.Constants
+import com.greentoad.turtlebody.docpicker.core.DocConstants
 import com.greentoad.turtlebody.docpicker.core.DocPickerConfig
 import com.greentoad.turtlebody.docpicker.ui.components.ActivityLibMain
 import com.karumi.dexter.Dexter
@@ -37,6 +37,18 @@ class DocPicker {
         fun with(activity: FragmentActivity): DocPickerImpl {
             return DocPickerImpl(activity)
         }
+    }
+
+    object DocTypes{
+        const val PDF = "pdf"
+        const val MS_WORD = "word"
+        const val MS_EXCEL = "excel"
+        const val MS_POWERPOINT = "powerpoint"
+        const val TEXT = "text"
+
+        const val IMAGE = "image"
+        const val AUDIO = "audio"
+        const val VIDEO = "video"
     }
 
     class DocPickerImpl(activity: FragmentActivity) : PickerFragment.OnPickerListener, AnkoLogger {
@@ -126,11 +138,11 @@ class DocPicker {
 
             val intent = Intent(context, ActivityLibMain::class.java)
             intent.putExtra(DocPickerConfig.ARG_BUNDLE, config)
-            startActivityForResult(intent, Constants.Intent.ACTIVITY_LIB_MAIN)
+            startActivityForResult(intent, DocConstants.Intent.ACTIVITY_LIB_MAIN)
         }
 
         override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-            if (requestCode == Constants.Intent.ACTIVITY_LIB_MAIN) {
+            if (requestCode == DocConstants.Intent.ACTIVITY_LIB_MAIN) {
                 if (resultCode == Activity.RESULT_OK) {
                     val list = data?.extras?.getSerializable(ActivityLibMain.B_ARG_URI_LIST) as ArrayList<Uri>
                     mListener?.onData(list)

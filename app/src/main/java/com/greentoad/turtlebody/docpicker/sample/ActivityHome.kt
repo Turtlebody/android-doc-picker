@@ -12,7 +12,6 @@ import com.afollestad.materialdialogs.MaterialDialog
 import com.afollestad.materialdialogs.customview.customView
 import com.afollestad.materialdialogs.customview.getCustomView
 import com.greentoad.turtlebody.docpicker.DocPicker
-import com.greentoad.turtlebody.docpicker.core.DocConstants
 import com.greentoad.turtlebody.docpicker.core.DocPickerConfig
 import com.greentoad.turtlebody.docpicker.sample.picker_result.ActivityResults
 import com.greentoad.turtlebody.docpicker.ui.components.ActivityLibMain
@@ -72,11 +71,11 @@ class ActivityHome : AppCompatActivity(),AnkoLogger {
             .setShowConfirmationDialog(true)
             .setAllowMultiSelection(isMultiple)
             .setExtArgs(arrayListOf<String>(
-                DocConstants.DocTypes.PDF,
-                DocConstants.DocTypes.MS_WORD,
-                DocConstants.DocTypes.MS_POWERPOINT,
-                DocConstants.DocTypes.MS_EXCEL,
-                DocConstants.DocTypes.TEXT
+                DocPicker.DocTypes.PDF,
+                DocPicker.DocTypes.MS_WORD,
+                DocPicker.DocTypes.MS_POWERPOINT,
+                DocPicker.DocTypes.MS_EXCEL,
+                DocPicker.DocTypes.TEXT
             ))
 
         DocPicker.with(this)
@@ -94,14 +93,14 @@ class ActivityHome : AppCompatActivity(),AnkoLogger {
     private fun startAllPicker(isMultiple: Boolean) {
 
         val docs = arrayListOf<String>(
-            DocConstants.DocTypes.PDF,
-            DocConstants.DocTypes.MS_WORD,
-            DocConstants.DocTypes.MS_POWERPOINT,
-            DocConstants.DocTypes.MS_EXCEL,
-            DocConstants.DocTypes.TEXT,
-            DocConstants.DocTypes.AUDIO,
-            DocConstants.DocTypes.IMAGE,
-            DocConstants.DocTypes.VIDEO)
+            DocPicker.DocTypes.PDF,
+            DocPicker.DocTypes.MS_WORD,
+            DocPicker.DocTypes.MS_POWERPOINT,
+            DocPicker.DocTypes.MS_EXCEL,
+            DocPicker.DocTypes.TEXT,
+            DocPicker.DocTypes.AUDIO,
+            DocPicker.DocTypes.IMAGE,
+            DocPicker.DocTypes.VIDEO)
 
         val config = DocPickerConfig()
             .setShowConfirmationDialog(true)

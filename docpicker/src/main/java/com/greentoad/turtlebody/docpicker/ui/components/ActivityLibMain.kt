@@ -4,12 +4,11 @@ import android.app.Activity
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.greentoad.turtlebody.docpicker.R
-import com.greentoad.turtlebody.docpicker.core.Constants
+import com.greentoad.turtlebody.docpicker.core.DocConstants
 import com.greentoad.turtlebody.docpicker.core.DocPickerConfig
 import com.greentoad.turtlebody.docpicker.ui.base.ActivityBase
 import com.greentoad.turtlebody.docpicker.ui.common.bottom_sheet_filter.DocFilterFragment
@@ -104,7 +103,7 @@ class ActivityLibMain : ActivityBase(){
         val bundle = Bundle()
         bundle.putSerializable(DocPickerConfig.ARG_BUNDLE, mPickerConfig)
 
-        val fragment = DocFolderFragment.newInstance(Constants.Fragment.DOC_FOLDER, bundle)
+        val fragment = DocFolderFragment.newInstance(DocConstants.Fragment.DOC_FOLDER, bundle)
         val ft = supportFragmentManager.beginTransaction()
         ft.add(R.id.frame_content, fragment, DocFolderFragment::class.java.simpleName)
             .addToBackStack(null)
@@ -120,7 +119,7 @@ class ActivityLibMain : ActivityBase(){
         bundle.putSerializable(DocPickerConfig.ARG_BUNDLE, pickerConfig)
         bundle.putString(DocFragment.B_ARG_FOLDER_PATH, folderPath)
 
-        val fragment = DocFragment.newInstance(Constants.Fragment.DOC_LIST, bundle)
+        val fragment = DocFragment.newInstance(DocConstants.Fragment.DOC_LIST, bundle)
         val ft = supportFragmentManager.beginTransaction()
         ft.add(R.id.frame_content, fragment, DocFragment::class.java.simpleName)
             .addToBackStack(null)
@@ -133,7 +132,7 @@ class ActivityLibMain : ActivityBase(){
         bundle.putSerializable(DocPickerConfig.ARG_BUNDLE, mPickerConfig)
 
         info { "fragment: create" }
-        mDocFilterFragment = DocFilterFragment.newInstance(Constants.Fragment.DOC_FILTER, bundle)
+        mDocFilterFragment = DocFilterFragment.newInstance(DocConstants.Fragment.DOC_FILTER, bundle)
         (mDocFilterFragment as DocFilterFragment).setListener(object : DocFilterFragment.OnFilterDoneListener{
             override fun onFilterDone() {
                 val fragment = supportFragmentManager.findFragmentById(R.id.frame_content)

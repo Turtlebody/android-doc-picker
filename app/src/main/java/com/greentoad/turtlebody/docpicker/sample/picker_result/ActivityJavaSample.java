@@ -1,10 +1,9 @@
 package com.greentoad.turtlebody.docpicker.sample.picker_result;
 
 import android.net.Uri;
-import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import androidx.appcompat.app.AppCompatActivity;
 import com.greentoad.turtlebody.docpicker.DocPicker;
-import com.greentoad.turtlebody.docpicker.core.DocConstants;
 import com.greentoad.turtlebody.docpicker.core.DocPickerConfig;
 import com.greentoad.turtlebody.docpicker.sample.R;
 import io.reactivex.Observer;
@@ -20,10 +19,10 @@ public class ActivityJavaSample extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         ArrayList<String> docs = new ArrayList<String>();
-        docs.add(DocConstants.DocTypes.PDF);
-        docs.add(DocConstants.DocTypes.MS_POWERPOINT);
-        docs.add(DocConstants.DocTypes.MS_EXCEL);
-        docs.add(DocConstants.DocTypes.TEXT);
+        docs.add(DocPicker.DocTypes.PDF);
+        docs.add(DocPicker.DocTypes.MS_POWERPOINT);
+        docs.add(DocPicker.DocTypes.MS_EXCEL);
+        docs.add(DocPicker.DocTypes.TEXT);
 
 
         DocPickerConfig pickerConfig = new DocPickerConfig()

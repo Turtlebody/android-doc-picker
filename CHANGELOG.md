@@ -3,6 +3,17 @@
 
 ### Bug Fixes
 
+### Features
+
+### Chnages
+* DocTypes has been moved under DocPicker file. 
+
+
+# [1.0.0](2019-05-1)
+
+
+### Bug Fixes
+
 * **core:** crashes on DocPicker configuration changes
 
 

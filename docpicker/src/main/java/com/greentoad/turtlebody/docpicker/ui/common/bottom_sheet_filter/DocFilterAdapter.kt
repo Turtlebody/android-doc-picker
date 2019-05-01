@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.greentoad.turtlebody.docpicker.DocPicker
 import com.greentoad.turtlebody.docpicker.R
 import com.greentoad.turtlebody.docpicker.core.DocConstants
 import com.greentoad.turtlebody.docpicker.core.DocPickerConfig
@@ -81,15 +82,15 @@ class DocFilterAdapter: RecyclerView.Adapter<DocFilterAdapter.DocVewHolder>(), A
 
 
             when(docType){
-                DocConstants.DocTypes.IMAGE->{
+                DocPicker.DocTypes.IMAGE->{
                     mDrawable?.colorFilter = PorterDuffColorFilter(ContextCompat.getColor(mContext,R.color.tb_doc_image), PorterDuff.Mode.SRC)
                     itemView.tb_doc_picker_item_doc_filter_file_ext.text = DocConstants.docTypeMapLabel()[docType]
                 }
-                DocConstants.DocTypes.AUDIO->{
+                DocPicker.DocTypes.AUDIO->{
                     mDrawable?.colorFilter = PorterDuffColorFilter(ContextCompat.getColor(mContext,R.color.tb_doc_audio), PorterDuff.Mode.SRC)
                     itemView.tb_doc_picker_item_doc_filter_file_ext.text = DocConstants.docTypeMapLabel()[docType]
                 }
-                DocConstants.DocTypes.VIDEO->{
+                DocPicker.DocTypes.VIDEO->{
                     mDrawable?.colorFilter = PorterDuffColorFilter(ContextCompat.getColor(mContext,R.color.tb_doc_video), PorterDuff.Mode.SRC)
                     itemView.tb_doc_picker_item_doc_filter_file_ext.text = DocConstants.docTypeMapLabel()[docType]
 

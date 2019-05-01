@@ -6,9 +6,10 @@ import android.graphics.PorterDuffColorFilter
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.LinearLayout
-import com.greentoad.turtlebody.docpicker.R
 import android.widget.TextView
 import androidx.core.content.ContextCompat
+import com.greentoad.turtlebody.docpicker.DocPicker
+import com.greentoad.turtlebody.docpicker.R
 import com.greentoad.turtlebody.docpicker.core.DocConstants
 import com.greentoad.turtlebody.docpicker.core.DocPickerConfig
 import kotlinx.android.synthetic.main.tb_doc_picker_selected_doc_layout.view.*
@@ -59,21 +60,21 @@ class SelectedDocsLayout(private val mParentView: LinearLayout, private val mSel
             view.visibility = View.VISIBLE
             view.text = docType
         }
-        else if(docType == DocConstants.DocTypes.AUDIO){
+        else if(docType == DocPicker.DocTypes.AUDIO){
             mDrawable?.colorFilter = PorterDuffColorFilter(ContextCompat.getColor(mContext,R.color.tb_doc_light_audio), PorterDuff.Mode.SRC)
             view.textColor = ContextCompat.getColor(mContext,R.color.tb_doc_audio)
             view.visibility = View.VISIBLE
             view.text = DocConstants.docTypeMapLabel()[docType]
 
         }
-        else if(docType == DocConstants.DocTypes.IMAGE){
+        else if(docType == DocPicker.DocTypes.IMAGE){
             mDrawable?.colorFilter = PorterDuffColorFilter(ContextCompat.getColor(mContext,R.color.tb_doc_light_image), PorterDuff.Mode.SRC)
             view.textColor = ContextCompat.getColor(mContext,R.color.tb_doc_image)
             view.visibility = View.VISIBLE
             view.text = DocConstants.docTypeMapLabel()[docType]
 
         }
-        else if(docType == DocConstants.DocTypes.VIDEO){
+        else if(docType == DocPicker.DocTypes.VIDEO){
             mDrawable?.colorFilter = PorterDuffColorFilter(ContextCompat.getColor(mContext,R.color.tb_doc_light_video), PorterDuff.Mode.SRC)
             view.textColor = ContextCompat.getColor(mContext,R.color.tb_doc_video)
             view.visibility = View.VISIBLE

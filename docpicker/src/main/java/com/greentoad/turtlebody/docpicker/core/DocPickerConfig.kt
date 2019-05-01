@@ -1,5 +1,6 @@
 package com.greentoad.turtlebody.docpicker.core
 
+import com.greentoad.turtlebody.docpicker.DocPicker
 import com.greentoad.turtlebody.docpicker.labels.DocLabelSet
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
@@ -28,41 +29,41 @@ class DocPickerConfig: AnkoLogger, Serializable {
 
     init {
 
-        mUserSelectedDocTypes.add(DocConstants.DocTypes.PDF)
-        mUserSelectedDocTypes.add(DocConstants.DocTypes.MS_WORD)
-        mUserSelectedDocTypes.add(DocConstants.DocTypes.MS_POWERPOINT)
-        mUserSelectedDocTypes.add(DocConstants.DocTypes.MS_EXCEL)
-        mUserSelectedDocTypes.add(DocConstants.DocTypes.TEXT)
+        mUserSelectedDocTypes.add(DocPicker.DocTypes.PDF)
+        mUserSelectedDocTypes.add(DocPicker.DocTypes.MS_WORD)
+        mUserSelectedDocTypes.add(DocPicker.DocTypes.MS_POWERPOINT)
+        mUserSelectedDocTypes.add(DocPicker.DocTypes.MS_EXCEL)
+        mUserSelectedDocTypes.add(DocPicker.DocTypes.TEXT)
 
-        mDocTypes.add(DocConstants.DocTypes.PDF)
-        mDocTypes.add(DocConstants.DocTypes.MS_WORD)
-        mDocTypes.add(DocConstants.DocTypes.MS_POWERPOINT)
-        mDocTypes.add(DocConstants.DocTypes.MS_EXCEL)
-        mDocTypes.add(DocConstants.DocTypes.TEXT)
+        mDocTypes.add(DocPicker.DocTypes.PDF)
+        mDocTypes.add(DocPicker.DocTypes.MS_WORD)
+        mDocTypes.add(DocPicker.DocTypes.MS_POWERPOINT)
+        mDocTypes.add(DocPicker.DocTypes.MS_EXCEL)
+        mDocTypes.add(DocPicker.DocTypes.TEXT)
 
         //since array<String> is static
-        val size = DocConstants.getExt(DocConstants.DocTypes.PDF).size +
-                DocConstants.getExt(DocConstants.DocTypes.MS_WORD).size +
-                DocConstants.getExt(DocConstants.DocTypes.MS_POWERPOINT).size +
-                DocConstants.getExt(DocConstants.DocTypes.MS_EXCEL).size+
-                DocConstants.getExt(DocConstants.DocTypes.TEXT).size
+        val size = DocConstants.getExt(DocPicker.DocTypes.PDF).size +
+                DocConstants.getExt(DocPicker.DocTypes.MS_WORD).size +
+                DocConstants.getExt(DocPicker.DocTypes.MS_POWERPOINT).size +
+                DocConstants.getExt(DocPicker.DocTypes.MS_EXCEL).size+
+                DocConstants.getExt(DocPicker.DocTypes.TEXT).size
 
         mExtArgs = arrayOfNulls(size)
 
-        for(i in 0 until DocConstants.getExt(DocConstants.DocTypes.PDF).size){
-            mExtArgs[i] = "%."+DocConstants.getExt(DocConstants.DocTypes.PDF)[i]
+        for(i in 0 until DocConstants.getExt(DocPicker.DocTypes.PDF).size){
+            mExtArgs[i] = "%."+DocConstants.getExt(DocPicker.DocTypes.PDF)[i]
         }
-        for(i in 0 until DocConstants.getExt(DocConstants.DocTypes.MS_WORD).size){
-            mExtArgs[i] = "%."+DocConstants.getExt(DocConstants.DocTypes.MS_WORD)[i]
+        for(i in 0 until DocConstants.getExt(DocPicker.DocTypes.MS_WORD).size){
+            mExtArgs[i] = "%."+DocConstants.getExt(DocPicker.DocTypes.MS_WORD)[i]
         }
-        for(i in 0 until DocConstants.getExt(DocConstants.DocTypes.MS_POWERPOINT).size){
-            mExtArgs[i] = "%."+DocConstants.getExt(DocConstants.DocTypes.MS_POWERPOINT)[i]
+        for(i in 0 until DocConstants.getExt(DocPicker.DocTypes.MS_POWERPOINT).size){
+            mExtArgs[i] = "%."+DocConstants.getExt(DocPicker.DocTypes.MS_POWERPOINT)[i]
         }
-        for(i in 0 until DocConstants.getExt(DocConstants.DocTypes.MS_EXCEL).size){
-            mExtArgs[i] = "%."+DocConstants.getExt(DocConstants.DocTypes.MS_EXCEL)[i]
+        for(i in 0 until DocConstants.getExt(DocPicker.DocTypes.MS_EXCEL).size){
+            mExtArgs[i] = "%."+DocConstants.getExt(DocPicker.DocTypes.MS_EXCEL)[i]
         }
-        for(i in 0 until DocConstants.getExt(DocConstants.DocTypes.TEXT).size){
-            mExtArgs[i] = "%."+DocConstants.getExt(DocConstants.DocTypes.TEXT)[i]
+        for(i in 0 until DocConstants.getExt(DocPicker.DocTypes.TEXT).size){
+            mExtArgs[i] = "%."+DocConstants.getExt(DocPicker.DocTypes.TEXT)[i]
         }
     }
 
