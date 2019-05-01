@@ -21,8 +21,8 @@ ext {
     bintrayRepo = 'android-doc-picker'
     bintrayName = 'com.greentoad.turtlebody.docpicker'
 
-    publishedGroupId = 'com.greentoad.turtlebody'
-    libraryName = 'Android Docpicker'
+    publishedGroupId = 'com.greentoad.turtlebody.docpicker'
+    libraryName = 'Android Doc Picker'
     artifact = 'doc-picker'
 
     libraryDescription = 'Android Library for selecting docs from local storage'
@@ -30,8 +30,8 @@ ext {
     siteUrl = 'https://github.com/Turtlebody/android-doc-picker'
     gitUrl = 'https://github.com/Turtlebody/android-doc-picker.git'
 
-    libraryVersionCode = 2
-    libraryVersion = '1.0.1'
+    libraryVersionCode = 1
+    libraryVersion = '1.0.0'
 
     developerId = 'greentoad'
     developerName = 'Green Toad'
