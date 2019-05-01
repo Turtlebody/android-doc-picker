@@ -70,7 +70,7 @@ class ActivityHome : AppCompatActivity(),AnkoLogger {
     private fun startOnlyDocPicker(isMultiple: Boolean) {
         val config = DocPickerConfig()
             .setShowConfirmationDialog(true)
-            .setAllowMultiImages(isMultiple)
+            .setAllowMultiSelection(isMultiple)
             .setExtArgs(arrayListOf<String>(
                 DocConstants.DocTypes.PDF,
                 DocConstants.DocTypes.MS_WORD,
@@ -92,19 +92,22 @@ class ActivityHome : AppCompatActivity(),AnkoLogger {
 
     @SuppressLint("CheckResult")
     private fun startAllPicker(isMultiple: Boolean) {
+
+        val docs = arrayListOf<String>(
+            DocConstants.DocTypes.PDF,
+            DocConstants.DocTypes.MS_WORD,
+            DocConstants.DocTypes.MS_POWERPOINT,
+            DocConstants.DocTypes.MS_EXCEL,
+            DocConstants.DocTypes.TEXT,
+            DocConstants.DocTypes.AUDIO,
+            DocConstants.DocTypes.IMAGE,
+            DocConstants.DocTypes.VIDEO)
+
         val config = DocPickerConfig()
             .setShowConfirmationDialog(true)
-            .setAllowMultiImages(isMultiple)
-            .setExtArgs(arrayListOf<String>(
-                DocConstants.DocTypes.PDF,
-                DocConstants.DocTypes.MS_WORD,
-                DocConstants.DocTypes.MS_POWERPOINT,
-                DocConstants.DocTypes.MS_EXCEL,
-                DocConstants.DocTypes.TEXT,
-                DocConstants.DocTypes.AUDIO,
-                DocConstants.DocTypes.IMAGE,
-                DocConstants.DocTypes.VIDEO
-            ))
+            .setAllowMultiSelection(isMultiple)
+            .setExtArgs(docs)
+
         DocPicker.with(this)
             .setConfig(config)
             .onResult()

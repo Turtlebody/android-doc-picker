@@ -77,7 +77,7 @@ class DocAdapter: RecyclerView.Adapter<DocAdapter.DocVewHolder>(), AnkoLogger {
                 mOnDocClickListener?.onDocCheck(pData)
             }
 
-            if(!mPickerConfig.mAllowMultiImages){
+            if(!mPickerConfig.mAllowMultiSelection){
                 itemView.tb_doc_picker_item_doc_ivc.visibility = View.GONE
             }
             else{

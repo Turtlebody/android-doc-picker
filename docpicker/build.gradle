@@ -2,6 +2,46 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
+apply plugin: 'com.jfrog.bintray'
+apply plugin: 'com.github.dcendents.android-maven'
+
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.4'
+    }
+}
+
+
+ext {
+    bintrayRepo = 'android-doc-picker'
+    bintrayName = 'com.greentoad.turtlebody.docpicker'
+
+    publishedGroupId = 'com.greentoad.turtlebody'
+    libraryName = 'Android Docpicker'
+    artifact = 'doc-picker'
+
+    libraryDescription = 'Android Library for selecting docs from local storage'
+
+    siteUrl = 'https://github.com/Turtlebody/android-doc-picker'
+    gitUrl = 'https://github.com/Turtlebody/android-doc-picker.git'
+
+    libraryVersionCode = 1
+    libraryVersion = '1.0.0'
+
+    developerId = 'greentoad'
+    developerName = 'Green Toad'
+    developerEmail = 'greentoad312@gmail.com'
+
+    licenseName = 'MIT License'
+    licenseUrl = 'https://github.com/Turtlebody/android-doc-picker/blob/master/LICENSE'
+    allLicenses = ["MIT"]
+}
+
 android {
     compileSdkVersion 28
 
@@ -9,8 +49,8 @@ android {
     defaultConfig {
         minSdkVersion 16
         targetSdkVersion 28
-        versionCode 1
-        versionName "1.0"
+        versionCode libraryVersionCode
+        versionName libraryVersion
         vectorDrawables.useSupportLibrary = true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -52,3 +92,10 @@ dependencies {
     androidTestImplementation 'androidx.test:runner:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
 }
+
+repositories {
+    mavenCentral()
+}
+
+apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/installv1.gradle'
+apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/bintrayv1.gradle'

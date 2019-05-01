@@ -111,7 +111,7 @@ class DocFolderFragment : FragmentBase() {
         val bucketFetch = Single.fromCallable<ArrayList<DocFolder>> {
             FileManager.fetchAudioFolderList(
                 context!!,
-                mPickerConfig.getCustomExtArgs(mPickerConfig.mUserSelectedDocTypes)
+                mPickerConfig.getUserSelectedExtArgs(mPickerConfig.mUserSelectedDocTypes)
             )
         }
         bucketFetch

@@ -9,13 +9,18 @@ import java.io.Serializable
  * Created by WANGSUN on 29-Mar-19.
  */
 class DocPickerConfig: AnkoLogger, Serializable {
+
+    //todo: disable set option for below variables
     var mShowConfirmationDialog: Boolean = false
-    var mAllowMultiImages: Boolean = false
+    var mAllowMultiSelection: Boolean = false
+
     var mExtArgs: Array<String?> = arrayOf()
     var mDocLabelSet = DocLabelSet()
 
     var mDocTypes: ArrayList<String> = arrayListOf()
+    //subset of mDoctype
     var mUserSelectedDocTypes: ArrayList<String> = arrayListOf()
+    //upto here
 
     companion object {
         val ARG_BUNDLE = javaClass.canonicalName + ".bundle_arg"
@@ -70,12 +75,13 @@ class DocPickerConfig: AnkoLogger, Serializable {
     }
 
     /**
-     * Allow multiple selection
+     * Allow multiple file selection
      */
-    fun setAllowMultiImages(value: Boolean): DocPickerConfig {
-        mAllowMultiImages = value
+    fun setAllowMultiSelection(value: Boolean): DocPickerConfig {
+        mAllowMultiSelection = value
         return this
     }
+
 
 
     fun setExtArgs(value: ArrayList<String>): DocPickerConfig{
@@ -103,9 +109,11 @@ class DocPickerConfig: AnkoLogger, Serializable {
         return this
     }
 
-    fun getCustomExtArgs(value: ArrayList<String>): Array<String?>{
+    fun setUserSelectedDocTypes(value: ArrayList<String>){
         mUserSelectedDocTypes = value
+    }
 
+    fun getUserSelectedExtArgs(value: ArrayList<String>): Array<String?>{
         var size = 0
         for(i in 0 until value.size){
             size += DocConstants.getExt(value[i]).size

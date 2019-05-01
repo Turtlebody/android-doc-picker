@@ -83,7 +83,7 @@ class DocFragment : FragmentBase(), DocAdapter.OnDocClickListener {
     }
 
     private fun initButton() {
-        if (!mPickerConfig.mAllowMultiImages) {
+        if (!mPickerConfig.mAllowMultiSelection) {
             tb_doc_picker_doc_fragment_btn_done.visibility = View.GONE
         }
         tb_doc_picker_doc_fragment_btn_done.setOnClickListener {
@@ -122,15 +122,15 @@ class DocFragment : FragmentBase(), DocAdapter.OnDocClickListener {
     }
 
     override fun onDocCheck(pData: DocModel) {
-        if(!mPickerConfig.mAllowMultiImages){
+        if(!mPickerConfig.mAllowMultiSelection){
             if(mPickerConfig.mShowConfirmationDialog){
                 val simpleAlert = AlertDialog.Builder(context!!)
                 simpleAlert.setMessage("Are you sure to select ${pData.name}")
                     .setCancelable(false)
-                    .setPositiveButton("OK") { dialog, which ->
+                    .setPositiveButton("OK") { _, _ ->
                         (activity as ActivityLibMain).sendBackData(arrayListOf(FileManager.getContentUri(context!!, File(pData.filePath))))
                     }
-                    .setNegativeButton("Cancel") { dialog, which -> dialog.dismiss()  }
+                    .setNegativeButton("Cancel") { dialog, _ -> dialog.dismiss()  }
                 simpleAlert.show()
             }
             else{
@@ -171,7 +171,7 @@ class DocFragment : FragmentBase(), DocAdapter.OnDocClickListener {
             val tempArray = FileManager.getDocFilesInFolder(context!!,mFolderPath)
             info { "files size: ${tempArray.size}" }
             for(i in tempArray){
-                for (j in mPickerConfig.getCustomExtArgs(mPickerConfig.mUserSelectedDocTypes)) {
+                for (j in mPickerConfig.getUserSelectedExtArgs(mPickerConfig.mUserSelectedDocTypes)) {
                     if (File(i.filePath).extension == (j!!.substring(2))) {
 //                        if(i.size>0)
                             mDocModelList.add(i)

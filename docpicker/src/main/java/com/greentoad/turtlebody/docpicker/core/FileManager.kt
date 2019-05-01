@@ -30,9 +30,9 @@ object FileManager : AnkoLogger {
 
             val columnIndexFolderId = it.getColumnIndexOrThrow(projection[0])
             val columnIndexCount = it.getColumnIndexOrThrow("dataCount")
-            val columnIndexFolderParent = it.getColumnIndexOrThrow(projection[1])
+            //val columnIndexFolderParent = it.getColumnIndexOrThrow(projection[1])
             val columnIndexFilePath = it.getColumnIndexOrThrow(projection[2])
-            val columnIndexDisplayName = it.getColumnIndexOrThrow(projection[3])
+            //val columnIndexDisplayName = it.getColumnIndexOrThrow(projection[3])
 
             while (it.moveToNext()) {
                 val folderId = it.getString(columnIndexFolderId)

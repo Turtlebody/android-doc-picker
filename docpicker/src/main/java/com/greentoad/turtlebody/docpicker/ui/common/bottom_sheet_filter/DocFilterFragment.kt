@@ -68,7 +68,7 @@ class DocFilterFragment : BottomSheetDialogFragment(), AnkoLogger, DocFilterAdap
                 }
             }
             if(docTypes.isNotEmpty()){
-                mPickerConfig.mUserSelectedDocTypes = docTypes
+                mPickerConfig.setUserSelectedDocTypes(docTypes)
                 mOnFilterDoneListener?.onFilterDone()
             }
             else
