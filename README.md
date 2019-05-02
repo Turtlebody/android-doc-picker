@@ -11,7 +11,7 @@
      alt="Get it on Google Play"
      height="80">](https://play.google.com/store/apps/details?id=com.greentoad.turtlebody.docpicker.sample)
 
-## MediaPicker Library for Android (AndroidX)
+## DocPicker Library for Android (AndroidX)
 
 A Doc Picker library for Android for selecting single/multiple files of any type.
 
