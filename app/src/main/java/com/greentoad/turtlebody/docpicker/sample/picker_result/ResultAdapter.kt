@@ -63,7 +63,6 @@ class ResultAdapter: RecyclerView.Adapter<ResultAdapter.DocVewHolder>(), AnkoLog
             val size = (file.length()).toString()
 
             itemView.item_result_doc_name.text = file.name
-            itemView.item_result_doc_size.text = "$size KB"
         }
 
         private fun setDrawableForMime(itemView: View, filePath: String) {
@@ -75,7 +74,7 @@ class ResultAdapter: RecyclerView.Adapter<ResultAdapter.DocVewHolder>(), AnkoLog
                 extType = filePath.substring(i + 1)
             }
 
-            val mDrawable = ContextCompat.getDrawable(mContext, R.drawable.dr_rect_round_red_doc_background)
+            val mDrawable = ContextCompat.getDrawable(mContext, R.drawable.tb_doc_picker_dr_rect_round_red_doc_background)
 
             info { "extType: $extType" }
             info { "res: ${DocLabelSet().getLabelForExt(extType)}" }

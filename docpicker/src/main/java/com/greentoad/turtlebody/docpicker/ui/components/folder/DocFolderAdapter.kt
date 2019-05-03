@@ -47,8 +47,8 @@ class DocFolderAdapter: RecyclerView.Adapter<DocFolderAdapter.FolderVewHolder>()
     inner class FolderVewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
         fun bind(pData: DocFolder){
 
-            itemView.tb_doc_picker_item_folder_folder_name.text = pData.name
-            itemView.tb_doc_picker_item_folder_total_items.text = "${pData.contentCount} items"
+            itemView.item_folder_folder_name.text = pData.name
+            itemView.item_folder_total_items.text = "${pData.contentCount} items"
 
             itemView.setOnClickListener {
                 mOnDocFolderClickListener?.onFolderClick(pData)

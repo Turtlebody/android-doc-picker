@@ -67,9 +67,9 @@ class DocFilterAdapter: RecyclerView.Adapter<DocFilterAdapter.DocVewHolder>(), A
 
             setDrawableForMime(itemView, pData.docType)
 
-            itemView.tb_doc_picker_item_doc_filter_ivc.isChecked = pData.isSelected
+            itemView.item_doc_filter_ivc.isChecked = pData.isSelected
 
-            itemView.tb_doc_picker_doc_filter_doc_type.text = pData.docType
+            itemView.item_doc_filter_doc_type.text = pData.docType
 
             itemView.setOnClickListener {
                 mOnDocFilterClickListener?.onDocClick(pData)
@@ -78,29 +78,29 @@ class DocFilterAdapter: RecyclerView.Adapter<DocFilterAdapter.DocVewHolder>(), A
 
         private fun setDrawableForMime(itemView: View, docType: String) {
 
-            val mDrawable = ContextCompat.getDrawable(mContext, R.drawable.dr_rect_round_red_doc_background)
+            val mDrawable = ContextCompat.getDrawable(mContext, R.drawable.tb_doc_picker_dr_rect_round_red_doc_background)
 
 
             when(docType){
                 DocPicker.DocTypes.IMAGE->{
                     mDrawable?.colorFilter = PorterDuffColorFilter(ContextCompat.getColor(mContext,R.color.tb_doc_image), PorterDuff.Mode.SRC)
-                    itemView.tb_doc_picker_item_doc_filter_file_ext.text = DocConstants.docTypeMapLabel()[docType]
+                    itemView.item_doc_filter_file_ext.text = DocConstants.docTypeMapLabel()[docType]
                 }
                 DocPicker.DocTypes.AUDIO->{
                     mDrawable?.colorFilter = PorterDuffColorFilter(ContextCompat.getColor(mContext,R.color.tb_doc_audio), PorterDuff.Mode.SRC)
-                    itemView.tb_doc_picker_item_doc_filter_file_ext.text = DocConstants.docTypeMapLabel()[docType]
+                    itemView.item_doc_filter_file_ext.text = DocConstants.docTypeMapLabel()[docType]
                 }
                 DocPicker.DocTypes.VIDEO->{
                     mDrawable?.colorFilter = PorterDuffColorFilter(ContextCompat.getColor(mContext,R.color.tb_doc_video), PorterDuff.Mode.SRC)
-                    itemView.tb_doc_picker_item_doc_filter_file_ext.text = DocConstants.docTypeMapLabel()[docType]
+                    itemView.item_doc_filter_file_ext.text = DocConstants.docTypeMapLabel()[docType]
 
                 }
                 else->{
                     mDrawable?.colorFilter = PorterDuffColorFilter(ContextCompat.getColor(mContext,mPickerConfig.mDocLabelSet.getLabelForExt(DocConstants.docTypeMapLabel()[docType]!!).colorRes), PorterDuff.Mode.SRC)
-                    itemView.tb_doc_picker_item_doc_filter_file_ext.text = DocConstants.docTypeMapLabel()[docType]
+                    itemView.item_doc_filter_file_ext.text = DocConstants.docTypeMapLabel()[docType]
                 }
             }
-            itemView.tb_doc_picker_item_doc_filter_file_ext.background = mDrawable
+            itemView.item_doc_filter_file_ext.background = mDrawable
         }
     }
 

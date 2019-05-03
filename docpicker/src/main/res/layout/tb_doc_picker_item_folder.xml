@@ -10,16 +10,16 @@
 
 
     <ImageView
-        android:id="@+id/folder_image_folder_icon"
+        android:id="@+id/item_folder_folder_icon"
         android:layout_width="@dimen/length_20"
         android:layout_height="@dimen/length_20"
         android:layout_margin="@dimen/offset_16"
         android:scaleType="centerInside"
         android:layout_gravity="center_vertical"
-        app:srcCompat="@drawable/ic_iconfinder_folder39_216484" />
+        app:srcCompat="@drawable/tb_doc_picker_ic_icon_folder" />
 
     <LinearLayout
-        android:background="@drawable/dr_layer_2_grey_b1_dp"
+        android:background="@drawable/tb_doc_picker_dr_layer_2_grey_b1_dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
@@ -35,13 +35,13 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/tb_doc_picker_item_folder_folder_name"
+                android:id="@+id/item_folder_folder_name"
                 style="@style/TextTitle"
                 tools:text="Folder Name"
                 android:textColor="@color/md_grey_900"/>
 
             <TextView
-                android:id="@+id/tb_doc_picker_item_folder_total_items"
+                android:id="@+id/item_folder_total_items"
                 style="@style/TextNormal"
                 tools:text="24 items"
                 android:textColor="@color/md_grey_500"
@@ -55,7 +55,7 @@
             android:layout_gravity="center"
             android:layout_margin="@dimen/offset_12"
             android:scaleType="centerInside"
-            app:srcCompat="@drawable/ic_iconfinder_icon_arrow_down_b_211614" />
+            app:srcCompat="@drawable/tb_doc_picker_ic_icon_arrow_down" />
 
     </LinearLayout>
 

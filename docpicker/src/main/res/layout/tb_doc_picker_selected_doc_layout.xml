@@ -13,32 +13,32 @@
     android:layout_marginBottom="@dimen/offset_8">
 
     <TextView
-        android:id="@+id/tb_doc_picker_selected_doc_layout_txt_0"
+        android:id="@+id/selected_doc_view_txt_0"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         tools:text="pdf"
         android:textSize="@dimen/font_12"
-        android:background="@drawable/dr_rect_round_red_doc_background"
+        android:background="@drawable/tb_doc_picker_dr_rect_round_red_doc_background"
         android:padding="@dimen/offset_4"
         android:layout_margin="@dimen/offset_4"/>
 
     <TextView
-        android:id="@+id/tb_doc_picker_selected_doc_layout_txt_1"
+        android:id="@+id/selected_doc_view_txt_1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         tools:text="pdf"
         android:textSize="@dimen/font_12"
-        android:background="@drawable/dr_rect_round_red_doc_background"
+        android:background="@drawable/tb_doc_picker_dr_rect_round_red_doc_background"
         android:padding="@dimen/offset_4"
         android:layout_margin="@dimen/offset_4"/>
 
     <TextView
-        android:id="@+id/tb_doc_picker_selected_doc_layout_txt_2"
+        android:id="@+id/selected_doc_view_txt_2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         tools:text="pdf"
         android:textSize="@dimen/font_12"
-        android:background="@drawable/dr_rect_round_red_doc_background"
+        android:background="@drawable/tb_doc_picker_dr_rect_round_red_doc_background"
         android:padding="@dimen/offset_4"
         android:layout_margin="@dimen/offset_4"/>
 </LinearLayout>

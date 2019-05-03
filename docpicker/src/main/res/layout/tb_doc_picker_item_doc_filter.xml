@@ -11,7 +11,7 @@
     android:baselineAligned="false">
 
     <TextView
-        android:id="@+id/tb_doc_picker_item_doc_filter_file_ext"
+        android:id="@+id/item_doc_filter_file_ext"
         android:layout_width="@dimen/length_28"
         android:layout_height="@dimen/length_28"
         android:layout_gravity="center"
@@ -20,8 +20,8 @@
         android:textSize="@dimen/font_12"
         android:textColor="@color/md_white_1000"
         android:gravity="center"
-        android:background="@drawable/dr_rect_round_red_doc_background"
-        app:srcCompat="@drawable/ic_iconfinder_folder39_216484" />
+        android:background="@drawable/tb_doc_picker_dr_rect_round_red_doc_background"
+        app:srcCompat="@drawable/tb_doc_picker_ic_icon_folder" />
 
 
     <LinearLayout
@@ -37,14 +37,14 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:id="@+id/tb_doc_picker_doc_filter_doc_type"
+            android:id="@+id/item_doc_filter_doc_type"
             style="@style/TextTitle"
             android:gravity="center_vertical"
             tools:hint="Doc Name" />
 
 
         <com.greentoad.turtlebody.docpicker.widget.ImageViewCheckable
-            android:id="@+id/tb_doc_picker_item_doc_filter_ivc"
+            android:id="@+id/item_doc_filter_ivc"
             android:layout_width="@dimen/length_24"
             android:layout_height="@dimen/length_24"
             android:layout_gravity="center_vertical"

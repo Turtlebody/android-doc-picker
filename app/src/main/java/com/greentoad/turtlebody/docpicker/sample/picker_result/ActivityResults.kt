@@ -22,7 +22,7 @@ class ActivityResults : AppCompatActivity() {
 
         toolbar.title = "Selected Doc"
         setSupportActionBar(toolbar)
-        toolbar.setNavigationIcon(R.drawable.ic_arrow_back_black_24dp)
+        toolbar.setNavigationIcon(R.drawable.tb_doc_picker_ic_arrow_back_black_24dp)
 
         if(intent.extras!=null){
             mList = intent.getSerializableExtra(ActivityLibMain.B_ARG_URI_LIST) as ArrayList<Uri>

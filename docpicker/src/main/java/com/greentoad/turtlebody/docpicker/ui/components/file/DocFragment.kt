@@ -72,9 +72,9 @@ class DocFragment : FragmentBase(), DocAdapter.OnDocClickListener {
         ////live data : While loading recyclerView if user back-press then the app will not crash
         mLiveData.observe(this, Observer {
             mDocAdapter.setData(mDocModelList)
-            SelectedDocsLayout(tb_doc_picker_doc_fragment_ll, mPickerConfig.mUserSelectedDocTypes,mPickerConfig)
+            SelectedDocsLayout(doc_fragment_ll_for_selected_docs, mPickerConfig.mUserSelectedDocTypes,mPickerConfig)
                 .updateSelectedViews()
-            tb_doc_picker_frame_progress.visibility = View.GONE
+            frame_progress.visibility = View.GONE
         })
 
         initButton()
@@ -84,17 +84,17 @@ class DocFragment : FragmentBase(), DocAdapter.OnDocClickListener {
 
     private fun initButton() {
         if (!mPickerConfig.mAllowMultiSelection) {
-            tb_doc_picker_doc_fragment_btn_done.visibility = View.GONE
+            doc_fragment_btn_done.visibility = View.GONE
         }
-        tb_doc_picker_doc_fragment_btn_done.setOnClickListener {
+        doc_fragment_btn_done.setOnClickListener {
             getAllUris()
         }
 
-        tb_doc_picker_doc_fragment_filter.setOnClickListener {
+        doc_fragment_filter.setOnClickListener {
             (activity as ActivityLibMain).startFragmentCreate()
         }
 
-        tb_doc_picker_doc_fragment_ll.setOnClickListener {
+        doc_fragment_ll_for_selected_docs.setOnClickListener {
             (activity as ActivityLibMain).startFragmentCreate()
         }
     }
@@ -116,8 +116,8 @@ class DocFragment : FragmentBase(), DocAdapter.OnDocClickListener {
         mDocAdapter.setListener(this)
         mDocAdapter.setPickerConfig(mPickerConfig)
 
-        tb_doc_picker_doc_fragment_recycler_view.layoutManager = LinearLayoutManager(context)
-        tb_doc_picker_doc_fragment_recycler_view.adapter = mDocAdapter
+        doc_fragment_recycler_view.layoutManager = LinearLayoutManager(context)
+        doc_fragment_recycler_view.adapter = mDocAdapter
         fetchDocFolders()
     }
 
@@ -153,13 +153,13 @@ class DocFragment : FragmentBase(), DocAdapter.OnDocClickListener {
                 }
             }
             (activity as ActivityLibMain).updateCounter(size)
-            tb_doc_picker_doc_fragment_btn_done.isEnabled = size>0
+            doc_fragment_btn_done.isEnabled = size>0
         }
     }
 
     fun onFilterDone() {
         (activity as ActivityLibMain).updateCounter(0)
-        tb_doc_picker_doc_fragment_btn_done.isEnabled = false
+        doc_fragment_btn_done.isEnabled = false
         fetchDocFolders()
     }
 
@@ -187,13 +187,13 @@ class DocFragment : FragmentBase(), DocAdapter.OnDocClickListener {
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(object : SingleObserver<Boolean> {
                 override fun onSubscribe(@NonNull d: Disposable) {
-                    tb_doc_picker_frame_progress.visibility = View.VISIBLE
+                    frame_progress.visibility = View.VISIBLE
                 }
                 override fun onSuccess(t: Boolean) {
                     mLiveData.value = mDocModelList
                 }
                 override fun onError(@NonNull e: Throwable) {
-                    tb_doc_picker_frame_progress.visibility = View.GONE
+                    frame_progress.visibility = View.GONE
                     info { "error: ${e.message}" }
                 }
             })

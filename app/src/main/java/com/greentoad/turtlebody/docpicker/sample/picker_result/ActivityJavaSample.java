@@ -16,7 +16,7 @@ public class ActivityJavaSample extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_home);
 
         ArrayList<String> docs = new ArrayList<String>();
         docs.add(DocPicker.DocTypes.PDF);

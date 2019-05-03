@@ -97,16 +97,17 @@
 
                 <TextView
                     android:id="@+id/activity_main_doc_picker"
-                    style="@style/ButtonNormal"
-                    android:layout_marginStart="@dimen/offset_24"
-                    android:layout_marginLeft="@dimen/offset_24"
-                    android:layout_marginTop="@dimen/offset_16"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:background="@drawable/dr_rect_round_accent"
                     android:paddingStart="@dimen/offset_48"
                     android:paddingEnd="@dimen/offset_48"
                     android:paddingTop="@dimen/offset_10"
                     android:paddingBottom="@dimen/offset_10"
                     android:text="Choose"
+                    android:layout_marginTop="@dimen/offset_12"
+                    android:layout_marginStart="@dimen/offset_16"
+                    android:layout_marginLeft="@dimen/offset_16"
                     android:textColor="@color/md_white_1000" />
 
                 <LinearLayout
@@ -168,16 +169,17 @@
 
                 <TextView
                     android:id="@+id/activity_main_all_picker"
-                    style="@style/ButtonNormal"
-                    android:layout_marginStart="@dimen/offset_24"
-                    android:layout_marginLeft="@dimen/offset_24"
-                    android:layout_marginTop="@dimen/offset_16"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:background="@drawable/dr_rect_round_accent"
                     android:paddingStart="@dimen/offset_48"
                     android:paddingEnd="@dimen/offset_48"
                     android:paddingTop="@dimen/offset_10"
                     android:paddingBottom="@dimen/offset_10"
                     android:text="Choose"
+                    android:layout_marginTop="@dimen/offset_12"
+                    android:layout_marginStart="@dimen/offset_16"
+                    android:layout_marginLeft="@dimen/offset_16"
                     android:textColor="@color/md_white_1000"/>
             </LinearLayout>
 

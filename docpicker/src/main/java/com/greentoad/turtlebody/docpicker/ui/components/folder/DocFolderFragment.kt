@@ -63,8 +63,8 @@ class DocFolderFragment : FragmentBase() {
         mDocFolderList.observe(this, Observer {
             mDocFolderAdapter.setData(it)
             sSelectedDocTypes = mPickerConfig.mUserSelectedDocTypes
-            SelectedDocsLayout(tb_doc_picker_doc_folder_fragment_ll, sSelectedDocTypes,mPickerConfig).updateSelectedViews()
-            tb_doc_picker_frame_progress.visibility = View.GONE
+            SelectedDocsLayout(doc_folder_fragment_ll_for_selected_docs, sSelectedDocTypes,mPickerConfig).updateSelectedViews()
+            frame_progress.visibility = View.GONE
         })
 
         initButton()
@@ -72,7 +72,7 @@ class DocFolderFragment : FragmentBase() {
     }
 
     private fun initButton() {
-        tb_doc_picker_doc_folder_fragment_ll_filter.setOnClickListener {
+        doc_folder_fragment_ll_filter.setOnClickListener {
             (activity as ActivityLibMain).startFragmentCreate()
         }
     }
@@ -100,8 +100,8 @@ class DocFolderFragment : FragmentBase() {
             }
         })
 
-        tb_doc_picker_doc_folder_fragment_recycler_view.layoutManager = LinearLayoutManager(context)
-        tb_doc_picker_doc_folder_fragment_recycler_view.adapter = mDocFolderAdapter
+        doc_folder_fragment_recycler_view.layoutManager = LinearLayoutManager(context)
+        doc_folder_fragment_recycler_view.adapter = mDocFolderAdapter
         fetchDocFolders()
     }
 
@@ -119,7 +119,7 @@ class DocFolderFragment : FragmentBase() {
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(object : SingleObserver<ArrayList<DocFolder>> {
                 override fun onSubscribe(@NonNull d: Disposable) {
-                    tb_doc_picker_frame_progress.visibility = View.VISIBLE
+                    frame_progress.visibility = View.VISIBLE
                 }
 
                 override fun onSuccess(@NonNull docFolders: ArrayList<DocFolder>) {
@@ -127,7 +127,7 @@ class DocFolderFragment : FragmentBase() {
                 }
 
                 override fun onError(@NonNull e: Throwable) {
-                    tb_doc_picker_frame_progress.visibility = View.GONE
+                    frame_progress.visibility = View.GONE
                     e.printStackTrace()
                     info { "error: ${e.message}" }
                 }

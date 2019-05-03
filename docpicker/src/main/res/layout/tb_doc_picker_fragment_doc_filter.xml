@@ -25,13 +25,13 @@
                 android:padding="@dimen/offset_12"
                 android:textColor="@color/md_black_1000"/>
             <ImageView
-                android:id="@+id/tb_doc_picker_doc_filter_fragment_btn_cancel"
+                android:id="@+id/doc_filter_fragment_btn_cancel"
                 android:layout_width="@dimen/length_40"
                 android:layout_height="@dimen/length_40"
                 android:layout_gravity="end|center_vertical"
                 android:padding="@dimen/offset_8"
                 android:scaleType="centerInside"
-                app:srcCompat="@drawable/ic_iconfinder_cancel_2639904" />
+                app:srcCompat="@drawable/tb_doc_picker_ic_icon_cancel" />
 
         </FrameLayout>
 
@@ -44,7 +44,7 @@
             android:textStyle="bold"/>
 
         <LinearLayout
-            android:id="@+id/tb_doc_picker_doc_filter_fragment_ll"
+            android:id="@+id/doc_filter_fragment_ll_for_selected_docs"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -60,7 +60,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:gravity="center_vertical"
-            android:background="@drawable/dr_layer_2_grey_b1_dp">
+            android:background="@drawable/tb_doc_picker_dr_layer_2_grey_b1_dp">
 
             <TextView
                 style="@style/TextNormal"
@@ -73,10 +73,10 @@
                 android:textSize="@dimen/font_14"/>
 
             <TextView
-                android:id="@+id/tb_doc_picker_doc_filter_fragment_btn_done"
+                android:id="@+id/doc_filter_fragment_btn_update"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/dr_rect_round_accent"
+                android:background="@drawable/tb_doc_picker_dr_rect_round_accent"
                 android:text="Update"
                 android:paddingTop="@dimen/offset_6"
                 android:paddingBottom="@dimen/offset_6"

@@ -33,7 +33,7 @@ class ActivityLibMain : ActivityBase(){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.tb_doc_picker_activity_lib_main)
 
-        initToolbar(R.drawable.ic_arrow_back_black_24dp,tb_doc_picker_activity_toolbar)
+        initToolbar(R.drawable.tb_doc_picker_ic_arrow_back_black_24dp,activity_lib_main_toolbar)
         toolbarTitle = "Select Folder"
 
         if (intent.extras != null) {
@@ -65,7 +65,7 @@ class ActivityLibMain : ActivityBase(){
             is DocFragment -> {
                 super.onBackPressed()
                 toolbarTitle = "Select Folder"
-                tb_doc_picker_toolbar_txt_count.visibility = View.GONE
+                activity_lib_main_toolbar_txt_count.visibility = View.GONE
                 updateCounter(0)
 
                 val fragment2 = supportFragmentManager.findFragmentById(R.id.frame_content)
@@ -83,7 +83,7 @@ class ActivityLibMain : ActivityBase(){
      * @param counter counter for selecting multiple media files
      */
     fun updateCounter(counter: Int) {
-        tb_doc_picker_toolbar_txt_count.text = "$counter"
+        activity_lib_main_toolbar_txt_count.text = "$counter"
     }
 
     fun sendBackData(list: ArrayList<Uri>) {
@@ -98,7 +98,7 @@ class ActivityLibMain : ActivityBase(){
 
     private fun startDocFolderFragment() {
         toolbarTitle = "Select Folder"
-        tb_doc_picker_toolbar_txt_count.visibility = View.GONE
+        activity_lib_main_toolbar_txt_count.visibility = View.GONE
 
         val bundle = Bundle()
         bundle.putSerializable(DocPickerConfig.ARG_BUNDLE, mPickerConfig)
@@ -113,7 +113,7 @@ class ActivityLibMain : ActivityBase(){
 
     fun startDocFragment(folderPath: String,pickerConfig: DocPickerConfig) {
         toolbarTitle = "Choose Doc"
-        tb_doc_picker_toolbar_txt_count.visibility = View.VISIBLE
+        activity_lib_main_toolbar_txt_count.visibility = View.VISIBLE
 
         val bundle = Bundle()
         bundle.putSerializable(DocPickerConfig.ARG_BUNDLE, pickerConfig)

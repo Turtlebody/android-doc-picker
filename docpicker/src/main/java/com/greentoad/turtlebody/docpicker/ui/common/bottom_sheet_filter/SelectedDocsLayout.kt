@@ -27,9 +27,9 @@ class SelectedDocsLayout(private val mParentView: LinearLayout, private val mSel
     fun updateSelectedViews(){
 
         //always do a fresh start
-        mLayout.tb_doc_picker_selected_doc_layout_txt_0.visibility = View.GONE
-        mLayout.tb_doc_picker_selected_doc_layout_txt_1.visibility = View.GONE
-        mLayout.tb_doc_picker_selected_doc_layout_txt_2.visibility = View.GONE
+        mLayout.selected_doc_view_txt_0.visibility = View.GONE
+        mLayout.selected_doc_view_txt_1.visibility = View.GONE
+        mLayout.selected_doc_view_txt_2.visibility = View.GONE
 
 
         for(i in mSelectedFilters.indices){
@@ -42,17 +42,17 @@ class SelectedDocsLayout(private val mParentView: LinearLayout, private val mSel
 
     private fun updateViews(count: Int, docType: String) {
         when(count){
-            0->updateColor(mLayout.tb_doc_picker_selected_doc_layout_txt_0,docType)
-            1->updateColor(mLayout.tb_doc_picker_selected_doc_layout_txt_1,docType)
-            2->updateColor(mLayout.tb_doc_picker_selected_doc_layout_txt_2,docType)
+            0->updateColor(mLayout.selected_doc_view_txt_0,docType)
+            1->updateColor(mLayout.selected_doc_view_txt_1,docType)
+            2->updateColor(mLayout.selected_doc_view_txt_2,docType)
             else->{
-                updateColor(mLayout.tb_doc_picker_selected_doc_layout_txt_2,"${count-1}+")
+                updateColor(mLayout.selected_doc_view_txt_2,"${count-1}+")
             }
         }
     }
 
     private fun updateColor(view: TextView, docType: String) {
-        val mDrawable = ContextCompat.getDrawable(mContext, R.drawable.dr_rect_round_red_doc_background)
+        val mDrawable = ContextCompat.getDrawable(mContext, R.drawable.tb_doc_picker_dr_rect_round_red_doc_background)
 
         if(docType.contains("+")){
             mDrawable?.colorFilter = PorterDuffColorFilter(ContextCompat.getColor(mContext,R.color.md_grey_300), PorterDuff.Mode.SRC)

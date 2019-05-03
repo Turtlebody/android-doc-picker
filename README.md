@@ -1,7 +1,7 @@
 ![](https://thedroid.io/assets/img/tb-doc-picker.png)
 
 ![API](https://img.shields.io/badge/API-16%2B-34bf49.svg)
-[ ![Download](https://api.bintray.com/packages/greentoad/android-doc-picker/com.greentoad.turtlebody.docpicker/images/download.svg?version=1.0.0) ](https://bintray.com/greentoad/android-doc-picker/com.greentoad.turtlebody.docpicker/1.0.0/link)
+[ ![Download](https://api.bintray.com/packages/greentoad/android-doc-picker/com.greentoad.turtlebody.docpicker/images/download.svg?version=latest) ](https://bintray.com/greentoad/android-doc-picker/com.greentoad.turtlebody.docpicker/1.0.1/link)
 
 
 ### Demo:
@@ -23,7 +23,7 @@ Step 1: Add the dependency
 dependencies {
     ...
     /*Doc picker */
-    implementation 'com.greentoad.turtlebody.docpicker:doc-picker:1.0.0'
+    implementation 'com.greentoad.turtlebody.docpicker:doc-picker:1.0.1'
 
     /*for rxjava support*/
     implementation 'io.reactivex.rxjava2:rxjava:2.2.5'
@@ -98,7 +98,7 @@ DocPicker.with(this)
 It is use to set the configuration.
 1. **.setAllowMultiSelection(booleanValue)**: tells whether to select single file or multiple file.
 2. **.setShowConfirmationDialog(booleanValue)**: tells whether to show confirmation dialog on selecting the file(only work in single file selection).
-3. **.setExtArgs(stringArrayValue)**: this will help in filtering the docs base on this speficied extentions(values in stringArray).
+3. **.setExtArgs(stringArrayValue)**: this will help in filtering the docs base on these speficied extentions(values in stringArray).
 
 eg.
 ```java
@@ -160,6 +160,9 @@ Glide.with(context)
 *  [Developer Setup & Usage](https://github.com/Turtlebody/android-doc-picker/wiki/Developer-Setup)
 
 ---
+
+
+## To pick media files(audio,image,video) you can use [MediaPicker](https://github.com/Turtlebody/android-media-picker) library.
 
 
 

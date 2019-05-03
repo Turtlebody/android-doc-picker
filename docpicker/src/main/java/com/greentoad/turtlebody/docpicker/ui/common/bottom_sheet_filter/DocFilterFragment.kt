@@ -58,7 +58,7 @@ class DocFilterFragment : BottomSheetDialogFragment(), AnkoLogger, DocFilterAdap
     }
 
     private fun initButton() {
-        tb_doc_picker_doc_filter_fragment_btn_done.setOnClickListener {
+        doc_filter_fragment_btn_update.setOnClickListener {
             info { "clicked" }
 
             val docTypes = arrayListOf<String>()
@@ -75,7 +75,7 @@ class DocFilterFragment : BottomSheetDialogFragment(), AnkoLogger, DocFilterAdap
                 Toast.makeText(context,"Please select at least one doc type.",Toast.LENGTH_LONG).show()
         }
 
-        tb_doc_picker_doc_filter_fragment_btn_cancel.setOnClickListener {
+        doc_filter_fragment_btn_cancel.setOnClickListener {
             this.dismiss()
         }
     }
@@ -103,7 +103,7 @@ class DocFilterFragment : BottomSheetDialogFragment(), AnkoLogger, DocFilterAdap
 
             //update ui
             mAdapter.updateIsSelected(mDocFilterList[selectedIndex])
-            SelectedDocsLayout(tb_doc_picker_doc_filter_fragment_ll,selectedList,mPickerConfig)
+            SelectedDocsLayout(doc_filter_fragment_ll_for_selected_docs,selectedList,mPickerConfig)
                 .updateSelectedViews()
         }
     }
@@ -130,7 +130,7 @@ class DocFilterFragment : BottomSheetDialogFragment(), AnkoLogger, DocFilterAdap
             }
         }
         if(selectedList.isNotEmpty())
-            SelectedDocsLayout(tb_doc_picker_doc_filter_fragment_ll,selectedList,mPickerConfig)
+            SelectedDocsLayout(doc_filter_fragment_ll_for_selected_docs,selectedList,mPickerConfig)
                 .updateSelectedViews()
     }
 

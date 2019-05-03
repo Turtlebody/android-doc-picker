@@ -1,3 +1,8 @@
+# [1.0.1](2019-05-3)
+
+### Changes:
+* We have changed naming of some xml elements for clearity and to avoid duplicacy. Note: this change do not affect end-developer. 
+
 
 # [1.0.0](2019-05-1)
 

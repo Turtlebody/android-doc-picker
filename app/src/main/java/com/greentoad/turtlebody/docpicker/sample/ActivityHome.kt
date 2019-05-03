@@ -15,7 +15,7 @@ import com.greentoad.turtlebody.docpicker.DocPicker
 import com.greentoad.turtlebody.docpicker.core.DocPickerConfig
 import com.greentoad.turtlebody.docpicker.sample.picker_result.ActivityResults
 import com.greentoad.turtlebody.docpicker.ui.components.ActivityLibMain
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_home.*
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
 import java.io.Serializable
@@ -24,7 +24,7 @@ class ActivityHome : AppCompatActivity(),AnkoLogger {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_home)
 
         initButton()
     }

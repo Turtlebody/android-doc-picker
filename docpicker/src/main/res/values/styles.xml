@@ -1,12 +1,11 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="TbMediaPickerTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="TbDocPickerTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/tb_doc_picker_primary</item>
         <item name="colorPrimaryDark">@color/tb_doc_picker_primaryDark</item>
         <item name="colorAccent">@color/tb_doc_picker_accent</item>
-
     </style>
 
     <!--<item name="drawerArrowStyle">@style/DrawerIconStyle</item>
@@ -26,7 +25,7 @@
     </style>
 
     <style name="customOptionOverflow">
-        <item name="android:src">@drawable/ic_more_vert_white_24dp</item>
+        <item name="android:src">@drawable/tb_doc_picker_ic_more_vert_white_24dp</item>
         <item name="android:padding">10dp</item>
     </style>
 

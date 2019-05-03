@@ -9,14 +9,14 @@
     android:background="@color/md_white_1000">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/tb_doc_picker_doc_folder_fragment_recycler_view"
+        android:id="@+id/doc_folder_fragment_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:listitem="@layout/tb_doc_picker_item_folder"
         android:layout_marginBottom="@dimen/offset_56"/>
 
     <LinearLayout
-        android:id="@+id/ll_bottom_layout"
+        android:id="@+id/doc_fragment_bottom_ll"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -28,7 +28,7 @@
             android:background="@color/md_black_1000_15"/>
 
         <LinearLayout
-            android:id="@+id/tb_doc_picker_doc_folder_fragment_ll_filter"
+            android:id="@+id/doc_folder_fragment_ll_filter"
             android:layout_width="match_parent"
             android:layout_height="@dimen/length_56"
             android:focusable="true"
@@ -42,11 +42,11 @@
                 android:layout_height="@dimen/length_40"
                 android:layout_gravity="start"
                 android:padding="@dimen/offset_8"
-                app:srcCompat="@drawable/ic_tb_doc_picker_filter" />
+                app:srcCompat="@drawable/tb_doc_picker_ic_tb_doc_picker_filter" />
 
             <LinearLayout
                 android:layout_weight="1"
-                android:id="@+id/tb_doc_picker_doc_folder_fragment_ll"
+                android:id="@+id/doc_folder_fragment_ll_for_selected_docs"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"

@@ -7,9 +7,6 @@
     android:layout_height="wrap_content"
     android:orientation="horizontal"
     android:background="@color/md_white_1000"
-    android:clickable="true"
-    android:focusable="true"
-    android:foreground="@drawable/sc_black_alpha_25"
     android:baselineAligned="false">
 
     <LinearLayout
@@ -29,8 +26,8 @@
             android:textSize="@dimen/font_12"
             android:textColor="@color/md_white_1000"
             android:gravity="center"
-            android:background="@drawable/dr_rect_round_red_doc_background"
-            app:srcCompat="@drawable/ic_iconfinder_folder39_216484"/>
+            android:background="@drawable/tb_doc_picker_dr_rect_round_red_doc_background"
+            app:srcCompat="@drawable/tb_doc_picker_ic_icon_folder"/>
 
 
         <FrameLayout
@@ -42,19 +39,6 @@
                 style="@style/TextTitle"
                 android:textColor="@color/md_grey_900"
                 tools:hint="Doc Name" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_gravity="bottom"
-                android:background="@color/md_grey_300"/>
-            <TextView
-                android:visibility="gone"
-                android:id="@+id/item_result_doc_size"
-                style="@style/TextNormal"
-                android:textSize="@dimen/font_14"
-                android:textColor="@color/md_grey_400"
-                tools:hint="Size" />
         </FrameLayout>
     </LinearLayout>
 </FrameLayout>

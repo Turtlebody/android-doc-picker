@@ -67,21 +67,21 @@ class DocAdapter: RecyclerView.Adapter<DocAdapter.DocVewHolder>(), AnkoLogger {
 
             setDrawableForMime(itemView, pData.mimeType,pData.filePath)
 
-            itemView.tb_doc_picker_item_doc_ivc.isChecked = pData.isSelected
+            itemView.item_doc_ivc.isChecked = pData.isSelected
             val size = (pData.size/1000).toString()
 
-            itemView.tb_doc_picker_doc_name.text = pData.name
-            itemView.tb_doc_picker_doc_size.text = "$size KB"
+            itemView.item_doc_doc_name.text = pData.name
+            itemView.item_doc_doc_size.text = "$size KB"
 
             itemView.setOnClickListener {
                 mOnDocClickListener?.onDocCheck(pData)
             }
 
             if(!mPickerConfig.mAllowMultiSelection){
-                itemView.tb_doc_picker_item_doc_ivc.visibility = View.GONE
+                itemView.item_doc_ivc.visibility = View.GONE
             }
             else{
-                itemView.tb_doc_picker_item_doc_ivc.visibility = View.VISIBLE
+                itemView.item_doc_ivc.visibility = View.VISIBLE
             }
         }
 
@@ -96,15 +96,15 @@ class DocAdapter: RecyclerView.Adapter<DocAdapter.DocVewHolder>(), AnkoLogger {
                 }
             }
 
-            val mDrawable = ContextCompat.getDrawable(mContext, R.drawable.dr_rect_round_red_doc_background)
+            val mDrawable = ContextCompat.getDrawable(mContext, R.drawable.tb_doc_picker_dr_rect_round_red_doc_background)
 
             info { "extType: $extType" }
             info { "res: ${DocLabelSet().getLabelForExt(extType!!)}" }
 
             val label = mPickerConfig.mDocLabelSet.getLabelForExt(extType!!)
             mDrawable?.colorFilter = PorterDuffColorFilter(ContextCompat.getColor(mContext,label.colorRes), PorterDuff.Mode.SRC)
-            itemView.tb_doc_picker_item_doc_file_ext.text = label.text
-            itemView.tb_doc_picker_item_doc_file_ext.background = mDrawable
+            itemView.item_doc_file_ext.text = label.text
+            itemView.item_doc_file_ext.background = mDrawable
         }
     }
 
