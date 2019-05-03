@@ -26,7 +26,7 @@
         <item name="android:paddingTop">8dp</item>
         <item name="android:paddingBottom">8dp</item>
         <item name="android:layout_margin">4dp</item>
-        <item name="android:background">@drawable/dr_rect_round_grey_200</item>
+        <item name="android:background">@drawable/dr_rect_round_grey_100</item>
     </style>
 
 </resources>

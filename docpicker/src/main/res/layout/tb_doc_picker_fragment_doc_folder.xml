@@ -34,15 +34,29 @@
             android:focusable="true"
             android:clickable="true"
             android:background="@color/tb_doc_picker_primary"
-            android:padding="@dimen/offset_6"
+            android:paddingStart="@dimen/offset_6"
+            android:paddingLeft="@dimen/offset_16"
+            android:paddingEnd="@dimen/offset_16"
+            android:paddingRight="@dimen/offset_16"
             android:gravity="center_vertical">
 
-            <ImageView
-                android:layout_width="@dimen/length_40"
-                android:layout_height="@dimen/length_40"
-                android:layout_gravity="start"
-                android:padding="@dimen/offset_8"
-                app:srcCompat="@drawable/tb_doc_picker_ic_tb_doc_picker_filter" />
+            <FrameLayout
+                android:layout_width="@dimen/length_24"
+                android:layout_height="@dimen/length_24"
+                android:clickable="true"
+                android:focusable="true"
+                android:layout_margin="@dimen/offset_8"
+                android:foreground="@drawable/tb_doc_picker_sc_ripple_black_alpha_25">
+
+                <ImageView
+                    android:id="@+id/doc_fragment_filter"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerInside"
+                    android:layout_gravity="center_vertical"
+                    app:srcCompat="@drawable/tb_doc_picker_ic_tb_doc_picker_filter"/>
+
+            </FrameLayout>
 
             <LinearLayout
                 android:layout_weight="1"
@@ -50,13 +64,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:paddingStart="@dimen/offset_4"
-                android:paddingLeft="@dimen/offset_4"
-                android:paddingEnd="@dimen/offset_4"
-                android:paddingRight="@dimen/offset_4">
-
-
-            </LinearLayout>
+                android:paddingStart="@dimen/offset_3"
+                android:paddingLeft="@dimen/offset_3"
+                android:paddingEnd="@dimen/offset_3"
+                android:paddingRight="@dimen/offset_3"/>
         </LinearLayout>
     </LinearLayout>
 

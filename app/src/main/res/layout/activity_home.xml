@@ -108,7 +108,9 @@
                     android:layout_marginTop="@dimen/offset_12"
                     android:layout_marginStart="@dimen/offset_16"
                     android:layout_marginLeft="@dimen/offset_16"
-                    android:textColor="@color/md_white_1000" />
+                    android:layout_marginBottom="@dimen/offset_8"
+                    android:textColor="@color/md_white_1000"
+                    android:elevation="@dimen/offset_3"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -179,8 +181,10 @@
                     android:text="Choose"
                     android:layout_marginTop="@dimen/offset_12"
                     android:layout_marginStart="@dimen/offset_16"
+                    android:layout_marginBottom="@dimen/offset_8"
                     android:layout_marginLeft="@dimen/offset_16"
-                    android:textColor="@color/md_white_1000"/>
+                    android:textColor="@color/md_white_1000"
+                    android:elevation="@dimen/offset_3"/>
             </LinearLayout>
 
         </androidx.core.widget.NestedScrollView>

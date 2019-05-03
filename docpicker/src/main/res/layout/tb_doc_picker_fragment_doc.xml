@@ -42,8 +42,10 @@
             android:gravity="center_vertical">
 
             <FrameLayout
-                android:layout_width="@dimen/length_40"
-                android:layout_height="@dimen/length_40"
+                android:layout_width="@dimen/length_24"
+                android:layout_height="@dimen/length_24"
+                android:clickable="true"
+                android:focusable="true"
                 android:layout_margin="@dimen/offset_8"
                 android:foreground="@drawable/tb_doc_picker_sc_ripple_black_alpha_25">
 
@@ -64,10 +66,10 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:paddingStart="@dimen/offset_4"
-                android:paddingLeft="@dimen/offset_4"
-                android:paddingEnd="@dimen/offset_4"
-                android:paddingRight="@dimen/offset_4"
+                android:paddingStart="@dimen/offset_3"
+                android:paddingLeft="@dimen/offset_3"
+                android:paddingEnd="@dimen/offset_3"
+                android:paddingRight="@dimen/offset_3"
                 android:layout_gravity="center_vertical"/>
 
             <Button
@@ -76,12 +78,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Done"
-                android:textSize="@dimen/font_16"
+                android:textSize="@dimen/font_14"
                 android:theme="@style/App.Button.Primary"
                 style="@style/Widget.AppCompat.Button.Colored"
                 android:textAppearance="@style/App.TextAppearance.h4.Title"
                 android:textColor="@color/md_white_1000"
-                android:layout_margin="@dimen/offset_8"/>
+                android:layout_marginTop="@dimen/offset_6"
+                android:layout_marginBottom="@dimen/offset_6"/>
 
         </LinearLayout>
     </LinearLayout>
