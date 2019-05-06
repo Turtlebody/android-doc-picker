@@ -32,7 +32,7 @@ dependencies {
 ```
 
 ## Usage
-Step 1: Declare and Initialize MediaPicker.
+Step 1: Declare and Initialize DocPicker.
 
 #### Java
 ```java
@@ -162,7 +162,7 @@ Glide.with(context)
 ---
 
 
-## To pick media files(audio,image,video) you can use [MediaPicker](https://github.com/Turtlebody/android-media-picker) library.
+## To pick media files(audio,image,video) you can use [Turtlebody Media Picker](https://github.com/Turtlebody/android-media-picker) library.
 
 
 

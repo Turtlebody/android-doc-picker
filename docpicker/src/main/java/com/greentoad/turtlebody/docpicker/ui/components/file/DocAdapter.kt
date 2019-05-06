@@ -15,6 +15,7 @@ import com.greentoad.turtlebody.docpicker.labels.DocLabelSet
 import kotlinx.android.synthetic.main.tb_doc_picker_item_doc.view.*
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
+import java.io.File
 
 
 /**
@@ -70,7 +71,7 @@ class DocAdapter: RecyclerView.Adapter<DocAdapter.DocVewHolder>(), AnkoLogger {
             itemView.item_doc_ivc.isChecked = pData.isSelected
             val size = (pData.size/1000).toString()
 
-            itemView.item_doc_doc_name.text = pData.name
+            itemView.item_doc_doc_name.text = File(pData.filePath).name //to include name with extensions
             itemView.item_doc_doc_size.text = "$size KB"
 
             itemView.setOnClickListener {
