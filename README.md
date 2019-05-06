@@ -44,7 +44,7 @@ docs.add(DocPicker.DocTypes.TEXT);
 
 
 DocPickerConfig pickerConfig = new DocPickerConfig()
-        .setAllowMultiImages(false)
+        .setAllowMultiSelection(false)
         .setShowConfirmationDialog(true)
         .setExtArgs(docs);
 
