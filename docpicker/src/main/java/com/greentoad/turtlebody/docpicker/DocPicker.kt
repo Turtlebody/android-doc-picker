@@ -122,7 +122,7 @@ class DocPicker {
             val fragment = PickerFragment()
             fragment.arguments = bundle
             fragment.setListener(this)
-            mActivity.get()?.supportFragmentManager?.beginTransaction()?.add(fragment, PickerFragment::class.java.simpleName)?.commit()
+            mActivity.get()?.supportFragmentManager?.beginTransaction()?.add(fragment, PickerFragment::class.java.simpleName)?.commitAllowingStateLoss()
         }
     }
 

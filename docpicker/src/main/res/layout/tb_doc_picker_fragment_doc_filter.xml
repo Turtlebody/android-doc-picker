@@ -1,100 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/md_white_1000"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    app:layout_behavior="android.support.design.widget.BottomSheetBehavior">
 
-    <LinearLayout
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-
-            <TextView
-                style="@style/TextNormal"
-                android:text="Filters"
-                android:gravity="center"
-                android:textStyle="bold"
-                android:padding="@dimen/offset_12"
-                android:textColor="@color/md_black_1000"/>
-            <ImageView
-                android:id="@+id/doc_filter_fragment_btn_cancel"
-                android:layout_width="@dimen/length_40"
-                android:layout_height="@dimen/length_40"
-                android:layout_gravity="end|center_vertical"
-                android:padding="@dimen/offset_8"
-                android:scaleType="centerInside"
-                app:srcCompat="@drawable/tb_doc_picker_ic_icon_cancel" />
-
-        </FrameLayout>
-
-        <TextView
-            style="@style/TextNormal"
-            android:text="Selected"
-            android:padding="@dimen/offset_12"
-            android:textSize="@dimen/font_14"
-            android:textColor="@color/md_black_1000"
-            android:textStyle="bold"/>
+        android:layout_height="wrap_content">
 
         <LinearLayout
-            android:id="@+id/doc_filter_fragment_ll_for_selected_docs"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingStart="@dimen/offset_12"
-            android:paddingLeft="@dimen/offset_12"
-            android:paddingEnd="@dimen/offset_12"
-            android:paddingRight="@dimen/offset_12"
-            android:layout_marginBottom="@dimen/offset_8">
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical"
-            android:background="@drawable/tb_doc_picker_dr_layer_2_grey_b1_dp">
-
-            <TextView
-                style="@style/TextNormal"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:text="Available Document Types"
-                android:textStyle="bold"
-                android:textColor="@color/md_black_1000"
-                android:padding="@dimen/offset_12"
-                android:textSize="@dimen/font_14"/>
-
-            <TextView
-                android:id="@+id/doc_filter_fragment_btn_update"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/tb_doc_picker_dr_rect_round_accent"
-                android:text="Update"
-                android:paddingTop="@dimen/offset_6"
-                android:paddingBottom="@dimen/offset_6"
-                android:paddingStart="@dimen/offset_10"
-                android:paddingEnd="@dimen/offset_10"
-                android:layout_margin="@dimen/offset_8"
-                android:textAppearance="@style/App.TextAppearance.h4.Title"
-                android:textColor="@color/md_white_1000"
-                android:textSize="@dimen/font_14"/>
-        </LinearLayout>
-
-
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/tb_doc_picker_doc_filter_fragment_recycler_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:listitem="@layout/tb_doc_picker_item_doc" />
-    </LinearLayout>
+            android:orientation="vertical">
 
-</FrameLayout>
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    style="@style/TextNormal"
+                    android:text="Filters"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:padding="@dimen/offset_12"
+                    android:textColor="@color/md_black_1000"/>
+                <ImageView
+                    android:id="@+id/doc_filter_fragment_btn_cancel"
+                    android:layout_width="@dimen/length_40"
+                    android:layout_height="@dimen/length_40"
+                    android:layout_gravity="end|center_vertical"
+                    android:padding="@dimen/offset_8"
+                    android:scaleType="centerInside"
+                    app:srcCompat="@drawable/tb_doc_picker_ic_icon_cancel" />
+            </FrameLayout>
+
+            <TextView
+                style="@style/TextNormal"
+                android:text="Selected"
+                android:padding="@dimen/offset_12"
+                android:textSize="@dimen/font_14"
+                android:textColor="@color/md_black_1000"
+                android:textStyle="bold"/>
+
+            <LinearLayout
+                android:id="@+id/doc_filter_fragment_ll_for_selected_docs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/offset_12"
+                android:paddingLeft="@dimen/offset_12"
+                android:paddingEnd="@dimen/offset_12"
+                android:paddingRight="@dimen/offset_12"
+                android:layout_marginBottom="@dimen/offset_8">
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:background="@drawable/tb_doc_picker_dr_layer_2_grey_b1_dp">
+
+                <TextView
+                    style="@style/TextNormal"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="Available Document Types"
+                    android:textStyle="bold"
+                    android:textColor="@color/md_black_1000"
+                    android:padding="@dimen/offset_12"
+                    android:textSize="@dimen/font_14"/>
+
+                <TextView
+                    android:id="@+id/doc_filter_fragment_btn_update"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/tb_doc_picker_dr_rect_round_accent"
+                    android:text="Update"
+                    android:paddingTop="@dimen/offset_6"
+                    android:paddingBottom="@dimen/offset_6"
+                    android:paddingStart="@dimen/offset_10"
+                    android:paddingEnd="@dimen/offset_10"
+                    android:layout_margin="@dimen/offset_8"
+                    android:textAppearance="@style/App.TextAppearance.h4.Title"
+                    android:textColor="@color/md_white_1000"
+                    android:textSize="@dimen/font_14"/>
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/tb_doc_picker_doc_filter_fragment_recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:listitem="@layout/tb_doc_picker_item_doc"/>
+        </LinearLayout>
+    </FrameLayout>
+</androidx.core.widget.NestedScrollView>

@@ -1,3 +1,11 @@
+# [1.0.2](2019-10-4)
+
+### Changes:
+* Upgraded all api levels
+
+### Bug Fixes
+* Fixed, 1st time runtime permission crash
+
 # [1.0.1](2019-05-3)
 
 ### Changes:
@@ -10,8 +18,6 @@
 ### Bug Fixes
 
 * **core:** crashes on DocPicker configuration changes
-
-
 
 ### Features
 

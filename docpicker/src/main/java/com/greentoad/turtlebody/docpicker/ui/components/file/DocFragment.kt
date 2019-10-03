@@ -79,7 +79,6 @@ class DocFragment : FragmentBase(), DocAdapter.OnDocClickListener {
 
         initButton()
         initAdapter()
-
     }
 
     private fun initButton() {
@@ -91,11 +90,11 @@ class DocFragment : FragmentBase(), DocAdapter.OnDocClickListener {
         }
 
         doc_fragment_filter.setOnClickListener {
-            (activity as ActivityLibMain).startFragmentCreate()
+            (activity as ActivityLibMain).startFragmentFilterFragment()
         }
 
         doc_fragment_ll_for_selected_docs.setOnClickListener {
-            (activity as ActivityLibMain).startFragmentCreate()
+            (activity as ActivityLibMain).startFragmentFilterFragment()
         }
     }
 

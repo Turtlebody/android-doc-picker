@@ -54,38 +54,40 @@ class SelectedDocsLayout(private val mParentView: LinearLayout, private val mSel
     private fun updateColor(view: TextView, docType: String) {
         val mDrawable = ContextCompat.getDrawable(mContext, R.drawable.tb_doc_picker_dr_rect_round_red_doc_background)
 
-        if(docType.contains("+")){
-            mDrawable?.colorFilter = PorterDuffColorFilter(ContextCompat.getColor(mContext,R.color.md_grey_300), PorterDuff.Mode.SRC)
-            view.textColor = ContextCompat.getColor(mContext,R.color.md_black_1000)
-            view.visibility = View.VISIBLE
-            view.text = docType
-        }
-        else if(docType == DocPicker.DocTypes.AUDIO){
-            mDrawable?.colorFilter = PorterDuffColorFilter(ContextCompat.getColor(mContext,R.color.tb_doc_light_audio), PorterDuff.Mode.SRC)
-            view.textColor = ContextCompat.getColor(mContext,R.color.tb_doc_audio)
-            view.visibility = View.VISIBLE
-            view.text = DocConstants.docTypeMapLabel()[docType]
+        when {
+            docType.contains("+") -> {
+                mDrawable?.colorFilter = PorterDuffColorFilter(ContextCompat.getColor(mContext,R.color.md_grey_300), PorterDuff.Mode.SRC)
+                view.textColor = ContextCompat.getColor(mContext,R.color.md_black_1000)
+                view.visibility = View.VISIBLE
+                view.text = docType
+            }
+            docType == DocPicker.DocTypes.AUDIO -> {
+                mDrawable?.colorFilter = PorterDuffColorFilter(ContextCompat.getColor(mContext,R.color.tb_doc_light_audio), PorterDuff.Mode.SRC)
+                view.textColor = ContextCompat.getColor(mContext,R.color.tb_doc_audio)
+                view.visibility = View.VISIBLE
+                view.text = DocConstants.docTypeMapLabel()[docType]
 
-        }
-        else if(docType == DocPicker.DocTypes.IMAGE){
-            mDrawable?.colorFilter = PorterDuffColorFilter(ContextCompat.getColor(mContext,R.color.tb_doc_light_image), PorterDuff.Mode.SRC)
-            view.textColor = ContextCompat.getColor(mContext,R.color.tb_doc_image)
-            view.visibility = View.VISIBLE
-            view.text = DocConstants.docTypeMapLabel()[docType]
+            }
+            docType == DocPicker.DocTypes.IMAGE -> {
+                mDrawable?.colorFilter = PorterDuffColorFilter(ContextCompat.getColor(mContext,R.color.tb_doc_light_image), PorterDuff.Mode.SRC)
+                view.textColor = ContextCompat.getColor(mContext,R.color.tb_doc_image)
+                view.visibility = View.VISIBLE
+                view.text = DocConstants.docTypeMapLabel()[docType]
 
-        }
-        else if(docType == DocPicker.DocTypes.VIDEO){
-            mDrawable?.colorFilter = PorterDuffColorFilter(ContextCompat.getColor(mContext,R.color.tb_doc_light_video), PorterDuff.Mode.SRC)
-            view.textColor = ContextCompat.getColor(mContext,R.color.tb_doc_video)
-            view.visibility = View.VISIBLE
-            view.text = DocConstants.docTypeMapLabel()[docType]
+            }
+            docType == DocPicker.DocTypes.VIDEO -> {
+                mDrawable?.colorFilter = PorterDuffColorFilter(ContextCompat.getColor(mContext,R.color.tb_doc_light_video), PorterDuff.Mode.SRC)
+                view.textColor = ContextCompat.getColor(mContext,R.color.tb_doc_video)
+                view.visibility = View.VISIBLE
+                view.text = DocConstants.docTypeMapLabel()[docType]
 
-        }
-        else{
-            mDrawable?.colorFilter = PorterDuffColorFilter(ContextCompat.getColor(mContext,mPickerConfig.mDocLabelSet.getLabelForExt(DocConstants.docTypeMapLabel()[docType]!!).colorLightRes), PorterDuff.Mode.SRC)
-            view.textColor = ContextCompat.getColor(mContext,mPickerConfig.mDocLabelSet.getLabelForExt(DocConstants.docTypeMapLabel()[docType]!!).colorRes)
-            view.visibility = View.VISIBLE
-            view.text = DocConstants.docTypeMapLabel()[docType]
+            }
+            else -> {
+                mDrawable?.colorFilter = PorterDuffColorFilter(ContextCompat.getColor(mContext,mPickerConfig.mDocLabelSet.getLabelForExt(DocConstants.docTypeMapLabel()[docType]!!).colorLightRes), PorterDuff.Mode.SRC)
+                view.textColor = ContextCompat.getColor(mContext,mPickerConfig.mDocLabelSet.getLabelForExt(DocConstants.docTypeMapLabel()[docType]!!).colorRes)
+                view.visibility = View.VISIBLE
+                view.text = DocConstants.docTypeMapLabel()[docType]
+            }
         }
 
         view.background=mDrawable

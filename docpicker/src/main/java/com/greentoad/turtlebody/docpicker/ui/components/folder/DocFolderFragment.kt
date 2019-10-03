@@ -73,7 +73,7 @@ class DocFolderFragment : FragmentBase() {
 
     private fun initButton() {
         doc_folder_fragment_ll_filter.setOnClickListener {
-            (activity as ActivityLibMain).startFragmentCreate()
+            (activity as ActivityLibMain).startFragmentFilterFragment()
         }
     }
 

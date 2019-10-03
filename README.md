@@ -1,7 +1,7 @@
 ![](https://thedroid.io/assets/img/tb-doc-picker.png)
 
 ![API](https://img.shields.io/badge/API-16%2B-34bf49.svg)
-[ ![Download](https://api.bintray.com/packages/greentoad/android-doc-picker/com.greentoad.turtlebody.docpicker/images/download.svg?version=latest) ](https://bintray.com/greentoad/android-doc-picker/com.greentoad.turtlebody.docpicker/1.0.1/link)
+[ ![Download](https://api.bintray.com/packages/greentoad/android-doc-picker/com.greentoad.turtlebody.docpicker/images/download.svg?version=latest) ](https://bintray.com/greentoad/android-doc-picker/com.greentoad.turtlebody.docpicker/latest/link)
 
 
 ### Demo:
@@ -23,7 +23,7 @@ Step 1: Add the dependency
 dependencies {
     ...
     /*Doc picker */
-    implementation 'com.greentoad.turtlebody.docpicker:doc-picker:1.0.1'
+    implementation 'com.greentoad.turtlebody.docpicker:doc-picker:$latestVersion'
 
     /*for rxjava support*/
     implementation 'io.reactivex.rxjava2:rxjava:2.2.5'
