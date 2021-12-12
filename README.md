@@ -1,3 +1,10 @@
+ ## This is deprecated. Please use other library like: 
+- For documents: [UnicornFilePicker](https://github.com/abhishekti7/UnicornFilePicker)
+
+---
+
+
+
 ![](https://thedroid.io/assets/img/tb-doc-picker.png)
 
 ![API](https://img.shields.io/badge/API-16%2B-34bf49.svg)
